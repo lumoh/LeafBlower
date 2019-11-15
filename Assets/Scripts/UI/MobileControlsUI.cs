@@ -15,7 +15,6 @@ public class MobileControlsUI : MonoBehaviour
     public RectTransform InnerJoyStick;
 
     [NonSerialized] public Vector3 JoyVector;
-    [NonSerialized] public Vector3 JoyVectorNatural;
     [NonSerialized] public float JoyMagnitude;
 
     public static MobileControlsUI instance;
@@ -27,6 +26,7 @@ public class MobileControlsUI : MonoBehaviour
     {
         instance = this;
         maxJoyMagnitude = (OuterJoyStick.sizeDelta.x - InnerJoyStick.sizeDelta.x) / 2f;
+        ControlsCanvas.worldCamera = ControlsCamera;
     }
 
     private Vector2 mouseToAnchorPosition(Vector3 mousePos)
@@ -48,19 +48,19 @@ public class MobileControlsUI : MonoBehaviour
         if(GetTouch())
         {
             Vector3 touchPos = GetTouchPos();
-            Vector2 touchAnchorPos = mouseToAnchorPosition(touchPos);
+            Vector2 touchAnchor = mouseToAnchorPosition(touchPos);
 
-            JoyVector = touchAnchorPos - JoyStickParent.anchoredPosition;
-            JoyVectorNatural = JoyVector;
-            if(JoyVectorNatural.magnitude > 1f)
+            // Get 0-1 magnitude vector for movement
+            Vector3 rawDirection = touchAnchor - JoyStickParent.anchoredPosition;
+            rawDirection /= maxJoyMagnitude;
+            if(rawDirection.magnitude > 1f)
             {
-                JoyVectorNatural.Normalize();
+                rawDirection.Normalize();
             }
+            JoyVector = rawDirection;
 
-            JoyMagnitude = Mathf.Min(maxJoyMagnitude, JoyVector.magnitude);
-            JoyVector.Normalize();
-
-            Vector3 joyPos = (JoyVector * JoyMagnitude);
+            // Position the inner joystick
+            Vector3 joyPos = (JoyVector * maxJoyMagnitude);
             joyPos.z = 0;
             InnerJoyStick.anchoredPosition = joyPos;
         }
@@ -71,7 +71,6 @@ public class MobileControlsUI : MonoBehaviour
             InnerJoyStick.anchoredPosition = Vector3.zero;
             JoyVector = Vector3.zero;
             JoyMagnitude = 0f;
-            JoyVectorNatural = Vector3.zero;
         }
     }
 
