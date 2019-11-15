@@ -15,7 +15,6 @@ public class MobileControlsUI : MonoBehaviour
     public RectTransform InnerJoyStick;
 
     [NonSerialized] public Vector3 JoyVector;
-    [NonSerialized] public float JoyMagnitude;
 
     public static MobileControlsUI instance;
 
@@ -70,7 +69,6 @@ public class MobileControlsUI : MonoBehaviour
 
             InnerJoyStick.anchoredPosition = Vector3.zero;
             JoyVector = Vector3.zero;
-            JoyMagnitude = 0f;
         }
     }
 

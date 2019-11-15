@@ -8,15 +8,14 @@ public class GameOverMenu : MonoBehaviour
     public Button RetryButton;
 
     // Start is called before the first frame update
-    public GameOverMenu()
+    void Start()
     {
         RetryButton.onClick.AddListener(handleRetryPressed);
-        GlobalEvents.LoseGame.AddListener(handleLoseGame);
     }
 
     private void handleRetryPressed()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
         GlobalEvents.RetryGame.Invoke();
     }
 

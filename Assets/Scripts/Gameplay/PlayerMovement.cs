@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed = 10f;
 
     private Vector3 moveDirection = Vector3.zero;
+    bool isDead;
 
     void Start()
     {
@@ -23,31 +24,42 @@ public class PlayerMovement : MonoBehaviour
 
     private void handleRetry()
     {
-        transform.position = new Vector3(0, 2, 0);
+        transform.position = new Vector3(0, 5, 0);
+        StartCoroutine(respawn());      
+    }
+
+    IEnumerator respawn()
+    {
+        yield return new WaitForSeconds(0.25f);
+        isDead = false;
     }
 
     void Update()
     {
-        if (characterController != null && characterController.isGrounded)
+        if (!isDead && transform.position.y < -5f)
         {
-            moveDirection = getMoveVector();
-
-            handleRotation(moveDirection);
-
-            moveDirection *= speed;
-            if (moveDirection.magnitude > speed)
-            {
-                moveDirection = moveDirection.normalized * speed;
-            }
+            isDead = true;
+            GlobalEvents.LoseGame.Invoke();
         }
 
-        moveDirection.y -= gravity * Time.deltaTime;
-
-        characterController.Move(moveDirection * Time.deltaTime);
-
-        if(transform.position.y < -5f)
+        if(!isDead)
         {
-            GlobalEvents.LoseGame.Invoke();           
+            if (characterController != null && characterController.isGrounded)
+            {
+                moveDirection = getMoveVector();
+
+                handleRotation(moveDirection);
+
+                moveDirection *= speed;
+                if (moveDirection.magnitude > speed)
+                {
+                    moveDirection = moveDirection.normalized * speed;
+                }
+            }
+
+            moveDirection.y -= gravity * Time.deltaTime;
+
+            characterController.Move(moveDirection * Time.deltaTime);
         }
     }
 
