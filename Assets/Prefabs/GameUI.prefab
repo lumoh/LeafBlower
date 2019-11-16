@@ -511,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674277415142457219}
   - component: {fileID: 2674277415142453372}
+  - component: {fileID: 9082875409068137512}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -551,6 +552,20 @@ MonoBehaviour:
   JoyStickParent: {fileID: 2674277415611324531}
   OuterJoyStick: {fileID: 2674277414185622398}
   InnerJoyStick: {fileID: 2674277414390423604}
+--- !u!114 &9082875409068137512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674277415142457218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fe61f2c72df48f4b73cc6f1a4cbadb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RoundText: {fileID: 2862987379719302009}
+  ScoreText: {fileID: 134048984006469701}
 --- !u!1 &2674277415611324530
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour
     private int roundNum = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         LeafSpawner.LeafCollectedEvent.AddListener(handleLeafCollected);
         LeafSpawner.LeavesSpawned.AddListener(handleLeavesSpawned);

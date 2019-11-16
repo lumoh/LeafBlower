@@ -205,14 +205,14 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1995064675
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &6764562925307107166
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8290326767924559281}
   - component: {fileID: 4628497918233308346}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MenuBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ MonoBehaviour:
   MenuCanvas: {fileID: 1605267828043988806}
   CanvasRenderMode: 1
   PlaneDistance: 5
-  OrderInLayer: 1
+  OrderInLayer: 2
   Camera: 1
 --- !u!1 &8509887940459555394
 GameObject:
