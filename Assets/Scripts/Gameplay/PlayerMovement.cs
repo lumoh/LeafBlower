@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Physics.IgnoreLayerCollision(9, 10, true);
 
-        GlobalEvents.RetryGame.AddListener(handleRetry);
+        GlobalEvents.RetryLevel.AddListener(handleRetry);
     }
 
     private void handleRetry()
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (!isDead && transform.position.y < -5f)
         {
             isDead = true;
-            GlobalEvents.LoseGame.Invoke();
+            GlobalEvents.LoseLevel.Invoke();
         }
 
         if(!isDead)

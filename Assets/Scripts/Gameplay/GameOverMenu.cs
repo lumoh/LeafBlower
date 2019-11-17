@@ -16,7 +16,7 @@ public class GameOverMenu : MonoBehaviour
     private void handleRetryPressed()
     {
         Destroy(gameObject);
-        GlobalEvents.RetryGame.Invoke();
+        GlobalEvents.RetryLevel.Invoke();
     }
 
     private void handleLoseGame()

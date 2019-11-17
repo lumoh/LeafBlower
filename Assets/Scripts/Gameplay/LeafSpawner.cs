@@ -13,20 +13,31 @@ public class LeafSpawner : MonoBehaviour
     private List<Leaf> leaves;
     private List<int> removeIndices;
 
+    private bool _roundWon;
+
     public static UnityEvent LeafCollectedEvent = new UnityEvent();
     public static MyIntEvent LeavesSpawned = new MyIntEvent();
+
+    private void Awake()
+    {
+        GlobalEvents.StartLevel.AddListener(handleLevelStart);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         GroundObj.transform.localScale = new Vector3(Dimensions.x, 6, Dimensions.y);
         removeIndices = new List<int>();
+    }
+
+    private void handleLevelStart()
+    {
         spawnLeaves();
     }
 
     void spawnLeaves()
     {
-        GlobalEvents.StartRound.Invoke();
+        _roundWon = false;
         LeavesSpawned.Invoke(NumLeaves);
 
         leaves = new List<Leaf>();
@@ -67,9 +78,19 @@ public class LeafSpawner : MonoBehaviour
             }
             else
             {
-                GlobalEvents.WinRound.Invoke();
-                spawnLeaves();
+                if(!_roundWon)
+                {
+                    _roundWon = true;
+                    GlobalEvents.WinLevel.Invoke();
+                    StartCoroutine(respawnLeaves());
+                }
             }
         }
+    }
+
+    private IEnumerator respawnLeaves()
+    {
+        yield return new WaitForSeconds(1f);
+        spawnLeaves();
     }
 }

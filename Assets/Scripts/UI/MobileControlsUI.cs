@@ -19,13 +19,33 @@ public class MobileControlsUI : MonoBehaviour
     public static MobileControlsUI instance;
 
     private float maxJoyMagnitude;
+    private bool active;
 
     // Start is called before the first frame update
     void Awake()
     {
+        GlobalEvents.StartLevel.AddListener(handleStartRound);
+        GlobalEvents.LoseLevel.AddListener(handleLoseGame);
+        GlobalEvents.RetryLevel.AddListener(handleRetry);
+
         instance = this;
         maxJoyMagnitude = (OuterJoyStick.sizeDelta.x - InnerJoyStick.sizeDelta.x) / 2f;
         ControlsCanvas.worldCamera = ControlsCamera;
+    }
+
+    private void handleStartRound()
+    {
+        active = true;
+    }
+
+    private void handleRetry()
+    {
+        active = true;
+    }
+
+    private void handleLoseGame()
+    {
+        active = false;
     }
 
     private Vector2 mouseToAnchorPosition(Vector3 mousePos)
@@ -37,38 +57,41 @@ public class MobileControlsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (active)
         {
-            OuterJoyStick.gameObject.SetActive(true);
-            Vector3 mousePos = GetTouchPos();
-            JoyStickParent.anchoredPosition = mouseToAnchorPosition(mousePos);
-        }
-
-        if(GetTouch())
-        {
-            Vector3 touchPos = GetTouchPos();
-            Vector2 touchAnchor = mouseToAnchorPosition(touchPos);
-
-            // Get 0-1 magnitude vector for movement
-            Vector3 rawDirection = touchAnchor - JoyStickParent.anchoredPosition;
-            rawDirection /= maxJoyMagnitude;
-            if(rawDirection.magnitude > 1f)
+            if (Input.GetMouseButtonDown(0))
             {
-                rawDirection.Normalize();
+                OuterJoyStick.gameObject.SetActive(true);
+                Vector3 mousePos = GetTouchPos();
+                JoyStickParent.anchoredPosition = mouseToAnchorPosition(mousePos);
             }
-            JoyVector = rawDirection;
 
-            // Position the inner joystick
-            Vector3 joyPos = (JoyVector * maxJoyMagnitude);
-            joyPos.z = 0;
-            InnerJoyStick.anchoredPosition = joyPos;
-        }
-        else
-        {
-            OuterJoyStick.gameObject.SetActive(false);
+            if (GetTouch())
+            {
+                Vector3 touchPos = GetTouchPos();
+                Vector2 touchAnchor = mouseToAnchorPosition(touchPos);
 
-            InnerJoyStick.anchoredPosition = Vector3.zero;
-            JoyVector = Vector3.zero;
+                // Get 0-1 magnitude vector for movement
+                Vector3 rawDirection = touchAnchor - JoyStickParent.anchoredPosition;
+                rawDirection /= maxJoyMagnitude;
+                if (rawDirection.magnitude > 1f)
+                {
+                    rawDirection.Normalize();
+                }
+                JoyVector = rawDirection;
+
+                // Position the inner joystick
+                Vector3 joyPos = (JoyVector * maxJoyMagnitude);
+                joyPos.z = 0;
+                InnerJoyStick.anchoredPosition = joyPos;
+            }
+            else
+            {
+                OuterJoyStick.gameObject.SetActive(false);
+
+                InnerJoyStick.anchoredPosition = Vector3.zero;
+                JoyVector = Vector3.zero;
+            }
         }
     }
 

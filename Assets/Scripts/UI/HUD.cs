@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public Text RoundText;
-    public Text ScoreText;
+    public Text LevelNum;
+    public Text NextLevelNum;
+    public Meter Meter;
 
-    private int score = 0;
-    private int maxScore = 0;
-    private int roundNum = 0;
+    private int _score;
+    private int _maxScore;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,16 +21,22 @@ public class HUD : MonoBehaviour
 
     void handleLeafCollected()
     {
-        score++;
-        ScoreText.text = score + "/" + maxScore;
+        _score++;
+        float fillAmount = (float)_score / _maxScore;
+        Meter.SetFill(fillAmount);
     }
 
     void handleLeavesSpawned(int leavesSpawed)
     {
-        score = 0;
-        maxScore = leavesSpawed;
-        roundNum++;
-        RoundText.text = "Round " + roundNum;
-        ScoreText.text = score + "/" + maxScore;
+        _score = 0;
+        _maxScore = leavesSpawed;
+
+        int levelNum = GameManager.instance.LevelNum;
+        int nextLevelNum = levelNum + 1;
+
+        LevelNum.text = levelNum.ToString();
+        NextLevelNum.text = nextLevelNum.ToString();
+
+        Meter.SetFill(0);
     }
 }

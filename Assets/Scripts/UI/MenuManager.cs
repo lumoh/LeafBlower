@@ -6,7 +6,7 @@ public class MenuManager : MonoBehaviour
 {
     private void Start()
     {
-        GlobalEvents.LoseGame.AddListener(handleLoseGame);
+        GlobalEvents.LoseLevel.AddListener(handleLoseGame);
     }
 
     private void handleLoseGame()
