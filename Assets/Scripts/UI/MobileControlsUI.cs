@@ -9,7 +9,6 @@ public class MobileControlsUI : MonoBehaviour
 {
     public Canvas ControlsCanvas;
     public RectTransform ControlsCanvasRT;
-    public Camera ControlsCamera;
     public RectTransform JoyStickParent;
     public RectTransform OuterJoyStick;
     public RectTransform InnerJoyStick;
@@ -30,7 +29,6 @@ public class MobileControlsUI : MonoBehaviour
 
         instance = this;
         maxJoyMagnitude = (OuterJoyStick.sizeDelta.x - InnerJoyStick.sizeDelta.x) / 2f;
-        ControlsCanvas.worldCamera = ControlsCamera;
     }
 
     private void handleStartRound()

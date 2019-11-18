@@ -13,7 +13,8 @@ public class LeafSpawner : MonoBehaviour
     private List<Leaf> leaves;
     private List<int> removeIndices;
 
-    private bool _roundWon;
+    private bool _levelWon;
+    private bool _levelLost;
 
     public static UnityEvent LeafCollectedEvent = new UnityEvent();
     public static MyIntEvent LeavesSpawned = new MyIntEvent();
@@ -21,6 +22,8 @@ public class LeafSpawner : MonoBehaviour
     private void Awake()
     {
         GlobalEvents.StartLevel.AddListener(handleLevelStart);
+        GlobalEvents.RetryLevel.AddListener(handleRetryLevel);
+        GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
     }
 
     // Start is called before the first frame update
@@ -30,22 +33,53 @@ public class LeafSpawner : MonoBehaviour
         removeIndices = new List<int>();
     }
 
+    private void handleLoseLevel()
+    {
+        _levelLost = true;
+    }
+
+    private void handleRetryLevel()
+    {
+        _levelWon = false;
+        _levelLost = false;
+
+        removeAllLeaves();
+        spawnLeaves();
+    }
+
     private void handleLevelStart()
     {
+        _levelWon = false;
+        _levelLost = false;
+
+        removeAllLeaves();
         spawnLeaves();
     }
 
     void spawnLeaves()
     {
-        _roundWon = false;
         LeavesSpawned.Invoke(NumLeaves);
 
         leaves = new List<Leaf>();
         for (int i = 0; i < NumLeaves; i++)
         {
             Leaf newLeaf = Instantiate(LeafPrefab, transform);
-            newLeaf.transform.position = new Vector3(Random.Range(Dimensions.x / -2f, Dimensions.x / 2f), 5f, Random.Range(Dimensions.y / -2f, Dimensions.y / 2f));
+            newLeaf.transform.position = new Vector3(Random.Range(Dimensions.x / -2f, Dimensions.x / 2f), 1f, Random.Range(Dimensions.y / -2f, Dimensions.y / 2f));
             leaves.Add(newLeaf);
+        }
+    }
+
+    void removeAllLeaves()
+    {
+        if (leaves != null)
+        {
+            for (int i = leaves.Count - 1; i >= 0; i--)
+            {
+                Leaf leaf = leaves[i];
+                Destroy(leaf.gameObject);
+            }
+
+            leaves.Clear();
         }
     }
 
@@ -58,12 +92,15 @@ public class LeafSpawner : MonoBehaviour
                 for (int i = leaves.Count - 1; i >= 0; i--)
                 {
                     Leaf leaf = leaves[i];
-                    if (leaf.transform.position.y < -5f)
+                    if (leaf.transform.position.y < -3f)
                     {
                         Destroy(leaf.gameObject);
                         removeIndices.Add(i);
 
-                        LeafCollectedEvent.Invoke();
+                        if (!_levelLost)
+                        {
+                            LeafCollectedEvent.Invoke();
+                        }
                     }
                 }
 
@@ -78,9 +115,9 @@ public class LeafSpawner : MonoBehaviour
             }
             else
             {
-                if(!_roundWon)
+                if(!_levelWon)
                 {
-                    _roundWon = true;
+                    _levelWon = true;
                     GlobalEvents.WinLevel.Invoke();
                     StartCoroutine(respawnLeaves());
                 }

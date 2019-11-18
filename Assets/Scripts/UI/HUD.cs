@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Michsky.UI.ModernUIPack;
 
 public class HUD : MonoBehaviour
 {
     public Text LevelNum;
     public Text NextLevelNum;
-    public Meter Meter;
+	public ProgressBar ProgressBar;
 
     private int _score;
     private int _maxScore;
@@ -23,7 +24,8 @@ public class HUD : MonoBehaviour
     {
         _score++;
         float fillAmount = (float)_score / _maxScore;
-        Meter.SetFill(fillAmount);
+
+        ProgressBar.specifiedValue = fillAmount * 100;
     }
 
     void handleLeavesSpawned(int leavesSpawed)
@@ -37,6 +39,6 @@ public class HUD : MonoBehaviour
         LevelNum.text = levelNum.ToString();
         NextLevelNum.text = nextLevelNum.ToString();
 
-        Meter.SetFill(0);
+        ProgressBar.specifiedValue = 0;
     }
 }

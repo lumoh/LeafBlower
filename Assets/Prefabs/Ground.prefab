@@ -138,6 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeafPrefab: {fileID: 8621689079150012587, guid: b061c05c7faeb43c2a814d8dd0efaea0,
     type: 3}
-  NumLeaves: 2000
-  Dimensions: {x: 12, y: 12}
+  NumLeaves: 1000
+  Dimensions: {x: 12, y: 15}
   GroundObj: {fileID: 3096621374275821480}

@@ -14,12 +14,21 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     bool isDead;
 
+    void Awake()
+    {
+        GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
+        GlobalEvents.RetryLevel.AddListener(handleRetry);
+    }
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Physics.IgnoreLayerCollision(9, 10, true);
+    }
 
-        GlobalEvents.RetryLevel.AddListener(handleRetry);
+    private void handleLoseLevel()
+    {
+        isDead = true;
     }
 
     private void handleRetry()
