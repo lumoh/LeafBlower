@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isDead && transform.position.y < -5f)
+        if (!isDead && transform.position.y < 0f)
         {
             isDead = true;
             GlobalEvents.LoseLevel.Invoke();
@@ -93,6 +93,9 @@ public class PlayerMovement : MonoBehaviour
         if(MobileControlsUI.instance != null)
         {
             moveVector = new Vector3(MobileControlsUI.instance.JoyVector.x, 0f, MobileControlsUI.instance.JoyVector.y);
+
+            // account for isometric view
+            moveVector = Quaternion.AngleAxis(-135, Vector3.up) * moveVector;
         }
         else
         {

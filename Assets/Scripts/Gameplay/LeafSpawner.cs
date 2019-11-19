@@ -8,7 +8,6 @@ public class LeafSpawner : MonoBehaviour
     public Leaf LeafPrefab;
     public int NumLeaves;
     public Vector2Int Dimensions;
-    public GameObject GroundObj;
 
     private List<Leaf> leaves;
     private List<int> removeIndices;
@@ -29,7 +28,6 @@ public class LeafSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GroundObj.transform.localScale = new Vector3(Dimensions.x, 6, Dimensions.y);
         removeIndices = new List<int>();
     }
 
@@ -64,7 +62,7 @@ public class LeafSpawner : MonoBehaviour
         for (int i = 0; i < NumLeaves; i++)
         {
             Leaf newLeaf = Instantiate(LeafPrefab, transform);
-            newLeaf.transform.position = new Vector3(Random.Range(Dimensions.x / -2f, Dimensions.x / 2f), 1f, Random.Range(Dimensions.y / -2f, Dimensions.y / 2f));
+            newLeaf.transform.position = new Vector3(Random.Range(Dimensions.x / -2f, Dimensions.x / 2f), 5f, Random.Range(Dimensions.y / -2f, Dimensions.y / 2f));
             leaves.Add(newLeaf);
         }
     }
@@ -92,7 +90,7 @@ public class LeafSpawner : MonoBehaviour
                 for (int i = leaves.Count - 1; i >= 0; i--)
                 {
                     Leaf leaf = leaves[i];
-                    if (leaf.transform.position.y < -3f)
+                    if (leaf.transform.position.y < 0f)
                     {
                         Destroy(leaf.gameObject);
                         removeIndices.Add(i);

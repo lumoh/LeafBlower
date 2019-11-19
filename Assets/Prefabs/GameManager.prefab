@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5724369344483721618}
   - component: {fileID: 5724369344483721620}
   - component: {fileID: 1263000260800693711}
+  - component: {fileID: 1291508944}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -73,3 +74,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7b2377c1a4c4aae8b9094ec22441ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1291508944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724369344483721619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4010bfe785c574a73ba398463fea5125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeafPrefab: {fileID: 8621689079150012587, guid: b061c05c7faeb43c2a814d8dd0efaea0,
+    type: 3}
+  NumLeaves: 1000
+  Dimensions: {x: 10, y: 10}
+  GroundObj: {fileID: 0}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Leaf : MonoBehaviour
 {
+    public MeshRenderer Mesh;
+    public List<Material> LeafMaterials;
+
     public const float GUST_INVTERVAL = 1f;
     public const float GUST_FORCE = 2f;
 
@@ -14,6 +17,11 @@ public class Leaf : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        if(Mesh != null && LeafMaterials != null)
+        {
+            Mesh.material = LeafMaterials[Random.Range(0, LeafMaterials.Count)];
+        }
 
         StartCoroutine(gust());
     }
