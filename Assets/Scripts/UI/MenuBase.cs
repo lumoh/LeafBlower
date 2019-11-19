@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MenuBase : MonoBehaviour
 {
     public Canvas MenuCanvas;
+    public CanvasGroup CanvasGroup;
     public RenderMode CanvasRenderMode = RenderMode.ScreenSpaceCamera;
     public int PlaneDistance = 100;
     public int OrderInLayer;
     public CameraType Camera;
+
+    public bool AnimateIn;
 
     private const string SORTING_LAYER = "UI";
 
@@ -16,7 +20,15 @@ public class MenuBase : MonoBehaviour
     {
         WORLD,
         UI
-    }       
+    }
+
+    private void Awake()
+    {
+        if (AnimateIn && CanvasGroup != null)
+        {
+            CanvasGroup.alpha = 0;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +49,11 @@ public class MenuBase : MonoBehaviour
             }
 
             MenuCanvas.sortingLayerName = SORTING_LAYER;
+        }
+
+        if(AnimateIn && CanvasGroup != null)
+        {
+            CanvasGroup.DOFade(1f, 0.25f);
         }
     }
 }

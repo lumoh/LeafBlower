@@ -18,12 +18,18 @@ public class PlayerMovement : MonoBehaviour
     {
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
         GlobalEvents.RetryLevel.AddListener(handleRetry);
+        GlobalEvents.WinLevel.AddListener(handleWinLevel);
     }
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Physics.IgnoreLayerCollision(9, 10, true);
+    }
+
+    private void handleWinLevel()
+    {
+        isDead = true;
     }
 
     private void handleLoseLevel()

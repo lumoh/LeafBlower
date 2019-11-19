@@ -500,9 +500,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1620153410, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
-      propertyPath: TotalSeconds
-      value: 30
+    - target: {fileID: 875356035778299332, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 875356035778299332, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 875356035778299332, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -66.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 875356035778299332, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 875356035778299332, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.0000305
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2604378069893916709, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
@@ -573,6 +594,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611352310068689249, guid: c5bca1d323c5b4a9c876285d43533dca,
+        type: 3}
+      propertyPath: Dimensions.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611352310068689249, guid: c5bca1d323c5b4a9c876285d43533dca,
+        type: 3}
+      propertyPath: Dimensions.y
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bca1d323c5b4a9c876285d43533dca, type: 3}

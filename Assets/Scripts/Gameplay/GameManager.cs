@@ -25,5 +25,7 @@ public class GameManager : MonoBehaviour
     private void handleWinLevel()
     {
         LevelNum++;
+
+        MenuManager.PushMenu("WinMenu");
     }
 }

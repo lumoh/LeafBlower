@@ -9,4 +9,5 @@ public class GlobalEvents
     public static UnityEvent RetryLevel = new UnityEvent();
     public static UnityEvent StartLevel = new UnityEvent();
     public static UnityEvent WinLevel = new UnityEvent();
+    public static UnityEvent LoadLevel = new UnityEvent();
 }

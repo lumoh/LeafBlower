@@ -115,19 +115,12 @@ public class LeafSpawner : MonoBehaviour
             }
             else
             {
-                if(!_levelWon)
+                if(!_levelWon && !_levelLost)
                 {
                     _levelWon = true;
                     GlobalEvents.WinLevel.Invoke();
-                    StartCoroutine(respawnLeaves());
                 }
             }
         }
-    }
-
-    private IEnumerator respawnLeaves()
-    {
-        yield return new WaitForSeconds(1f);
-        spawnLeaves();
     }
 }
