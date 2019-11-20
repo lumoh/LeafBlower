@@ -892,22 +892,22 @@ PrefabInstance:
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1811662
+      value: 0.13052616
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9834525
+      value: 0.9914449
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
@@ -917,7 +917,7 @@ PrefabInstance:
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 20.875002
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
@@ -933,6 +933,71 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxForce
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.dieWithParticles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.textureMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.atime1
+      value: 50308
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.widthOverTrail.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: VelocityModule.orbitalX.scalar
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: TrailModule.mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e6c25ece14754d98aa9c1c598dad9b1, type: 3}
