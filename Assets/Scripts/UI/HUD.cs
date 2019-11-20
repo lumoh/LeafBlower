@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Michsky.UI.ModernUIPack;
+using DG.Tweening;
 
 public class HUD : MonoBehaviour
 {
     public Text LevelNum;
     public Text NextLevelNum;
 	public ProgressBar ProgressBar;
+	public Image EndFillImage;
 
     private int _score;
     private int _maxScore;
@@ -18,6 +20,24 @@ public class HUD : MonoBehaviour
     {
         LeafSpawner.LeafCollectedEvent.AddListener(handleLeafCollected);
         LeafSpawner.LeavesSpawned.AddListener(handleLeavesSpawned);
+        GlobalEvents.WinLevel.AddListener(handleWinLevel);
+        GlobalEvents.RetryLevel.AddListener(handleRetryLevel);
+    }
+
+    void handleWinLevel()
+    {
+        if(EndFillImage != null)
+        {
+            EndFillImage.DOFillAmount(1f, 0.2f);
+        }
+    }
+
+    void handleRetryLevel()
+    {
+        if (EndFillImage != null)
+        {
+            EndFillImage.fillAmount = 0f;
+        }
     }
 
     void handleLeafCollected()

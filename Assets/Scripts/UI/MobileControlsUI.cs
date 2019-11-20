@@ -23,25 +23,22 @@ public class MobileControlsUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GlobalEvents.StartLevel.AddListener(handleStartRound);
-        GlobalEvents.LoseLevel.AddListener(handleLoseGame);
-        GlobalEvents.RetryLevel.AddListener(handleRetry);
+        GlobalEvents.StartLevel.AddListener(setActive);
+		GlobalEvents.RetryLevel.AddListener(setActive);
 
-        instance = this;
+		GlobalEvents.LoseLevel.AddListener(setInactive);        
+		GlobalEvents.WinLevel.AddListener(setInactive);
+
+		instance = this;
         maxJoyMagnitude = (OuterJoyStick.sizeDelta.x - InnerJoyStick.sizeDelta.x) / 2f;
     }
 
-    private void handleStartRound()
+    private void setActive()
     {
         active = true;
     }
 
-    private void handleRetry()
-    {
-        active = true;
-    }
-
-    private void handleLoseGame()
+    private void setInactive()
     {
         active = false;
     }
