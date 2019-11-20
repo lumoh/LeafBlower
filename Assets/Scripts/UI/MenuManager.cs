@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
 
     public static void PushMenu(string menuId)
     {
-        GameObject menuPrefab = Resources.Load(menuId) as GameObject;
+        GameObject menuPrefab = Resources.Load("Menus/" + menuId) as GameObject;
         GameObject menu = Instantiate(menuPrefab);
         menu.SetActive(true);
     }

@@ -843,25 +843,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &4882546277127462701
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8933224078241718497}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f4305717e8194aa4aa8fd44088abef9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4618893974188631357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -929,87 +910,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6815563048297516456, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: MaxForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: VelocityModule.y.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.dieWithParticles
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.textureMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.colorOverLifetime.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxGradient.key1.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxGradient.atime1
-      value: 50308
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxGradient.atime2
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.colorOverLifetime.maxGradient.m_NumAlphaKeys
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.widthOverTrail.scalar
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: VelocityModule.orbitalX.scalar
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: TrailModule.mode
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e6c25ece14754d98aa9c1c598dad9b1, type: 3}
 --- !u!4 &4656694348747603011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-    type: 3}
-  m_PrefabInstance: {fileID: 4618893974188631357}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8933224078241718497 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4314646771459737052, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
     type: 3}
   m_PrefabInstance: {fileID: 4618893974188631357}
   m_PrefabAsset: {fileID: 0}
