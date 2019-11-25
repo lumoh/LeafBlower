@@ -14,19 +14,11 @@ public class Timer : MonoBehaviour
     void Awake()
     {
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
-        GlobalEvents.RetryLevel.AddListener(handleRetryLevel);
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
 
         _secondsLeft = TotalSeconds;
         TimeLeftText.text = _secondsLeft.ToString("00.0");
-    }
-
-    private void handleRetryLevel()
-    {
-        // TODO: Get time for level
-        _secondsLeft = TotalSeconds;
-        _isRunning = true;
     }
 
     public void handleStartLevel()

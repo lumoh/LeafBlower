@@ -5,8 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int TargetFrameRate = 60;
-    public int LevelNum;
+    public int LevelNum = 1;
     public AnalyticsType AnalyticsType;
+
+    public GameObject LevelObj;
+    public GameObject PlayerObj;
 
     private IAnalytics _analytics;
 
@@ -43,12 +46,36 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = TargetFrameRate;
+
+        loadLevelAndPlayer();
+
+        GlobalEvents.LevelLoaded.Invoke();
+    }
+
+    private void loadLevelAndPlayer()
+    {
+        string levelName = "Level" + LevelNum;
+        GameObject levelPrefab = Resources.Load("Levels/" + levelName) as GameObject;
+        LevelObj = Instantiate(levelPrefab);
+        LevelObj.transform.position = Vector3.zero;
+
+        GameObject playerPrefab = Resources.Load("Player") as GameObject;
+        PlayerObj = Instantiate(playerPrefab) as GameObject;
+
+        Transform playerSpawn = LevelObj.transform.Find("PlayerSpawn");
+        if(playerSpawn != null)
+        {
+            PlayerObj.transform.position = playerSpawn.position;
+        }
+        else
+        {
+            PlayerObj.transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     private void handleWinLevel()
     {
         LevelNum++;
-
-        MenuManager.PushMenu("WinMenu");
+        MenuManager.PushMenu(MenuManager.WIN);
     }
 }

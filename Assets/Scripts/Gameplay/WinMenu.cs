@@ -16,6 +16,6 @@ public class WinMenu : MonoBehaviour
     private void handleNextLevel()
     {
         Destroy(gameObject);
-        GlobalEvents.RetryLevel.Invoke();
+        GlobalEvents.StartLevel.Invoke();
     }
 }

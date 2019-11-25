@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuCanvas: {fileID: 2598875867257212327}
+  CanvasGroup: {fileID: 0}
   CanvasRenderMode: 1
   PlaneDistance: 100
   OrderInLayer: 10
   Camera: 1
+  AnimateIn: 0
 --- !u!114 &2645791842481161194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -374,6 +376,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartText
       objectReference: {fileID: 0}
+    - target: {fileID: 7965401565446270748, guid: a6fd2402e13f94ff09158c6ff410501c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 29d1861da7232b847ad1337bd27c3113,
+        type: 3}
+    - target: {fileID: 7965401565446270748, guid: a6fd2402e13f94ff09158c6ff410501c,
+        type: 3}
+      propertyPath: m_Text
+      value: Tap to Start
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965401565446270748, guid: a6fd2402e13f94ff09158c6ff410501c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5992563054802834154, guid: a6fd2402e13f94ff09158c6ff410501c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -478,17 +496,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7965401565446270748, guid: a6fd2402e13f94ff09158c6ff410501c,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 29d1861da7232b847ad1337bd27c3113,
-        type: 3}
-    - target: {fileID: 7965401565446270748, guid: a6fd2402e13f94ff09158c6ff410501c,
-        type: 3}
-      propertyPath: m_Text
-      value: Tap to Start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6fd2402e13f94ff09158c6ff410501c, type: 3}

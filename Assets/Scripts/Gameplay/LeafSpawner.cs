@@ -21,7 +21,6 @@ public class LeafSpawner : MonoBehaviour
     private void Awake()
     {
         GlobalEvents.StartLevel.AddListener(handleLevelStart);
-        GlobalEvents.RetryLevel.AddListener(handleRetryLevel);
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
     }
 
@@ -34,15 +33,6 @@ public class LeafSpawner : MonoBehaviour
     private void handleLoseLevel()
     {
         _levelLost = true;
-    }
-
-    private void handleRetryLevel()
-    {
-        _levelWon = false;
-        _levelLost = false;
-
-        removeAllLeaves();
-        spawnLeaves();
     }
 
     private void handleLevelStart()
@@ -62,7 +52,7 @@ public class LeafSpawner : MonoBehaviour
         for (int i = 0; i < NumLeaves; i++)
         {
             Leaf newLeaf = Instantiate(LeafPrefab, transform);
-            newLeaf.transform.position = new Vector3(Random.Range(Dimensions.x / -2f, Dimensions.x / 2f), 5f, Random.Range(Dimensions.y / -2f, Dimensions.y / 2f));
+            newLeaf.transform.position = new Vector3(Random.Range(Dimensions.x / -2f, Dimensions.x / 2f), 2f, Random.Range(Dimensions.y / -2f, Dimensions.y / 2f));
             leaves.Add(newLeaf);
         }
     }
@@ -90,7 +80,7 @@ public class LeafSpawner : MonoBehaviour
                 for (int i = leaves.Count - 1; i >= 0; i--)
                 {
                     Leaf leaf = leaves[i];
-                    if (leaf.transform.position.y < 0f)
+                    if (leaf.transform.position.y < -2f)
                     {
                         Destroy(leaf.gameObject);
                         removeIndices.Add(i);

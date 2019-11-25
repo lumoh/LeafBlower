@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+    public const string GAME_OVER = "GameOverMenu";
+    public const string WIN = "WinMenu";
+
     private void Start()
     {
         GlobalEvents.LoseLevel.AddListener(handleLoseGame);
@@ -11,7 +14,7 @@ public class MenuManager : MonoBehaviour
 
     private void handleLoseGame()
     {
-        PushMenu("GameOverMenu");
+        PushMenu(GAME_OVER);
     }
 
     public static void PushMenu(string menuId)

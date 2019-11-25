@@ -112,20 +112,45 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 7209876716804194903, guid: b8abc4a44316a449cb7562fb1c448751,
+    - target: {fileID: 6764562925307107166, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667114489218076523, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
-      value: Game Over
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7442377944432002455, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
       value: You Win
       objectReference: {fileID: 0}
-    - target: {fileID: 5667114489218076523, guid: b8abc4a44316a449cb7562fb1c448751,
+    - target: {fileID: 7209876716804194903, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
-      value: 
+      value: Game Over
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8abc4a44316a449cb7562fb1c448751, type: 3}

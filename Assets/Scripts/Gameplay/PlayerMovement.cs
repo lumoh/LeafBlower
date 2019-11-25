@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
-        GlobalEvents.RetryLevel.AddListener(handleRetry);
+        GlobalEvents.StartLevel.AddListener(handleStartLevel);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
     }
 
@@ -37,9 +37,9 @@ public class PlayerMovement : MonoBehaviour
         isDead = true;
     }
 
-    private void handleRetry()
+    private void handleStartLevel()
     {
-        transform.position = new Vector3(0, 5, 0);
+        transform.position = new Vector3(0, 1, 0);
         StartCoroutine(respawn());      
     }
 
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!isDead && transform.position.y < 0f)
+        if (!isDead && transform.position.y < -2f)
         {
             isDead = true;
             GlobalEvents.LoseLevel.Invoke();

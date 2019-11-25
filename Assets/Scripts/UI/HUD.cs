@@ -21,7 +21,7 @@ public class HUD : MonoBehaviour
         LeafSpawner.LeafCollectedEvent.AddListener(handleLeafCollected);
         LeafSpawner.LeavesSpawned.AddListener(handleLeavesSpawned);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
-        GlobalEvents.RetryLevel.AddListener(handleRetryLevel);
+        GlobalEvents.StartLevel.AddListener(handleStartLevel);
     }
 
     void handleWinLevel()
@@ -32,7 +32,7 @@ public class HUD : MonoBehaviour
         }
     }
 
-    void handleRetryLevel()
+    void handleStartLevel()
     {
         if (EndFillImage != null)
         {

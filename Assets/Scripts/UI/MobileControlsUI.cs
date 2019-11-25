@@ -24,8 +24,6 @@ public class MobileControlsUI : MonoBehaviour
     void Awake()
     {
         GlobalEvents.StartLevel.AddListener(setActive);
-		GlobalEvents.RetryLevel.AddListener(setActive);
-
 		GlobalEvents.LoseLevel.AddListener(setInactive);        
 		GlobalEvents.WinLevel.AddListener(setInactive);
 
@@ -41,6 +39,7 @@ public class MobileControlsUI : MonoBehaviour
     private void setInactive()
     {
         active = false;
+        OuterJoyStick.gameObject.SetActive(false);
     }
 
     private Vector2 mouseToAnchorPosition(Vector3 mousePos)

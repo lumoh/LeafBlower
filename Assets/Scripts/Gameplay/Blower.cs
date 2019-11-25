@@ -15,13 +15,12 @@ public class Blower : MonoBehaviour
 
     private void Awake()
     {
-        GlobalEvents.StartLevel.AddListener(handleStartLevel);
-        GlobalEvents.RetryLevel.AddListener(handleStartLevel);
-        GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
-        GlobalEvents.WinLevel.AddListener(handleLoseLevel);
+        GlobalEvents.StartLevel.AddListener(startBlower);
+        GlobalEvents.LoseLevel.AddListener(stopBlower);
+        GlobalEvents.WinLevel.AddListener(stopBlower);
     }
 
-    private void handleStartLevel()
+    private void startBlower()
     {
         if(Anim != null)
         {
@@ -34,7 +33,7 @@ public class Blower : MonoBehaviour
         }
     }
 
-    private void handleLoseLevel()
+    private void stopBlower()
     {
         if (Anim != null)
         {

@@ -250,6 +250,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7454421272137985287, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1605267828043988806, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_RenderMode
@@ -260,25 +265,40 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 7209876716804194903, guid: b8abc4a44316a449cb7562fb1c448751,
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
-      propertyPath: m_Text
-      value: Game Over
+      propertyPath: m_AnchorMin.y
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7442377944432002455, guid: b8abc4a44316a449cb7562fb1c448751,
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
-      propertyPath: m_Text
-      value: Game Over
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843741418462818627, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5667114489218076523, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7454421272137985287, guid: b8abc4a44316a449cb7562fb1c448751,
+    - target: {fileID: 7442377944432002455, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
-      propertyPath: m_Alpha
-      value: 1
+      propertyPath: m_Text
+      value: Game Over
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209876716804194903, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_Text
+      value: Game Over
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8abc4a44316a449cb7562fb1c448751, type: 3}

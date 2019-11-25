@@ -11,6 +11,16 @@ public class FollowCamera : MonoBehaviour
     [HideInInspector]
     public Vector3 Velocity;
 
+    private void Awake()
+    {
+        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
+    }
+
+    private void handleLevelLoaded()
+    {
+        Target = GameManager.instance.PlayerObj.transform;
+    }
+
     void LateUpdate()
     {
         followSmoothDamp();
