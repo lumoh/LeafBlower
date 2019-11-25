@@ -81,8 +81,8 @@ public class MobileControlsUI : MonoBehaviour
             }
             else
             {
-                OuterJoyStick.gameObject.SetActive(false);
-
+                //OuterJoyStick.gameObject.SetActive(false);
+                JoyStickParent.anchoredPosition = new Vector2(400, 200);
                 InnerJoyStick.anchoredPosition = Vector3.zero;
                 JoyVector = Vector3.zero;
             }
