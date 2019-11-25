@@ -814,6 +814,11 @@ PrefabInstance:
       propertyPath: Dimensions.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: AnalyticsType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8930a264a5f3844cbb5eadfee5c788ec, type: 3}
 --- !u!1001 &9001811253392102219
