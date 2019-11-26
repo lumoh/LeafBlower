@@ -13,11 +13,16 @@ public class Blower : MonoBehaviour
     private const string BLOW_ANIM = "Blow";
     private const string IDLE_ANIM = "Idle";
 
+    private bool _isBlowing;
+    private int _leafMask;
+
     private void Awake()
     {
         GlobalEvents.StartLevel.AddListener(startBlower);
         GlobalEvents.LoseLevel.AddListener(stopBlower);
         GlobalEvents.WinLevel.AddListener(stopBlower);
+
+        _leafMask = 1 << Layers.LEAF;
     }
 
     private void startBlower()
@@ -31,6 +36,8 @@ public class Blower : MonoBehaviour
         {
             BlowParticles.Play();
         }
+
+        _isBlowing = true;
     }
 
     private void stopBlower()
@@ -44,21 +51,24 @@ public class Blower : MonoBehaviour
         {
             BlowParticles.Stop();
         }
+
+        _isBlowing = false;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        int layerMask = 1 << 9;
-        
-        RaycastHit[] hits = Physics.SphereCastAll(SpawnPoint.position, 1f, SpawnPoint.forward, 2f, layerMask);
-        foreach(RaycastHit hit in hits)
+        if (_isBlowing)
         {
-            Leaf leaf = hit.collider.GetComponent<Leaf>();
-            if(leaf != null)
+            RaycastHit[] hits = Physics.SphereCastAll(SpawnPoint.position, 1f, SpawnPoint.forward, 2f, _leafMask);
+            foreach (RaycastHit hit in hits)
             {
-                leaf.Blow(SpawnPoint.forward, MaxForce);
+                Leaf leaf = hit.collider.GetComponent<Leaf>();
+                if (leaf != null)
+                {
+                    leaf.Blow(SpawnPoint.forward, MaxForce);
+                }
             }
         }
     }

@@ -18,10 +18,24 @@ public class HUD : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        LeafSpawner.LeafCollectedEvent.AddListener(handleLeafCollected);
-        LeafSpawner.LeavesSpawned.AddListener(handleLeavesSpawned);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
+        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
+        GlobalEvents.LeafCollected.AddListener(handleLeafCollected);
+    }
+
+    void handleLevelLoaded()
+    {
+        _score = 0;
+        _maxScore = GameManager.instance.Level.NumLeaves;
+
+        int levelNum = GameManager.instance.LevelNum;
+        int nextLevelNum = levelNum + 1;
+
+        LevelNum.text = levelNum.ToString();
+        NextLevelNum.text = nextLevelNum.ToString();
+
+        ProgressBar.specifiedValue = 0;
     }
 
     void handleWinLevel()

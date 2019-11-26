@@ -12,13 +12,16 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed = 10f;
 
     private Vector3 moveDirection = Vector3.zero;
-    bool isDead;
+    private bool _isDead;
+    private int _deadzoneMask;
 
     void Awake()
     {
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
+
+        _deadzoneMask = 1 << Layers.DEADZONE;
     }
 
     void Start()
@@ -29,12 +32,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void handleWinLevel()
     {
-        isDead = true;
+        _isDead = true;
     }
 
     private void handleLoseLevel()
     {
-        isDead = true;
+        _isDead = true;
     }
 
     private void handleStartLevel()
@@ -46,18 +49,21 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator respawn()
     {
         yield return new WaitForSeconds(0.25f);
-        isDead = false;
+        _isDead = false;
     }
 
     void Update()
     {
-        if (!isDead && transform.position.y < -2f)
-        {
-            isDead = true;
-            GlobalEvents.LoseLevel.Invoke();
+        if (!_isDead)
+        {            
+            _isDead = Physics.Raycast(transform.position, Vector3.down, 0.25f, _deadzoneMask);
+            if (_isDead)
+            {
+                GlobalEvents.LoseLevel.Invoke();
+            }
         }
 
-        if(!isDead)
+        if(!_isDead)
         {
             if (characterController != null && characterController.isGrounded)
             {

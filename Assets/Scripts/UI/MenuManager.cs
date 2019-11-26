@@ -6,16 +6,7 @@ public class MenuManager : MonoBehaviour
 {
     public const string GAME_OVER = "GameOverMenu";
     public const string WIN = "WinMenu";
-
-    private void Start()
-    {
-        GlobalEvents.LoseLevel.AddListener(handleLoseGame);
-    }
-
-    private void handleLoseGame()
-    {
-        PushMenu(GAME_OVER);
-    }
+    public const string HOME = "HomeMenu";
 
     public static void PushMenu(string menuId)
     {

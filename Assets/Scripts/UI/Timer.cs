@@ -16,9 +16,15 @@ public class Timer : MonoBehaviour
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
+		GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
 
-        _secondsLeft = TotalSeconds;
+		_secondsLeft = TotalSeconds;
         TimeLeftText.text = _secondsLeft.ToString("00.0");
+    }
+
+    public void handleLevelLoaded()
+    {
+        TotalSeconds = GameManager.instance.Level.Seconds;
     }
 
     public void handleStartLevel()
