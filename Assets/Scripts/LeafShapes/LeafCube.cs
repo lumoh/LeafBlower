@@ -27,7 +27,7 @@ public class LeafCube : MonoBehaviour
                     {
                         Leaf leafObj = Instantiate(LeafPrefab, transform);
                         leafObj.transform.localPosition = new Vector3(x * WIDTH, (y * WIDTH) + (WIDTH/2f), z * WIDTH);
-                        leafObj.transform.rotation = Quaternion.identity;
+                        leafObj.transform.localRotation = Quaternion.identity;
                         leaves.Add(leafObj);
                     }
                 }

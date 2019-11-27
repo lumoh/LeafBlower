@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public Level Level;
     public GameObject PlayerObj;
+    public bool IsLevelOver;
 
     private IAnalytics _analytics;
     public IAnalytics Analytics
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
             Destroy(PlayerObj);
         }
 
-        string levelName = "Level" + LevelNum;
+        string levelName = "Level_" + LevelNum;
         Level levelPrefab = Resources.Load<Level>("Levels/" + levelName);
         Level = Instantiate(levelPrefab);
 		Level.transform.position = Vector3.zero;
@@ -79,13 +80,20 @@ public class GameManager : MonoBehaviour
 
     private void handleWinLevel()
     {
-        LevelNum++;
-        LevelNum = Mathf.Min(LevelNum, MaxLevel);
-        MenuManager.PushMenu(MenuManager.WIN);
+        if (!IsLevelOver)
+        {
+            LevelNum++;
+            LevelNum = Mathf.Min(LevelNum, MaxLevel);
+            MenuManager.PushMenu(MenuManager.WIN);
+        }
     }
 
     private void handleLoseLevel()
     {
-        MenuManager.PushMenu(MenuManager.GAME_OVER);
+        if (!IsLevelOver)
+        {
+            IsLevelOver = true;
+            MenuManager.PushMenu(MenuManager.GAME_OVER);
+        }
     }
 }

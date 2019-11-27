@@ -34,12 +34,16 @@ public class MobileControlsUI : MonoBehaviour
     private void setActive()
     {
         active = true;
+        OuterJoyStick.gameObject.SetActive(true);
     }
 
     private void setInactive()
     {
         active = false;
         OuterJoyStick.gameObject.SetActive(false);
+
+        InnerJoyStick.anchoredPosition = Vector3.zero;
+        JoyVector = Vector3.zero;
     }
 
     private Vector2 mouseToAnchorPosition(Vector3 mousePos)
@@ -81,7 +85,6 @@ public class MobileControlsUI : MonoBehaviour
             }
             else
             {
-                //OuterJoyStick.gameObject.SetActive(false);
                 JoyStickParent.anchoredPosition = new Vector2(400, 200);
                 InnerJoyStick.anchoredPosition = Vector3.zero;
                 JoyVector = Vector3.zero;

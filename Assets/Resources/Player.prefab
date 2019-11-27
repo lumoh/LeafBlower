@@ -66,9 +66,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44143f93548e4880b179befec758bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.5
+  speed: 3
   gravity: 20
-  turnSpeed: 10
+  turnSpeed: 7
 --- !u!1 &590725690621996668
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,12 +863,12 @@ PrefabInstance:
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.61
+      value: 0.432
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.042
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
@@ -910,10 +910,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.16400269
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.87461424
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.118467644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99295795
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423852589593642990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -13.607
+      objectReference: {fileID: 0}
     - target: {fileID: 6815563048297516456, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: MaxForce
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1060083487677045839, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}

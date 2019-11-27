@@ -47,7 +47,7 @@ public class Leaf : MonoBehaviour
         if(!_isCollected)
         {
             int deadzoneMask = 1 << Layers.DEADZONE;
-            _isCollected = Physics.Raycast(transform.position, Vector3.down, 0.25f, deadzoneMask);
+            _isCollected = Physics.Raycast(transform.position, Vector3.down, 0.5f, deadzoneMask);
 
             if (_isCollected)
             {
