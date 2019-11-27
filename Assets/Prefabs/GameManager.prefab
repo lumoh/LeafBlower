@@ -48,9 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetFrameRate: 60
   LevelNum: 1
+  MaxLevel: 1
   AnalyticsType: 1
   Level: {fileID: 0}
   PlayerObj: {fileID: 0}
+  IsLevelOver: 0
 --- !u!114 &5724369344483721620
 MonoBehaviour:
   m_ObjectHideFlags: 0

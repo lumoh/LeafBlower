@@ -26,8 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
-        Physics.IgnoreLayerCollision(9, 10, true);
+        characterController = GetComponent<CharacterController>();        
     }
 
     private void handleWinLevel()

@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2768666777018426836}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5642667280382971632
 BoxCollider:
@@ -42,7 +42,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 6, z: 48}
+  m_Size: {x: 0.5, y: 50, z: 48}
   m_Center: {x: 0, y: 36, z: 0}
 --- !u!1 &1794885258128900486
 GameObject:
@@ -54,13 +54,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7500238558093211554}
   - component: {fileID: 7401159639131738873}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BotHorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7500238558093211554
 Transform:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2768666777018426836}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7401159639131738873
 BoxCollider:
@@ -86,7 +86,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 6, z: 48}
+  m_Size: {x: 0.5, y: 6, z: 48}
   m_Center: {x: 0, y: 18, z: 0}
 --- !u!1 &2772969220663518516
 GameObject:
@@ -114,11 +114,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2772969220663518516}
   m_LocalRotation: {x: -0, y: -0.7071066, z: -0, w: 0.707107}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.005, y: 0, z: -0}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.03}
   m_Children:
-  - {fileID: 7500238558093211554}
   - {fileID: 928323588828747424}
+  - {fileID: 7500238558093211554}
   - {fileID: 775561477911966242}
   - {fileID: 7028890555682007866}
   m_Father: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7028890555682007866
 Transform:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &775561477911966242
 Transform:
   m_ObjectHideFlags: 0

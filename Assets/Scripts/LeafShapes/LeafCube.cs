@@ -5,18 +5,19 @@ using UnityEngine;
 /// <summary>
 /// Attach to empty gameobjet to create a cube of leaves
 /// </summary>
-public class LeafCube : MonoBehaviour
+public class LeafCube : LeafPile
 {
-    public Leaf LeafPrefab;
     public Vector3Int Dimensions;
 
-    private const float WIDTH = 0.1f;
-    private List<Leaf> leaves;
-
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        leaves = new List<Leaf>();
+        _leaves = new List<Leaf>();
+
+        float startX = (Dimensions.x * Leaf.WIDTH) / -2f;
+        float startZ = (Dimensions.z * Leaf.WIDTH) / -2f;
+        float startY = Leaf.WIDTH / 2f;
+
         if (LeafPrefab != null)
         {
             for (int y = 0; y < Dimensions.y; y++)
@@ -25,22 +26,20 @@ public class LeafCube : MonoBehaviour
                 {
                     for (int z = 0; z < Dimensions.z; z++)
                     {
-                        Leaf leafObj = Instantiate(LeafPrefab, transform);
-                        leafObj.transform.localPosition = new Vector3(x * WIDTH, (y * WIDTH) + (WIDTH/2f), z * WIDTH);
-                        leafObj.transform.localRotation = Quaternion.identity;
-                        leaves.Add(leafObj);
+                        Leaf newLeaf = spawnLeaf();
+                        float xPos = startX + (x * Leaf.WIDTH);
+                        float zPos = startZ + (z * Leaf.WIDTH);
+                        float yPos = startY + (y * Leaf.WIDTH);
+                        newLeaf.transform.localPosition = new Vector3(xPos, yPos, zPos);
+                        newLeaf.transform.localRotation = Quaternion.identity;
+                        _leaves.Add(newLeaf);
                     }
                 }
             }
         }
     }
 
-    public List<Leaf> GetLeaves()
-	{
-		return leaves;
-	}
-
-    public int GetNumLeaves()
+    public override int GetNumLeaves()
     {
         return Dimensions.x * Dimensions.y * Dimensions.z;
     }

@@ -10,7 +10,7 @@ public class Leaf : MonoBehaviour
 
     public const float GUST_INVTERVAL = 1f;
     public const float GUST_FORCE = 2f;
-
+    public const float WIDTH = 0.1f;
 
     public Rigidbody rb;
     public BoxCollider col;

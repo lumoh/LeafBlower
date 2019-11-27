@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = TargetFrameRate;
 
+        Physics.IgnoreLayerCollision(Layers.LEAF, Layers.PLAYER, true);
+        Physics.IgnoreLayerCollision(Layers.LEAF, Layers.FENCE, true);
+
         instance = this;
 
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
@@ -74,6 +77,8 @@ public class GameManager : MonoBehaviour
         PlayerObj.transform.position = Level.PlayerSpawn.position;
         PlayerObj.transform.rotation = Level.PlayerSpawn.rotation;
 
+        IsLevelOver = false;
+
         MenuManager.PushMenu(MenuManager.HOME);
         GlobalEvents.LevelLoaded.Invoke();
     }
@@ -82,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
         if (!IsLevelOver)
         {
+            IsLevelOver = true;
             LevelNum++;
             LevelNum = Mathf.Min(LevelNum, MaxLevel);
             MenuManager.PushMenu(MenuManager.WIN);

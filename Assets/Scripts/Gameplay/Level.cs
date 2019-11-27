@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Level : MonoBehaviour
 {
@@ -13,25 +14,25 @@ public class Level : MonoBehaviour
     public int Seconds = 30;
 
     private List<Transform> _platforms;
-    private List<LeafCube> _leafCubes;
+    private List<LeafPile> _leafPiles;
     private int _leavesLeft;
 
     private void Awake()
     {
         GlobalEvents.LeafCollected.AddListener(handleLeafCollected);
 
-        string[] split = gameObject.name.Split('_');
-        int.TryParse(split[1], out Num);
-
+        fetchLevelNum();
         fetchPlatforms();
         fetchLeaves();
+    }
 
-        foreach (var leafCube in _leafCubes)
+    private void fetchLevelNum()
+    {
+        string[] split = gameObject.name.Split('_');
+        if (split.Length > 1)
         {
-            NumLeaves += leafCube.GetNumLeaves();
+            int.TryParse(split[1], out Num);
         }
-
-        _leavesLeft = NumLeaves;
     }
 
     private void fetchPlatforms()
@@ -45,9 +46,15 @@ public class Level : MonoBehaviour
 
     private void fetchLeaves()
 	{
-        LeafCube[] cubes = LeavesParent.GetComponentsInChildren<LeafCube>();
-        _leafCubes = new List<LeafCube>(cubes);
-	}
+        LeafPile[] piles = LeavesParent.GetComponentsInChildren<LeafPile>();
+        _leafPiles = new List<LeafPile>(piles);
+
+        foreach(var leafPile in _leafPiles)
+        {
+            NumLeaves += leafPile.GetNumLeaves();
+        }
+        _leavesLeft = NumLeaves;
+    }
 
     private void handleLeafCollected()
     {
