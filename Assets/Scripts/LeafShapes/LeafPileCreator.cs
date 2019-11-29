@@ -11,6 +11,7 @@ public class LeafPileCreator : EditorWindow
 {
     private Texture2D _texture;
     private Vector3Int _dimensions;
+    private bool _transparency;
 
     // Add menu named "My Window" to the Window menu
     [MenuItem("Blower/Leaf Pile Creator")]
@@ -25,6 +26,7 @@ public class LeafPileCreator : EditorWindow
         GUILayout.Label("Leaf Pile Creator", EditorStyles.boldLabel);
 
         _texture = (Texture2D)EditorGUILayout.ObjectField("Image", _texture, typeof(Texture2D), allowSceneObjects: true);
+        _transparency = EditorGUILayout.Toggle("Transparency", _transparency);
         if (GUILayout.Button("Create From Image"))
         {
             createFromImage();
@@ -46,7 +48,7 @@ public class LeafPileCreator : EditorWindow
             LeafBitmap leafBitmap = leafPileObj.AddComponent<LeafBitmap>();
             leafBitmap.LeafPrefab = leafPrefab;
             leafBitmap.Bitmap = _texture;
-            leafBitmap.CreateLeavesFromBitmap();
+            leafBitmap.CreateLeavesFromBitmap(_transparency);
             PrefabUtility.SaveAsPrefabAsset(leafPileObj, "Assets/Prefabs/Leaves/LeafPile_" + _texture.name + ".prefab");
             DestroyImmediate(leafPileObj);
         }

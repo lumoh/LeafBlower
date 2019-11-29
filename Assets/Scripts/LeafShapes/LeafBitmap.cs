@@ -6,25 +6,46 @@ using System.Drawing;
 public class LeafBitmap : LeafPile
 {
     public Texture2D Bitmap;
+    public bool Transparency;
+    public bool UseColors;
 
     public override void SetColors()
     {
-        _leaves = new List<Leaf>();
-        if (Bitmap != null)
+        if (!UseColors)
         {
-            Color[] pixels = Bitmap.GetPixels();
-            for (int i = 0; i < _leaves.Count; i++)
+            base.SetColors();
+        }
+        else
+        {
+            if (Bitmap != null)
             {
-                Leaf leaf = _leaves[i];
-                Color color = pixels[i];
+                Color[] pixels = Bitmap.GetPixels();
+                List<Color> pixelList = new List<Color>();
+                foreach(var pixel in pixels)
+                {
+                    if(Transparency && pixel.r == 0 && pixel.g == 0 && pixel.b == 0)
+                    {
+                        continue;
+                    }
 
-                leaf.SetColor(color);
+                    pixelList.Add(pixel);
+                }
+
+                for (int i = 0; i < _leaves.Count; i++)
+                {
+                    Leaf leaf = _leaves[i];
+                    Color color = pixelList[i];
+
+                    leaf.SetColor(color);
+                }
             }
         }
     }
 
-    public void CreateLeavesFromBitmap()
+    public void CreateLeavesFromBitmap(bool transparency)
     {
+        Transparency = transparency;
+
         _leaves = new List<Leaf>();
         if (Bitmap != null)
         {
@@ -38,18 +59,31 @@ public class LeafBitmap : LeafPile
 
             foreach (var pixel in pixels)
             {
-                Leaf newLeaf = spawnLeaf();
-                _leaves.Add(newLeaf);
-                NumLeaves++;
-
-                newLeaf.transform.localPosition = new Vector3(x * Leaf.WIDTH, Leaf.WIDTH / 2f, y * Leaf.WIDTH);
-
-                x++;
-                x = x % width;
-                if (x == 0)
+                if (Transparency && pixel.r == 0 && pixel.g == 0 && pixel.b == 0)
                 {
-                    y++;
-                    y = y % height;
+                    x++;
+                    x = x % width;
+                    if (x == 0)
+                    {
+                        y++;
+                        y = y % height;
+                    }
+                }
+                else
+                {
+                    Leaf newLeaf = spawnLeaf();
+                    _leaves.Add(newLeaf);
+                    NumLeaves++;
+
+                    newLeaf.transform.localPosition = new Vector3(x * Leaf.WIDTH, Leaf.WIDTH / 2f, y * Leaf.WIDTH);
+
+                    x++;
+                    x = x % width;
+                    if (x == 0)
+                    {
+                        y++;
+                        y = y % height;
+                    }
                 }
             }
         }
