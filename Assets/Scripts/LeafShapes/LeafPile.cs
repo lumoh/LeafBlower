@@ -10,31 +10,28 @@ public class LeafPile : MonoBehaviour
     public Leaf LeafPrefab;
     public int NumLeaves;
 
-    protected List<Leaf> _leaves;
+    [SerializeField] protected List<Leaf> _leaves;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        _leaves = new List<Leaf>();
+        SetColors();
+    }
 
-        for (int i = 0; i < NumLeaves; i++)
+    /// <summary>
+    /// Set random colors on the blocks
+    /// </summary>
+    public virtual void SetColors()
+    {
+        foreach(var leaf in _leaves)
         {
-            Leaf newLeaf = spawnLeaf();
-            if(newLeaf != null)
-            {
-                _leaves.Add(newLeaf);
-            }
+            leaf.SetRandomColor();
         }
     }
 
     public virtual int GetNumLeaves()
     {
         return NumLeaves;
-    }
-
-    public int NumLeavesLeft()
-    {
-        return _leaves.Count;
     }
 
     protected Leaf spawnLeaf()

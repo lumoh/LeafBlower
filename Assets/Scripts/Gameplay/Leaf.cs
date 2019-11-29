@@ -23,12 +23,23 @@ public class Leaf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Mesh != null && LeafMaterials != null)
+        StartCoroutine(gust());
+    }
+
+    public void SetRandomColor()
+    {
+        if (Mesh != null && LeafMaterials != null)
         {
             Mesh.material = LeafMaterials[Random.Range(0, LeafMaterials.Count)];
         }
+    }
 
-        StartCoroutine(gust());
+    public void SetColor(Color c)
+    {
+        if (Mesh != null)
+        {
+            Mesh.material.SetColor("_Color", c);
+        }
     }
 
     public void Blow(Vector3 dir, float force)

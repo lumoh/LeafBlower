@@ -36,6 +36,7 @@ public class HUD : MonoBehaviour
         NextLevelNum.text = nextLevelNum.ToString();
 
         ProgressBar.specifiedValue = 0;
+        EndFillImage.fillAmount = 0f;
     }
 
     void handleWinLevel()
@@ -48,10 +49,7 @@ public class HUD : MonoBehaviour
 
     void handleStartLevel()
     {
-        if (EndFillImage != null)
-        {
-            EndFillImage.fillAmount = 0f;
-        }
+        
     }
 
     void handleLeafCollected()

@@ -9,8 +9,7 @@ public class LeafCube : LeafPile
 {
     public Vector3Int Dimensions;
 
-    // Start is called before the first frame update
-    public override void Start()
+    public void CreateFromDimensions()
     {
         _leaves = new List<Leaf>();
 
@@ -21,12 +20,14 @@ public class LeafCube : LeafPile
         if (LeafPrefab != null)
         {
             for (int y = 0; y < Dimensions.y; y++)
-            { 
+            {
                 for (int x = 0; x < Dimensions.x; x++)
                 {
                     for (int z = 0; z < Dimensions.z; z++)
                     {
                         Leaf newLeaf = spawnLeaf();
+                        NumLeaves++;
+
                         float xPos = startX + (x * Leaf.WIDTH);
                         float zPos = startZ + (z * Leaf.WIDTH);
                         float yPos = startY + (y * Leaf.WIDTH);
@@ -37,10 +38,5 @@ public class LeafCube : LeafPile
                 }
             }
         }
-    }
-
-    public override int GetNumLeaves()
-    {
-        return Dimensions.x * Dimensions.y * Dimensions.z;
     }
 }
