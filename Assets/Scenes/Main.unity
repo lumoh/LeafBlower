@@ -151,7 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Offset: {x: 10, y: 10, z: 10}
+  TargetOffset: {x: 1, y: 0, z: 1}
+  Offset: {x: 10, y: 12, z: 10}
   DistanceDamp: 0.2
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &416969242
@@ -392,7 +393,7 @@ Camera:
   far clip plane: 1000
   field of view: 80
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -518,6 +519,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2674277415611324531, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2629282202875475126, guid: 450e256549ec047f4b04f3d760ad73e1,
         type: 3}
       propertyPath: speed
@@ -605,12 +621,12 @@ PrefabInstance:
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: MaxLevel
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: LevelNum
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8930a264a5f3844cbb5eadfee5c788ec, type: 3}

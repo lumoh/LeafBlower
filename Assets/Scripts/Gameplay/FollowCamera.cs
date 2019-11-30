@@ -5,8 +5,9 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public Transform Target;
+    public Vector3 TargetOffset;
     public Vector3 Offset;
-    public float DistanceDamp;
+    public float DistanceDamp;    
 
     [HideInInspector]
     public Vector3 Velocity;
@@ -33,7 +34,7 @@ public class FollowCamera : MonoBehaviour
             Vector3 toPos = Target.position + Offset;
             Vector3 curPos = Vector3.SmoothDamp(transform.position, toPos, ref Velocity, DistanceDamp);
             transform.position = curPos;
-            transform.LookAt(Target, Target.up);
+            transform.LookAt(Target.position + TargetOffset, Target.up);
         }
     }
 }
