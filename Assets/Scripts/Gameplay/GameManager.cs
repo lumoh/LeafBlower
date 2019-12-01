@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("GameManager - Awake");
         Application.targetFrameRate = TargetFrameRate;
 
         Physics.IgnoreLayerCollision(Layers.LEAF, Layers.PLAYER, true);
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
         LoadLevelAndPlayer();
     }
 
