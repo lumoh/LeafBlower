@@ -1,5 +1,93 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2536293762038630718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232048781099025867}
+  - component: {fileID: 78247624616580905}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232048781099025867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536293762038630718}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -100, y: 0, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3801471803262049739}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &78247624616580905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536293762038630718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54, y: 430, z: 104}
+  m_Center: {x: -125, y: -215, z: -100}
+--- !u!1 &2670127496198851856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628858323626611462}
+  - component: {fileID: 1550093393276408087}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628858323626611462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670127496198851856}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -100, y: 0, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3801471803262049739}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1550093393276408087
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670127496198851856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 104, y: 430, z: 54}
+  m_Center: {x: -100, y: -215, z: -125}
 --- !u!1 &3806109074738193169
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +99,6 @@ GameObject:
   - component: {fileID: 3801471803262049739}
   - component: {fileID: 3793403725168410999}
   - component: {fileID: 3783608875513114117}
-  - component: {fileID: -924212331850585070}
   m_Layer: 0
   m_Name: CoastAngleUp
   m_TagString: Untagged
@@ -29,7 +116,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -4, y: 0, z: 0}
   m_LocalScale: {x: 0.04, y: 0.02, z: 0.04}
-  m_Children: []
+  m_Children:
+  - {fileID: 628858323626611462}
+  - {fileID: 1232048781099025867}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -79,17 +168,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &-924212331850585070
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3806109074738193169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 25cf79936557e474e99dee06d60acd34, type: 3}
