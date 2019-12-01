@@ -11,7 +11,7 @@ public class LeafBitmap : LeafPile
 
     public override void SetColors()
     {
-        if (!UseColors)
+        if (!UseColors || Bitmap == null)
         {
             base.SetColors();
         }
