@@ -4881,6 +4881,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6ed10d50081334e9d85f43d1397a7a10, type: 2}
   - {fileID: 2100000, guid: 7e733b8321c974d05ae72411c42554db, type: 2}
   - {fileID: 2100000, guid: bd95e8a711ed54feaa949d3ede884fe4, type: 2}
+  IndicatorPrefab: {fileID: 2945978903581288482, guid: e49bae345a60b4ef7ab791e53a2895eb,
+    type: 3}
   rb: {fileID: 8621689079150012586}
   col: {fileID: 8621689079150012597}
   CollectedEvent:

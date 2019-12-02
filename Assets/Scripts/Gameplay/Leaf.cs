@@ -8,6 +8,7 @@ public class Leaf : MonoBehaviour
 {
     public MeshRenderer Mesh;
     public List<Material> LeafMaterials;
+    public GameObject IndicatorPrefab;
 
     public const float GUST_INVTERVAL = 1f;
     public const float GUST_FORCE = 2f;
@@ -23,6 +24,7 @@ public class Leaf : MonoBehaviour
     private bool _isIdle;
     private Tween _idleTween;
     private Tween _scaleTween;
+    private GameObject _indicatorObj;
 
     public UnityEvent CollectedEvent = new UnityEvent();
 
@@ -71,7 +73,7 @@ public class Leaf : MonoBehaviour
             if (_isCollected)
             {
                 GlobalEvents.LeafCollected.Invoke();
-                //transform.DOScale(0f, 1f).SetEase(Ease.OutQuart).OnComplete(destroy).SetDelay(1f);                
+                //transform.DOScale(0f, 1f).SetEase(Ease.OutQuart).OnComplete(destroy).SetDelay(1f);
             }
             else
             {
@@ -91,18 +93,18 @@ public class Leaf : MonoBehaviour
                 }
             }
 
-            /*
+
             if(!_isIdle && Time.time - _lastBlownTime > IDLE_TIME)
             {
                 _isIdle = true;
                 doIdleAnim();
             }
-            */
         }
     }
 
     private void stopIdle()
     {
+        rb.isKinematic = false;
         _lastBlownTime = Time.time;
         _isIdle = false;
         if(_idleTween != null)
@@ -118,8 +120,9 @@ public class Leaf : MonoBehaviour
 
     private void doIdleAnim()
     {
+        rb.isKinematic = true;
         float yPos = transform.position.y;
-        float yJump = yPos + 1f;
+        float yJump = yPos + Random.Range(0.25f, 0.6f);
         _idleTween = transform.DOMoveY(yJump, 0.5f).SetLoops(-1, LoopType.Yoyo);
         _scaleTween = transform.DOScale(WIDTH * 2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
@@ -144,5 +147,15 @@ public class Leaf : MonoBehaviour
         {
             StartCoroutine(gust());
         }
+    }
+
+    private void OnBecameVisible()
+    {
+        Debug.Log("visible");
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("INVISIBLE");
     }
 }

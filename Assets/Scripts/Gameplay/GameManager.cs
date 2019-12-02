@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
         Physics.IgnoreLayerCollision(Layers.LEAF, Layers.PLAYER, true);
         Physics.IgnoreLayerCollision(Layers.LEAF, Layers.FENCE, true);
+        Physics.IgnoreLayerCollision(Layers.LEAF, Layers.LEAF, true);
 
         instance = this;
 
