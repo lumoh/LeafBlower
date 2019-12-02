@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
     public const string WIN = "WinMenu";
     public const string HOME = "HomeMenu";
 
+    public const string FAKE_AD = "FakeAd";
+
     public static void PushMenu(string menuId)
     {
         GameObject menuPrefab = Resources.Load("Menus/" + menuId) as GameObject;

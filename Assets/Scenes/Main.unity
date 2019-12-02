@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 1339618865}
   - component: {fileID: 1339618864}
   m_Layer: 0
-  m_Name: IronSource
+  m_Name: IronSourceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,6 +11,9 @@ public class GlobalEvents
     public static UnityEvent WinLevel = new UnityEvent();
     public static UnityEvent LevelLoaded = new UnityEvent();
 
-	// game specific
-	public static UnityEvent LeafCollected = new UnityEvent();
+    public static UnityEvent RetryLevelEvent = new UnityEvent();
+    public static UnityEvent NextLevelEvent = new UnityEvent();
+
+    // game specific
+    public static UnityEvent LeafCollected = new UnityEvent();
 }
