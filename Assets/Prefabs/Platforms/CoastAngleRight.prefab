@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 679573660167038885}
   - component: {fileID: 650955607570505271}
   - component: {fileID: 660630730508924259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoastAngleRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828807379597325940}
   - component: {fileID: 600062073942159309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7390028624613559846}
   - component: {fileID: 694718237966100790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

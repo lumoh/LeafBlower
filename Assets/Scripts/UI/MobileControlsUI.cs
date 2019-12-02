@@ -85,7 +85,7 @@ public class MobileControlsUI : MonoBehaviour
             }
             else
             {
-                JoyStickParent.anchoredPosition = new Vector2(400, 300);
+                JoyStickParent.anchoredPosition = new Vector2(400, 350);
                 InnerJoyStick.anchoredPosition = Vector3.zero;
                 JoyVector = Vector3.zero;
             }

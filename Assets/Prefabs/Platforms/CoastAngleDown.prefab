@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1187355644083315839}
   - component: {fileID: 1161716819886848195}
   - component: {fileID: 1169189765963339697}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoastAngleDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6802274421618902595}
   - component: {fileID: 390935042160372129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1776393469297264759}
   - component: {fileID: 4839403718241221113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

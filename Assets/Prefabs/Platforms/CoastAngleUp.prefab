@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232048781099025867}
   - component: {fileID: 78247624616580905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 628858323626611462}
   - component: {fileID: 1550093393276408087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 3801471803262049739}
   - component: {fileID: 3793403725168410999}
   - component: {fileID: 3783608875513114117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoastAngleUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

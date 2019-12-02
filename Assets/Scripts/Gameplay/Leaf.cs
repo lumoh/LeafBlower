@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class Leaf : MonoBehaviour
 {
@@ -11,18 +12,24 @@ public class Leaf : MonoBehaviour
     public const float GUST_INVTERVAL = 1f;
     public const float GUST_FORCE = 2f;
     public const float WIDTH = 0.1f;
+    public const float IDLE_TIME = 5f;
 
     public Rigidbody rb;
     public BoxCollider col;
 
     private bool _isGrounded;
     private bool _isCollected;
+    private float _lastBlownTime;
+    private bool _isIdle;
+    private Tween _idleTween;
+    private Tween _scaleTween;
 
     public UnityEvent CollectedEvent = new UnityEvent();
 
     // Start is called before the first frame update
     void Start()
     {
+        _isIdle = true;
         StartCoroutine(gust());
     }
 
@@ -44,12 +51,13 @@ public class Leaf : MonoBehaviour
 
     public void Blow(Vector3 dir, float force)
     {
-        if(rb != null)
+        if(rb != null && !_isCollected)
         {
             rb.AddForce(dir * force, ForceMode.Force);
             Vector3 variance = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 5f), Random.Range(-1, 1f));
             rb.AddForce(variance * force / 2f, ForceMode.Force);
             rb.AddTorque(variance);
+            stopIdle();
         }
     }
 
@@ -63,6 +71,7 @@ public class Leaf : MonoBehaviour
             if (_isCollected)
             {
                 GlobalEvents.LeafCollected.Invoke();
+                //transform.DOScale(0f, 1f).SetEase(Ease.OutQuart).OnComplete(destroy).SetDelay(1f);                
             }
             else
             {
@@ -81,7 +90,43 @@ public class Leaf : MonoBehaviour
                     rb.drag = 3.5f;
                 }
             }
+
+            /*
+            if(!_isIdle && Time.time - _lastBlownTime > IDLE_TIME)
+            {
+                _isIdle = true;
+                doIdleAnim();
+            }
+            */
         }
+    }
+
+    private void stopIdle()
+    {
+        _lastBlownTime = Time.time;
+        _isIdle = false;
+        if(_idleTween != null)
+        {
+            _idleTween.Kill();
+        }
+        if(_scaleTween != null)
+        {
+            _scaleTween.Kill();
+            _scaleTween = transform.DOScale(WIDTH, 0.2f);
+        }
+    }
+
+    private void doIdleAnim()
+    {
+        float yPos = transform.position.y;
+        float yJump = yPos + 1f;
+        _idleTween = transform.DOMoveY(yJump, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        _scaleTween = transform.DOScale(WIDTH * 2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    private void destroy()
+    {
+        Destroy(gameObject);
     }
 
     private IEnumerator gust()
