@@ -10,21 +10,49 @@ using DG.Tweening;
 public class HomeMenu : MonoBehaviour
 {
     public Button TapToStartButton;
-    public Text StartText;
-
+    public Text StartText;    
     public float FadeDuration;
-    
+
+    [Header("Cheats")]
+    public GameObject CheatMenu;
+
     // Start is called before the first frame update
     void Start()
     {
         TapToStartButton.onClick.AddListener(handleStartButtonPressed);
 
         StartText.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+
+        // Show/Hide cheat menu
+        CheatMenu.SetActive(GameManager.instance.CheatMenuEnabled);
     }
 
     private void handleStartButtonPressed()
     {
         GlobalEvents.StartLevel.Invoke();
+        Destroy(gameObject);
+    }
+
+    // ===== CHEATS SECTION ===== //
+
+    public void CHEAT_ResetData()
+    {
+        GameManager.instance.LevelNum = 1;
+        GameManager.instance.LoadLevelAndPlayer();
+        Destroy(gameObject);
+    }
+
+    public void CHEAT_NextLevel()
+    {
+        GameManager.instance.LevelNum = Mathf.Min(GameManager.instance.LevelNum + 1, GameManager.instance.MaxLevel);
+        GameManager.instance.LoadLevelAndPlayer();
+        Destroy(gameObject);
+    }
+
+    public void CHEAT_LastLevel()
+    {
+        GameManager.instance.LevelNum = Mathf.Max(GameManager.instance.LevelNum - 1, 1);
+        GameManager.instance.LoadLevelAndPlayer();
         Destroy(gameObject);
     }
 }

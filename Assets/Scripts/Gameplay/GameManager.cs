@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Config Vars")]
     public int MaxLevel = 1;
     public bool IdleAnimEnabled;
+    public bool CheatMenuEnabled;
 
     public int LevelNum
     {
