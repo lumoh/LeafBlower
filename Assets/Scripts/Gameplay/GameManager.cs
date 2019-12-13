@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int MaxLevel = 1;
     public bool IdleAnimEnabled;
     public bool CheatMenuEnabled;
+    public bool AdsEnabled;
 
     public int LevelNum
     {

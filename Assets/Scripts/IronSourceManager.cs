@@ -11,6 +11,7 @@ public class IronSourceManager : MonoBehaviour
     void Awake()
     {
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
+        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
         GlobalEvents.WinLevel.AddListener(hideBanner);
         GlobalEvents.LoseLevel.AddListener(hideBanner);
         GlobalEvents.RetryLevelEvent.AddListener(showInterstitial);
@@ -18,10 +19,14 @@ public class IronSourceManager : MonoBehaviour
     }
 
     void handleStartLevel()
+    {        
+        IronSource.Agent.displayBanner();
+    }
+
+    void handleLevelLoaded()
     {
         _interstitialFailedLoad = false;
         IronSource.Agent.loadInterstitial();
-        IronSource.Agent.displayBanner();
     }
 
     void hideBanner()
@@ -31,13 +36,20 @@ public class IronSourceManager : MonoBehaviour
 
     void showInterstitial()
     {
-        if(!IronSource.Agent.isInterstitialReady() || _interstitialFailedLoad)
+        if (GameManager.instance.AdsEnabled)
         {
-            MenuManager.PushMenu(MenuManager.FAKE_AD);
+            if (!IronSource.Agent.isInterstitialReady() || _interstitialFailedLoad)
+            {
+                MenuManager.PushMenu(MenuManager.FAKE_AD);
+            }
+            else
+            {
+                IronSource.Agent.showInterstitial();
+            }
         }
         else
         {
-            IronSource.Agent.showInterstitial();
+            GameManager.instance.LoadLevelAndPlayer();
         }
     }
 
