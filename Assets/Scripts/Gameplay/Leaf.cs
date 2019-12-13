@@ -68,12 +68,11 @@ public class Leaf : MonoBehaviour
         if(!_isCollected)
         {
             int deadzoneMask = 1 << Layers.DEADZONE;
-            _isCollected = Physics.Raycast(transform.position, Vector3.down, 0.5f, deadzoneMask);
+            _isCollected = Physics.Raycast(transform.position, Vector3.down, 2f, deadzoneMask);
 
             if (_isCollected)
             {
                 GlobalEvents.LeafCollected.Invoke();
-                //transform.DOScale(0f, 1f).SetEase(Ease.OutQuart).OnComplete(destroy).SetDelay(1f);
             }
             else
             {
@@ -93,11 +92,13 @@ public class Leaf : MonoBehaviour
                 }
             }
 
-
-            if(!_isIdle && Time.time - _lastBlownTime > IDLE_TIME)
+            if (GameManager.instance.IdleAnimEnabled)
             {
-                _isIdle = true;
-                doIdleAnim();
+                if (!_isIdle && Time.time - _lastBlownTime > IDLE_TIME)
+                {
+                    _isIdle = true;
+                    doIdleAnim();
+                }
             }
         }
     }
@@ -127,11 +128,6 @@ public class Leaf : MonoBehaviour
         _scaleTween = transform.DOScale(WIDTH * 2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
 
-    private void destroy()
-    {
-        Destroy(gameObject);
-    }
-
     private IEnumerator gust()
     {
         yield return new WaitForSeconds(GUST_INVTERVAL);
@@ -147,15 +143,5 @@ public class Leaf : MonoBehaviour
         {
             StartCoroutine(gust());
         }
-    }
-
-    private void OnBecameVisible()
-    {
-        Debug.Log("visible");
-    }
-
-    private void OnBecameInvisible()
-    {
-        Debug.Log("INVISIBLE");
     }
 }

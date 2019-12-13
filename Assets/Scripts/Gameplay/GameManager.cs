@@ -5,13 +5,26 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int TargetFrameRate = 60;
-    public int LevelNum = 1;
-    public int MaxLevel = 1;
     public AnalyticsType AnalyticsType;
-
     public Level Level;
     public GameObject PlayerObj;
     public bool IsLevelOver;
+
+    [Header("Config Vars")]
+    public int MaxLevel = 1;
+    public bool IdleAnimEnabled;
+
+    public int LevelNum
+    {
+        get
+        {
+            return PlayerState.GetLevel();
+        }
+        set
+        {
+            PlayerState.SetLevel(value);
+        }
+    }
 
     private IAnalytics _analytics;
     public IAnalytics Analytics
@@ -69,7 +82,7 @@ public class GameManager : MonoBehaviour
             Destroy(PlayerObj);
         }
 
-        string levelName = "Level_" + LevelNum;
+        string levelName = "Level_" + PlayerState.GetLevel();
         Level levelPrefab = Resources.Load<Level>("Levels/" + levelName);
         Level = Instantiate(levelPrefab);
 		Level.transform.position = Vector3.zero;
@@ -90,8 +103,7 @@ public class GameManager : MonoBehaviour
         if (!IsLevelOver)
         {
             IsLevelOver = true;
-            LevelNum++;
-            LevelNum = Mathf.Min(LevelNum, MaxLevel);
+            LevelNum = Mathf.Min(LevelNum + 1, MaxLevel);
             MenuManager.PushMenu(MenuManager.WIN);
         }
     }
