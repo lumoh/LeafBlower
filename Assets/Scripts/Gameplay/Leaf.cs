@@ -8,7 +8,6 @@ public class Leaf : MonoBehaviour
 {
     public MeshRenderer Mesh;
     public List<Material> LeafMaterials;
-    public GameObject IndicatorPrefab;
 
     public const float GUST_INVTERVAL = 1f;
     public const float GUST_FORCE = 2f;
@@ -24,15 +23,17 @@ public class Leaf : MonoBehaviour
     private bool _isIdle;
     private Tween _idleTween;
     private Tween _scaleTween;
-    private GameObject _indicatorObj;
 
-    public UnityEvent CollectedEvent = new UnityEvent();
+    private void Awake()
+    {
+        gameObject.AddComponent<SetPlatform>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         _isIdle = true;
-        StartCoroutine(gust());
+        StartCoroutine(gust());        
     }
 
     public void SetRandomColor()

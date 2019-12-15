@@ -76,26 +76,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     moveDirection = moveDirection.normalized * speed;
                 }
-
-                setPlatform();
             }
 
             moveDirection.y -= gravity * Time.deltaTime;
 
             characterController.Move(moveDirection * Time.deltaTime);
-        }
-    }
-
-    private void setPlatform()
-    {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 1.2f, _groundMask))
-        {
-            transform.parent = hit.transform;
-        }
-        else
-        {
-            transform.parent = null;
         }
     }
 
