@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private bool _isDead;
     private int _deadzoneMask;
-
+    private int _groundMask;
     void Awake()
     {
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
 
         _deadzoneMask = 1 << Layers.DEADZONE;
+        _groundMask = 1 << Layers.GROUND;
     }
 
     void Start()
@@ -75,11 +76,26 @@ public class PlayerMovement : MonoBehaviour
                 {
                     moveDirection = moveDirection.normalized * speed;
                 }
+
+                setPlatform();
             }
 
             moveDirection.y -= gravity * Time.deltaTime;
 
             characterController.Move(moveDirection * Time.deltaTime);
+        }
+    }
+
+    private void setPlatform()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 1.2f, _groundMask))
+        {
+            transform.parent = hit.transform;
+        }
+        else
+        {
+            transform.parent = null;
         }
     }
 

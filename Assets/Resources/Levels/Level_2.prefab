@@ -144,7 +144,7 @@ MonoBehaviour:
   PlatformsParent: {fileID: 5268020414253622316}
   LeavesParent: {fileID: 9120404174399989778}
   NumLeaves: 0
-  Seconds: 30
+  Seconds: 15
 --- !u!1 &6516492302786095664
 GameObject:
   m_ObjectHideFlags: 0
