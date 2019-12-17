@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int TargetFrameRate = 60;
     public AnalyticsType AnalyticsType;
     public Level Level;
     public GameObject PlayerObj;
@@ -15,6 +14,8 @@ public class GameManager : MonoBehaviour
     public bool IdleAnimEnabled;
     public bool CheatMenuEnabled;
     public bool AdsEnabled;
+    public int TargetFrameRate = 60;
+    public int SolverIterations = 5;
 
     public int LevelNum
     {
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager - Awake");
         Application.targetFrameRate = TargetFrameRate;
+        Physics.defaultSolverIterations = SolverIterations;
 
         Physics.IgnoreLayerCollision(Layers.LEAF, Layers.PLAYER, true);
         Physics.IgnoreLayerCollision(Layers.LEAF, Layers.FENCE, true);
