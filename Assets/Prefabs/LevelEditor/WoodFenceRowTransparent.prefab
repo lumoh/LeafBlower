@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3610978036469738405}
   - component: {fileID: 7358623197837331698}
   m_Layer: 12
-  m_Name: WoodFenceRow
+  m_Name: WoodFenceRowTransparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +139,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2751384089460073122, guid: e5fbc4e636a3b41fdada7646e51cdea1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1b6d9beeb15d43e2a6d3874dbdc2001, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5fbc4e636a3b41fdada7646e51cdea1, type: 3}
 --- !u!4 &4375894894234211990 stripped
@@ -239,6 +244,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2751384089460073122, guid: e5fbc4e636a3b41fdada7646e51cdea1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1b6d9beeb15d43e2a6d3874dbdc2001, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5fbc4e636a3b41fdada7646e51cdea1, type: 3}
 --- !u!4 &4902839924668034106 stripped
@@ -339,6 +349,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2751384089460073122, guid: e5fbc4e636a3b41fdada7646e51cdea1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1b6d9beeb15d43e2a6d3874dbdc2001, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5fbc4e636a3b41fdada7646e51cdea1, type: 3}
 --- !u!4 &5297693117395278734 stripped

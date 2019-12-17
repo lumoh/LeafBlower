@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isDead;
     private int _deadzoneMask;
     private int _groundMask;
+
     void Awake()
     {
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
         _deadzoneMask = 1 << Layers.DEADZONE;
         _groundMask = 1 << Layers.GROUND;
+        _isDead = false;
     }
 
     void Start()
@@ -42,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void handleStartLevel()
     {
-        transform.position = new Vector3(0, 1, 0);
         StartCoroutine(respawn());      
     }
 
@@ -54,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        setPlatform();
+
         if (!_isDead)
         {            
             _isDead = Physics.Raycast(transform.position, Vector3.down, 0.25f, _deadzoneMask);
@@ -65,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(!_isDead)
         {
-            if (characterController != null && characterController.isGrounded)
+            if (characterController.isGrounded)
             {
                 moveDirection = getMoveVector();
 
@@ -77,10 +80,15 @@ public class PlayerMovement : MonoBehaviour
                     moveDirection = moveDirection.normalized * speed;
                 }
             }
+            else
+            {
+                moveDirection.y -= gravity * Time.deltaTime;
+            }
 
-            moveDirection.y -= gravity * Time.deltaTime;
-
-            characterController.Move(moveDirection * Time.deltaTime);
+            if (moveDirection.sqrMagnitude > Mathf.Epsilon)
+            {
+                characterController.Move(moveDirection * Time.deltaTime);
+            }
         }
     }
 
@@ -109,5 +117,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return moveVector;
+    }
+
+    private void setPlatform()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1, _groundMask))
+        {
+            if (transform.parent != hit.transform.parent)
+            {
+                transform.parent = hit.transform.parent;
+            }
+        }
     }
 }

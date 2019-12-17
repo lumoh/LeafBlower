@@ -46,4 +46,12 @@ public class LeafPile : MonoBehaviour
 
         return leaf;
     }
+
+    private void OnDestroy()
+    {
+        foreach(var leaf in _leaves)
+        {
+            Destroy(leaf.gameObject);
+        }
+    }
 }

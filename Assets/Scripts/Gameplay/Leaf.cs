@@ -23,15 +23,12 @@ public class Leaf : MonoBehaviour
     private bool _isIdle;
     private Tween _idleTween;
     private Tween _scaleTween;
-
-    private void Awake()
-    {
-        gameObject.AddComponent<SetPlatform>();
-    }
+    private int _groundMask;
 
     // Start is called before the first frame update
     void Start()
     {
+        _groundMask = 1 << Layers.GROUND;
         _isIdle = true;
         StartCoroutine(gust());        
     }
@@ -68,11 +65,14 @@ public class Leaf : MonoBehaviour
     {
         if(!_isCollected)
         {
+            setPlatform();
+
             int deadzoneMask = 1 << Layers.DEADZONE;
             _isCollected = Physics.Raycast(transform.position, Vector3.down, 2f, deadzoneMask);
 
             if (_isCollected)
             {
+                transform.parent = GameManager.instance.Level.LeavesParent;
                 GlobalEvents.LeafCollected.Invoke();
             }
             else
@@ -143,6 +143,18 @@ public class Leaf : MonoBehaviour
         if (_isCollected)
         {
             StartCoroutine(gust());
+        }
+    }
+
+    private void setPlatform()
+    {
+        if (GameManager.instance.Level != null)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 1, _groundMask))
+            {
+                transform.parent = hit.transform.parent;
+            }
         }
     }
 }
