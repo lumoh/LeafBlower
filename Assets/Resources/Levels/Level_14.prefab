@@ -159,8 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 2, z: 0}
   MoveDuration: 2
-  PauseDuration: 20
-  InitialDelay: 7
+  PauseDuration: 1
+  InitialDelay: 3
+  _velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &6516492302786095664
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,8 +210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Offset: {x: 0, y: 2, z: 0}
   MoveDuration: 2
-  PauseDuration: 20
-  InitialDelay: 7
+  PauseDuration: 1
+  InitialDelay: 3
+  _velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &9206558565625003173
 GameObject:
   m_ObjectHideFlags: 0

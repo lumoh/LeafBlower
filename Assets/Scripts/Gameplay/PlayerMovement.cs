@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController;
@@ -17,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private int _deadzoneMask;
     private int _groundMask;
     private float _yVelocity;
+    private MovingPlatform _movingPlatform;
 
     void Awake()
     {
@@ -57,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 _moveDirection = _moveDirection.normalized * speed;
             }
 
-            if (characterController.isGrounded)
+            if (_isGrounded)
             {
                 _yVelocity = 0;
             }
@@ -65,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 _yVelocity -= gravity * Time.deltaTime;
                 _moveDirection.y = _yVelocity;
+            }
+
+            if(_movingPlatform != null)
+            {
+                _moveDirection += _movingPlatform.GetVelocity();
             }
 
             if (_moveDirection.sqrMagnitude > Mathf.Epsilon)
@@ -117,13 +127,25 @@ public class PlayerMovement : MonoBehaviour
     private void setPlatform()
     {
         RaycastHit hit;
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1, _groundMask);
+        _isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f, _groundMask);
         if(_isGrounded)
         {
             if (transform.parent != hit.transform.parent)
             {
                 transform.parent = hit.transform.parent;
+                _movingPlatform = transform.parent.GetComponent<MovingPlatform>();
             }
         }
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, Vector3.down * 0.1f);
+        if (transform.parent != null)
+        {
+            Handles.Label(transform.position, transform.parent.gameObject.name);
+        }
+    }
+#endif
 }

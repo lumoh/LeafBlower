@@ -51,9 +51,9 @@ CharacterController:
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.68, z: 0}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &575690711835212413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +428,6 @@ GameObject:
   - component: {fileID: 9076108982334610123}
   - component: {fileID: 6278358243362587343}
   - component: {fileID: 4603298799036475883}
-  - component: {fileID: 1495127677597628904}
   m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
@@ -444,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4515533664993628815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 575690711835212412}
@@ -496,20 +495,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1495127677597628904
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4515533664993628815}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.49999997
-  m_Height: 1.9999999
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5915804894954038894
 GameObject:
   m_ObjectHideFlags: 0

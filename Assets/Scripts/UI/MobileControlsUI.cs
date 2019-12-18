@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class MobileControlsUI : MonoBehaviour
 {
+    public bool TESTMODE;
+
     public Canvas ControlsCanvas;
     public RectTransform ControlsCanvasRT;
     public RectTransform JoyStickParent;
@@ -55,7 +57,7 @@ public class MobileControlsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (active)
+        if (active || TESTMODE)
         {
             if (Input.GetMouseButtonDown(0))
             {

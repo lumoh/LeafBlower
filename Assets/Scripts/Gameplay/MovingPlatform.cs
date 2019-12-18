@@ -13,6 +13,9 @@ public class MovingPlatform : MonoBehaviour
     private Vector3 _originalPos;
     private bool _moveFlip;
 
+    private Vector3 _lastPos;
+    public Vector3 _velocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,5 +50,16 @@ public class MovingPlatform : MonoBehaviour
         });
 
         _moveFlip = !_moveFlip;
+    }
+
+    private void Update()
+    {
+        _velocity = (transform.position - _lastPos) / Time.deltaTime;
+        _lastPos = transform.position;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return _velocity;
     }
 }
