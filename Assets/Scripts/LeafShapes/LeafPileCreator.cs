@@ -18,6 +18,8 @@ public class LeafPileCreator : EditorWindow
     private string[] dirPaths;
     private string[] filePaths;
 
+    private string[] platformPaths;
+
     // Add menu named "My Window" to the Window menu
     [MenuItem("Blower/Leaf Pile Creator")]
     static void Init()
@@ -46,43 +48,12 @@ public class LeafPileCreator : EditorWindow
         GUILayout.Space(10);
         GUILayout.Label("Level Editor", EditorStyles.boldLabel);
 
-        dirPaths = Directory.GetDirectories(Application.dataPath + "/Prefabs/Leaves");
-        dirNames = new string[dirPaths.Length];
-        for (int i = 0; i < dirPaths.Length; i++)
-        {
-            dirNames[i] = dirPaths[i].Substring(dirPaths[i].LastIndexOf('/') + 1);
-        }
+        drawButtonsForLeafPiles();
 
-        for(int i = 0; i < dirNames.Length; i++)
-        {
-            GUILayout.Label(dirNames[i] + ":");
-            filePaths = Directory.GetFiles(dirPaths[i]);
+        GUILayout.Space(10);
+        GUILayout.Label("Platforms", EditorStyles.boldLabel);
 
-            for (int k = 0; k < filePaths.Length; k++)
-            {
-                string fileName = filePaths[k].Substring(filePaths[k].LastIndexOf('/') + 1);
-                if (fileName.EndsWith("prefab", System.StringComparison.InvariantCulture))
-                {
-                    string strippedFileName = fileName.Replace(".prefab", "");
-                    if (GUILayout.Button(strippedFileName))
-                    {
-                        PrefabStage stage = PrefabStageUtility.GetCurrentPrefabStage();
-                        if (stage != null)
-                        {
-                            GameObject asset = AssetDatabase.LoadAssetAtPath<GameObject>(filePaths[k].Substring(filePaths[k].IndexOf("Assets", System.StringComparison.InvariantCulture)));
-                            GameObject spawnPrefab = PrefabUtility.InstantiatePrefab(asset, stage.scene) as GameObject;
-                            GameObject[] roots = stage.scene.GetRootGameObjects();
-                            if(roots.Length > 0)
-                            {
-                                Level level = roots[0].GetComponent<Level>();
-                                spawnPrefab.transform.parent = level.LeavesParent;
-                                EditorSceneManager.MarkSceneDirty(stage.scene);                                
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        drawButtonsForPlatforms();
     }
 
     private void createFromImage()
@@ -112,6 +83,96 @@ public class LeafPileCreator : EditorWindow
             leafBitmap.CreateFromDimensions();
             PrefabUtility.SaveAsPrefabAsset(leafPileObj, "Assets/Prefabs/Leaves/LeafPile_" + _dimensions.x + "x" + _dimensions.y + "x" + _dimensions.z + ".prefab");
             DestroyImmediate(leafPileObj);
+        }
+    }
+
+    private void drawButtonsForLeafPiles()
+    {
+        dirPaths = Directory.GetDirectories(Application.dataPath + "/Prefabs/Leaves");
+        dirNames = new string[dirPaths.Length];
+        for (int i = 0; i < dirPaths.Length; i++)
+        {
+            dirNames[i] = dirPaths[i].Substring(dirPaths[i].LastIndexOf('/') + 1);
+        }
+
+
+        for (int i = 0; i < dirNames.Length; i++)
+        {
+            GUILayout.BeginVertical();
+            GUILayout.Label(dirNames[i] + ":");
+            filePaths = Directory.GetFiles(dirPaths[i]);
+
+            bool horizontalLayout;
+            for (int k = 0; k < filePaths.Length; k++)
+            {
+                horizontalLayout = k % 4 == 0;
+                string fileName = filePaths[k].Substring(filePaths[k].LastIndexOf('/') + 1);
+                if (fileName.EndsWith("prefab", System.StringComparison.InvariantCulture))
+                {
+                    string strippedFileName = fileName.Replace(".prefab", "");
+                    if(horizontalLayout)
+                    {
+                        GUILayout.BeginHorizontal();
+                    }
+                    if (GUILayout.Button(strippedFileName))
+                    {
+                        PrefabStage stage = PrefabStageUtility.GetCurrentPrefabStage();
+                        if (stage != null)
+                        {
+                            GameObject asset = AssetDatabase.LoadAssetAtPath<GameObject>(filePaths[k].Substring(filePaths[k].IndexOf("Assets", System.StringComparison.InvariantCulture)));
+                            GameObject spawnPrefab = PrefabUtility.InstantiatePrefab(asset, stage.scene) as GameObject;
+                            GameObject[] roots = stage.scene.GetRootGameObjects();
+                            if (roots.Length > 0)
+                            {
+                                Level level = roots[0].GetComponent<Level>();
+                                if (level != null)
+                                {
+                                    spawnPrefab.transform.parent = level.LeavesParent;
+                                    EditorSceneManager.MarkSceneDirty(stage.scene);
+                                }
+                            }
+                        }
+                    }
+                    if (!horizontalLayout)
+                    {
+                        GUILayout.EndHorizontal();
+                    }
+                }
+            }
+            GUILayout.EndVertical();
+        }
+    }
+
+    private void drawButtonsForPlatforms()
+    {
+        GUILayout.BeginVertical();
+        platformPaths = Directory.GetFiles(Application.dataPath + "/Prefabs/LevelEditor");
+        for (int k = 0; k < platformPaths.Length; k++)
+        {
+            string fileName = platformPaths[k].Substring(platformPaths[k].LastIndexOf('/') + 1);
+            if (fileName.EndsWith("prefab", System.StringComparison.InvariantCulture))
+            {
+                string strippedFileName = fileName.Replace(".prefab", "");
+                if (GUILayout.Button(strippedFileName))
+                {
+                    PrefabStage stage = PrefabStageUtility.GetCurrentPrefabStage();
+                    if (stage != null)
+                    {
+                        GameObject asset = AssetDatabase.LoadAssetAtPath<GameObject>(platformPaths[k].Substring(platformPaths[k].IndexOf("Assets", System.StringComparison.InvariantCulture)));
+                        GameObject spawnPrefab = PrefabUtility.InstantiatePrefab(asset, stage.scene) as GameObject;
+                        GameObject[] roots = stage.scene.GetRootGameObjects();
+                        if (roots.Length > 0)
+                        {
+                            Level level = roots[0].GetComponent<Level>();
+                            if (level != null)
+                            {
+                                spawnPrefab.transform.parent = level.PlatformsParent;
+                                EditorSceneManager.MarkSceneDirty(stage.scene);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
