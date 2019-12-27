@@ -72,13 +72,13 @@ public class PlayerMovement : MonoBehaviour
                 _moveDirection.y = _yVelocity;
             }
 
-            if(_movingPlatform != null)
+            if (_moveDirection.sqrMagnitude > characterController.minMoveDistance)
             {
-                _moveDirection += _movingPlatform.GetVelocity();
-            }
+                if (_movingPlatform != null)
+                {
+                    _moveDirection += _movingPlatform.GetVelocity();
+                }
 
-            if (_moveDirection.sqrMagnitude > Mathf.Epsilon)
-            {
                 characterController.Move(_moveDirection * Time.deltaTime);
             }
         }

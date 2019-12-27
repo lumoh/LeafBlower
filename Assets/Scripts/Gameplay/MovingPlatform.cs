@@ -10,33 +10,32 @@ public class MovingPlatform : MonoBehaviour
     public float PauseDuration = 0;
     public float InitialDelay = 0f;
 
-    private Vector3 _originalPos;
+    protected Vector3 _originalPos;
     private bool _moveFlip;
 
-    private Vector3 _lastPos;
-    public Vector3 _velocity;
+    protected Vector3 _lastPos;
+    protected Vector3 _velocity;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         _originalPos = transform.position;
-
         StartCoroutine(initialDelay());
     }
 
-    IEnumerator initialDelay()
+    protected virtual IEnumerator initialDelay()
     {
         yield return new WaitForSeconds(InitialDelay);
         startMovement();
     }
 
-    IEnumerator waitToMove()
+    protected virtual IEnumerator waitToMove()
     {
         yield return new WaitForSeconds(PauseDuration);
         startMovement();
     }
 
-    void startMovement()
+    protected virtual void startMovement()
     {
         Vector3 pos = _originalPos + Offset;
         if (_moveFlip)
@@ -52,7 +51,7 @@ public class MovingPlatform : MonoBehaviour
         _moveFlip = !_moveFlip;
     }
 
-    private void Update()
+    protected void Update()
     {
         _velocity = (transform.position - _lastPos) / Time.deltaTime;
         _lastPos = transform.position;

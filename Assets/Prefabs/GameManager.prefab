@@ -46,13 +46,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fff5232d19f46598d9f9e353af3a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetFrameRate: 60
-  LevelNum: 1
-  MaxLevel: 5
   AnalyticsType: 1
   Level: {fileID: 0}
   PlayerObj: {fileID: 0}
   IsLevelOver: 0
+  MaxLevel: 16
+  IdleAnimEnabled: 0
+  CheatMenuEnabled: 0
+  AdsEnabled: 0
+  TargetFrameRate: 60
+  SolverIterations: 5
 --- !u!114 &5724369344483721620
 MonoBehaviour:
   m_ObjectHideFlags: 0
