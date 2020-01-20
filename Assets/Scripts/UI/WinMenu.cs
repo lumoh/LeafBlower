@@ -15,8 +15,8 @@ public class WinMenu : MonoBehaviour
 
     private void handleNextLevel()
     {
+        Taptic.Success();
         Destroy(gameObject);
-
         GlobalEvents.NextLevelEvent.Invoke();
     }
 }

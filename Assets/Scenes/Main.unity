@@ -636,30 +636,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2674277415611324531, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2629282202875475126, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: speed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674277414185622397, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1527348180, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnToggleHaptics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}

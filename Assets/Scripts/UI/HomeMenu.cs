@@ -13,6 +13,7 @@ public class HomeMenu : MonoBehaviour
     public Button TapToStartButton;
     public Text StartText;    
     public float FadeDuration;
+    public Toggle ToggleHaptics;
 
     [Header("Cheats")]
     public GameObject CheatMenu;
@@ -28,12 +29,32 @@ public class HomeMenu : MonoBehaviour
         // Show/Hide cheat menu
         CheatMenu.SetActive(GameManager.instance.CheatMenuEnabled);
         setAdsText();
+        setHaptics();
     }
 
     private void handleStartButtonPressed()
     {
+        Taptic.Heavy();
         GlobalEvents.StartLevel.Invoke();
         Destroy(gameObject);
+    }
+
+    private void setHaptics()
+    {
+        if (ToggleHaptics != null)
+        {
+            ToggleHaptics.isOn = !PlayerState.GetBool(PlayerState.HAPTICS);
+        }
+    }
+
+    public void OnToggleHaptics()
+    {
+        if (ToggleHaptics != null)
+        {
+            Taptic.tapticOn = !ToggleHaptics.isOn;
+            PlayerState.SetBool(PlayerState.HAPTICS, Taptic.tapticOn);
+            Taptic.Default();
+        }
     }
 
     // ===== CHEATS SECTION ===== //

@@ -49,7 +49,7 @@ public class HUD : MonoBehaviour
 
     void handleStartLevel()
     {
-        
+
     }
 
     void handleLeafCollected()

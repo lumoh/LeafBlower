@@ -12,9 +12,16 @@ public class Blower : MonoBehaviour
 
     private const string BLOW_ANIM = "Blow";
     private const string IDLE_ANIM = "Idle";
+    private const float HAPTICS_INTERVAL_LOW = 0.2f;
+    private const float HAPTICS_INTERVAL_HIGH = 0.1f;
+    private const int HAPTICS_THRESHOLD_COUNT = 75;
 
     private bool _isBlowing;
     private int _leafMask;
+    private bool _hittingLeaves;
+    private float _hapticsTime;
+    private bool _lowHaptics;
+    
 
     private void Awake()
     {
@@ -55,21 +62,45 @@ public class Blower : MonoBehaviour
         _isBlowing = false;
     }
 
-
     // Update is called once per frame
     void Update()
     {
         if (_isBlowing)
         {
             RaycastHit[] hits = Physics.SphereCastAll(SpawnPoint.position, 1f, SpawnPoint.forward, 2f, _leafMask);
-            foreach (RaycastHit hit in hits)
+            if (hits.Length > 0)
             {
-                Leaf leaf = hit.collider.GetComponent<Leaf>();
-                if (leaf != null)
+                foreach (RaycastHit hit in hits)
                 {
-                    leaf.Blow(SpawnPoint.forward, MaxForce);
+                    Leaf leaf = hit.collider.GetComponent<Leaf>();
+                    if (leaf != null)
+                    {
+                        leaf.Blow(SpawnPoint.forward, MaxForce);
+                    }
                 }
+                
+                _hittingLeaves = true;
             }
+            else
+            {
+                _hittingLeaves = false;
+            }
+
+            _lowHaptics = hits.Length < HAPTICS_THRESHOLD_COUNT;
+            if(_hittingLeaves && Taptic.tapticOn)
+            {
+                _hapticsTime += Time.deltaTime;
+                if(_lowHaptics && _hapticsTime > HAPTICS_INTERVAL_LOW)
+                {
+                    _hapticsTime = 0f;
+                    Taptic.Medium();
+                }
+                else if (!_lowHaptics && _hapticsTime > HAPTICS_INTERVAL_HIGH)
+                {
+                    _hapticsTime = 0f;
+                    Taptic.Medium();
+                }
+            }            
         }
     }
 }
