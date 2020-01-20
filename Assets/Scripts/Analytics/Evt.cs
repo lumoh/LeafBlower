@@ -10,4 +10,6 @@ public class Evt
     public const string WIN_LEVEL = "win_level";
     public const string LOSE_LEVEL = "lose_level";
     public const string START_LEVEL = "start_level";
+    public const string APP_START = "app_start";
+    public const string APP_QUIT = "app_quit";
 }

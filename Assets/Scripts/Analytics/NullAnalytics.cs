@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class NullAnalytics : IAnalytics
 {
+    public void AppQuit()
+    {
+        
+    }
+
+    public void AppStart()
+    {
+        
+    }
+
     public void LoseLevel(int level, string loseType)
     {
         

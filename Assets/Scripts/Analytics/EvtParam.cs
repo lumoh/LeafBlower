@@ -7,4 +7,5 @@ public class EvtParam
     public const string LEVEL = "level";
     public const string TIME_LEFT = "time_left";
     public const string LOSE_TYPE = "lose_type";
+    public const string RECORD = "record";
 }

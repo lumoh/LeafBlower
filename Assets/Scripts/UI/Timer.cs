@@ -11,8 +11,12 @@ public class Timer : MonoBehaviour
     private float _secondsLeft;
     private bool _isRunning;
 
+    public static Timer instance;
+
     void Awake()
     {
+        instance = this;
+
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
@@ -59,10 +63,16 @@ public class Timer : MonoBehaviour
             {
                 _secondsLeft = 0f;
                 _isRunning = false;
+                GameManager.instance.Analytics.LoseLevel(GameManager.instance.Level.Num, "Time");
                 GlobalEvents.LoseLevel.Invoke();
             }
 
             TimeLeftText.text = _secondsLeft.ToString("00.0");
         }
+    }
+
+    public float GetSecondsLeft()
+    {
+        return _secondsLeft;
     }
 }

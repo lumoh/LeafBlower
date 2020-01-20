@@ -66,11 +66,19 @@ public class GameManager : MonoBehaviour
 
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
+        GlobalEvents.StartLevel.AddListener(handleStartLevel);
+    }
+
+    private void OnApplicationQuit()
+    {
+        Analytics.AppQuit();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Analytics.AppStart();
+
         LoadLevelAndPlayer();
     }
 
@@ -86,9 +94,11 @@ public class GameManager : MonoBehaviour
             Destroy(PlayerObj);
         }
 
-        string levelName = "Level_" + PlayerState.GetLevel();
+        int levelNum = PlayerState.GetLevel();
+        string levelName = "Level_" + levelNum;
         Level levelPrefab = Resources.Load<Level>("Levels/" + levelName);
         Level = Instantiate(levelPrefab);
+        Level.Num = levelNum;
 		Level.transform.position = Vector3.zero;
 
         GameObject playerPrefab = Resources.Load("Player") as GameObject;
@@ -109,6 +119,9 @@ public class GameManager : MonoBehaviour
             IsLevelOver = true;
             LevelNum = Mathf.Min(LevelNum + 1, MaxLevel);
             MenuManager.PushMenu(MenuManager.WIN);
+
+            PlayerState.WinLevel(Level.Num);
+            Analytics.WinLevel(Level.Num, Timer.instance.GetSecondsLeft());            
         }
     }
 
@@ -119,5 +132,11 @@ public class GameManager : MonoBehaviour
             IsLevelOver = true;
             MenuManager.PushMenu(MenuManager.GAME_OVER);
         }
+    }
+
+    private void handleStartLevel()
+    {
+        PlayerState.StartLevel(Level.Num);
+        Analytics.StartLevel(Level.Num);        
     }
 }

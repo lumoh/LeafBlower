@@ -15,9 +15,13 @@ public class HUD : MonoBehaviour
     private int _score;
     private int _maxScore;
 
+    public static HUD instance;
+
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
+
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
         GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
@@ -72,5 +76,15 @@ public class HUD : MonoBehaviour
         NextLevelNum.text = nextLevelNum.ToString();
 
         ProgressBar.specifiedValue = 0;
+    }
+
+    public int GetScore()
+    {
+        return _score;
+    }
+
+    public int GetTotalLeaves()
+    {
+        return _maxScore;
     }
 }

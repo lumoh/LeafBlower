@@ -118,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
             _isDead = Physics.Raycast(transform.position, Vector3.down, 0.25f, _deadzoneMask);
             if (_isDead)
             {
+                GameManager.instance.Analytics.LoseLevel(GameManager.instance.Level.Num, "Fall");
                 Taptic.Failure();
                 transform.parent = null;
                 GlobalEvents.LoseLevel.Invoke();

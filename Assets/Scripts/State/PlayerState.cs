@@ -14,6 +14,43 @@ public class PlayerState
     public const string LEVEL = "lvl";
     public const string HAPTICS = "haptics";
 
+    public static void StartLevel(int levelNum)
+    {
+        LevelRecord levelRecord = GetLevelRecord(levelNum);
+        if (levelRecord == null)
+        {
+            levelRecord = new LevelRecord(levelNum);
+        }
+        else
+        {
+            levelRecord.Attempts++;
+        }
+
+        string levelKey = LEVEL + "_" + levelNum;
+        PlayerPrefs.SetString(levelKey, JsonUtility.ToJson(levelRecord));
+    }
+
+    public static void WinLevel(int levelNum)
+    {
+        LevelRecord levelRecord = GetLevelRecord(levelNum);
+        if(levelRecord == null)
+        {
+            levelRecord = new LevelRecord(levelNum);
+        }
+        levelRecord.SecondsLeft = Timer.instance.GetSecondsLeft();
+
+        string levelKey = LEVEL + "_" + levelNum;
+        PlayerPrefs.SetString(levelKey, JsonUtility.ToJson(levelRecord));
+    }
+
+    public static LevelRecord GetLevelRecord(int levelNum)
+    {
+        string levelKey = LEVEL + "_" + levelNum;
+        string str = PlayerPrefs.GetString(levelKey);
+        LevelRecord levelRecord = JsonUtility.FromJson<LevelRecord>(str);
+        return levelRecord;
+    }
+
     public static int GetLevel()
     {
         int level = Mathf.Max(PlayerPrefs.GetInt(LEVEL), 1);

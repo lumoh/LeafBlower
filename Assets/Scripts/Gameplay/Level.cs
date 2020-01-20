@@ -21,18 +21,8 @@ public class Level : MonoBehaviour
     {
         GlobalEvents.LeafCollected.AddListener(handleLeafCollected);
 
-        fetchLevelNum();
         fetchPlatforms();
         fetchLeaves();
-    }
-
-    private void fetchLevelNum()
-    {
-        string[] split = gameObject.name.Split('_');
-        if (split.Length > 1)
-        {
-            int.TryParse(split[1], out Num);
-        }
     }
 
     private void fetchPlatforms()
