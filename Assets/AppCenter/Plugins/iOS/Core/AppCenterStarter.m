@@ -1,8 +1,5 @@
-#define APPCENTER_UNITY_USE_DISTRIBUTE
 #define APPCENTER_UNITY_USE_CRASHES
-#define APPCENTER_UNITY_USE_AUTH
 #define APPCENTER_UNITY_USE_ANALYTICS
-#define APPCENTER_UNITY_USE_PUSH
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
