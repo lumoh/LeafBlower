@@ -87,4 +87,10 @@ public class HUD : MonoBehaviour
     {
         return _maxScore;
     }
+
+    public int GetLeavesRemaining()
+    {
+        int remaining = _maxScore - _score;
+        return remaining;
+    }
 }

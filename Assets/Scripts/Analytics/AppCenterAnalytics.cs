@@ -32,6 +32,8 @@ public class AppCenterAnalytics : IAnalytics
         Dictionary<string, string> data = new Dictionary<string, string>();
         data.Add(EvtParam.LEVEL, level.ToString());
         data.Add(EvtParam.LOSE_TYPE, loseType);
+        data.Add(EvtParam.LEAVES_LEFT, HUD.instance.GetLeavesRemaining().ToString());
+        data.Add(EvtParam.TIME_LEFT, Timer.instance.GetSecondsLeft().ToString("F"));
         data.Add(EvtParam.RECORD, JsonUtility.ToJson(PlayerState.GetLevelRecord(level)));
 
         Analytics.TrackEvent(Evt.LOSE_LEVEL, data);
