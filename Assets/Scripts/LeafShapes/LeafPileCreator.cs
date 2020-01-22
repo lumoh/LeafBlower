@@ -20,6 +20,10 @@ public class LeafPileCreator : EditorWindow
 
     private string[] platformPaths;
 
+    private Vector3 prevPosition;
+    private bool doSnap = true;
+    private float snapValue = 1;
+
     // Add menu named "My Window" to the Window menu
     [MenuItem("Blower/Leaf Pile Creator")]
     static void Init()
@@ -44,6 +48,11 @@ public class LeafPileCreator : EditorWindow
         {
             createFromDimensions();
         }
+
+        GUILayout.Space(10);
+        GUILayout.Label("Snapping Placement", EditorStyles.boldLabel);
+        doSnap = EditorGUILayout.Toggle("Auto Snap", doSnap);
+        snapValue = EditorGUILayout.FloatField("Snap Value", snapValue);
 
         GUILayout.Space(10);
         GUILayout.Label("Level Editor", EditorStyles.boldLabel);
@@ -174,6 +183,36 @@ public class LeafPileCreator : EditorWindow
                 }
             }
         }
+    }
+
+    private void Update()
+    {
+        if (doSnap
+             && !EditorApplication.isPlaying
+             && Selection.transforms.Length > 0
+             && Selection.transforms[0].position != prevPosition &&
+             Selection.transforms[0].name.Contains("Platform"))
+        {
+            Snap();
+            prevPosition = Selection.transforms[0].position;
+        }
+    }
+
+    private void Snap()
+    {
+        foreach (var transform in Selection.transforms)
+        {
+            var t = transform.transform.position;
+            t.x = Round(t.x);
+            t.y = Round(t.y);
+            t.z = Round(t.z);
+            transform.transform.position = t;
+        }
+    }
+
+    private float Round(float input)
+    {
+        return snapValue * Mathf.Round((input / snapValue));
     }
 }
 #endif
