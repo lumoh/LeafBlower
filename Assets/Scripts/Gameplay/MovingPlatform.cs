@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour
     public float MoveDuration = 5;
     public float PauseDuration = 0;
     public float InitialDelay = 0f;
+    public bool WaitForStart;
 
     protected Vector3 _originalPos;
     private bool _moveFlip;
@@ -20,6 +21,20 @@ public class MovingPlatform : MonoBehaviour
     public virtual void Start()
     {
         _originalPos = transform.position;
+
+        if (!WaitForStart)
+        {
+            StartCoroutine(initialDelay());
+        }
+        else
+        {
+            GlobalEvents.StartLevel.AddListener(handleLevelStart);
+        }
+    }
+
+    protected virtual void handleLevelStart()
+    {
+        GlobalEvents.StartLevel.RemoveListener(handleLevelStart);
         StartCoroutine(initialDelay());
     }
 

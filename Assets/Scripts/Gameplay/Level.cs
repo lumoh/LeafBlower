@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Level : MonoBehaviour
 {
-	public int Num;
+    [System.NonSerialized] public int Num;
     public Transform PlayerSpawn;
 	public Transform PlatformsParent;
 	public Transform LeavesParent;
