@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     private void handleLoseLevel()
     {
         _isDead = true;
+        _moveDirection = Vector3.zero;
+        Taptic.Failure();
     }
 
     void Update()
@@ -68,19 +70,23 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                _yVelocity -= gravity * Time.deltaTime;
-                _moveDirection.y = _yVelocity;
+                _yVelocity -= gravity * Time.deltaTime;                
             }
 
-            if (_moveDirection.sqrMagnitude > characterController.minMoveDistance)
+            _moveDirection.y = _yVelocity;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (_moveDirection.sqrMagnitude > characterController.minMoveDistance)
+        {
+            if (_movingPlatform != null)
             {
-                if (_movingPlatform != null)
-                {
-                    _moveDirection += _movingPlatform.GetVelocity();
-                }
-
-                characterController.Move(_moveDirection * Time.deltaTime);
+                _moveDirection += _movingPlatform.GetVelocity();
             }
+
+            characterController.Move(_moveDirection * Time.deltaTime);
         }
     }
 
@@ -118,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
             _isDead = Physics.Raycast(transform.position, Vector3.down, 0.25f, _deadzoneMask);
             if (_isDead)
             {
+                _moveDirection = Vector3.zero;
                 GameManager.instance.Analytics.LoseLevel(GameManager.instance.Level.Num, "Fall");
                 Taptic.Failure();
                 transform.parent = null;
