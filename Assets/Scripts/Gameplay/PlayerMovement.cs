@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private void handleWinLevel()
     {
         _isDead = true;
+        _moveDirection = Vector3.zero;
+        Taptic.Failure();
     }
 
     private void handleLoseLevel()
