@@ -7,6 +7,7 @@ public class IronSourceManager : MonoBehaviour
     private const string YOUR_APP_KEY = "aa3b78f5";
 
     private bool _interstitialFailedLoad;
+    private bool _rewardedVideoAvailability;
 
     void Awake()
     {
@@ -14,13 +15,20 @@ public class IronSourceManager : MonoBehaviour
         GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
         GlobalEvents.WinLevel.AddListener(hideBanner);
         GlobalEvents.LoseLevel.AddListener(hideBanner);
-        GlobalEvents.RetryLevelEvent.AddListener(showInterstitial);
+        GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
         GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
     }
 
     void handleStartLevel()
-    {        
-        IronSource.Agent.displayBanner();
+    {
+        if (GameManager.instance.AdsEnabled)
+        {
+            IronSource.Agent.displayBanner();
+        }
+        else
+        {
+            IronSource.Agent.hideBanner();
+        }
     }
 
     void handleLevelLoaded()
@@ -34,18 +42,30 @@ public class IronSourceManager : MonoBehaviour
         IronSource.Agent.hideBanner();
     }
 
-    void showInterstitial()
+    void showRewardedVideo()
     {
         if (GameManager.instance.AdsEnabled)
         {
-            if (!IronSource.Agent.isInterstitialReady() || _interstitialFailedLoad)
+            if (_rewardedVideoAvailability)
             {
-                MenuManager.PushMenu(MenuManager.FAKE_AD);
+                IronSource.Agent.showRewardedVideo();
             }
             else
             {
-                IronSource.Agent.showInterstitial();
+                showInterstitial();
             }
+        }
+        else
+        {
+            GameManager.instance.LoadLevelAndPlayer();
+        }
+    }
+
+    void showInterstitial()
+    {
+        if (GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
+        {
+            IronSource.Agent.showInterstitial();
         }
         else
         {
@@ -59,7 +79,8 @@ public class IronSourceManager : MonoBehaviour
         IronSource.Agent.init(
             YOUR_APP_KEY,
             IronSourceAdUnits.BANNER,
-            IronSourceAdUnits.INTERSTITIAL
+            IronSourceAdUnits.INTERSTITIAL,
+            IronSourceAdUnits.REWARDED_VIDEO
         );
 
         string id = IronSource.Agent.getAdvertiserId();
@@ -84,6 +105,14 @@ public class IronSourceManager : MonoBehaviour
         IronSourceEvents.onInterstitialAdClickedEvent += InterstitialAdClickedEvent;
         IronSourceEvents.onInterstitialAdOpenedEvent += InterstitialAdOpenedEvent;
         IronSourceEvents.onInterstitialAdClosedEvent += InterstitialAdClosedEvent;
+
+        IronSourceEvents.onRewardedVideoAdOpenedEvent += RewardedVideoAdOpenedEvent;
+        IronSourceEvents.onRewardedVideoAdClosedEvent += RewardedVideoAdClosedEvent;
+        IronSourceEvents.onRewardedVideoAvailabilityChangedEvent += RewardedVideoAvailabilityChangedEvent;
+        IronSourceEvents.onRewardedVideoAdStartedEvent += RewardedVideoAdStartedEvent;
+        IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
+        IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
+        IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
     }
 
     private void OnApplicationPause(bool pause)
@@ -91,7 +120,7 @@ public class IronSourceManager : MonoBehaviour
         IronSource.Agent.onApplicationPause(pause);
     }
 
-    // Banner Events
+    #region Banner ads
     void BannerAdLoadedEvent()
     {
         Debug.Log("unity-script: I got BannerAdLoadedEvent");
@@ -121,7 +150,9 @@ public class IronSourceManager : MonoBehaviour
     {
         Debug.Log("unity-script: I got BannerAdLeftApplicationEvent");
     }
+    #endregion
 
+    #region Interstitial ads
     //Invoked when the initialization process has failed.
     //@param description - string - contains information about the failure.
     void InterstitialAdLoadFailedEvent(IronSourceError error)
@@ -156,4 +187,57 @@ public class IronSourceManager : MonoBehaviour
     void InterstitialAdOpenedEvent()
     {
     }
+    #endregion
+
+    #region Rewarded Video
+    //Invoked when the RewardedVideo ad view has opened.
+    //Your Activity will lose focus. Please avoid performing heavy 
+    //tasks till the video ad will be closed.
+    void RewardedVideoAdOpenedEvent()
+    {
+    }
+    //Invoked when the RewardedVideo ad view is about to be closed.
+    //Your activity will now regain its focus.
+    void RewardedVideoAdClosedEvent()
+    {
+        //MenuManager.PushMenu(MenuManager.GAME_OVER);
+    }
+    //Invoked when there is a change in the ad availability status.
+    //@param - available - value will change to true when rewarded videos are available. 
+    //You can then show the video by calling showRewardedVideo().
+    //Value will change to false when no videos are available.
+    void RewardedVideoAvailabilityChangedEvent(bool available)
+    {
+        //Change the in-app 'Traffic Driver' state according to availability.
+        _rewardedVideoAvailability = available;
+    }
+    //  Note: the events below are not available for all supported rewarded video 
+    //   ad networks. Check which events are available per ad network you choose 
+    //   to include in your build.
+    //   We recommend only using events which register to ALL ad networks you 
+    //   include in your build.
+    //Invoked when the video ad starts playing.
+    void RewardedVideoAdStartedEvent()
+    {
+    }
+    //Invoked when the video ad finishes playing.
+    void RewardedVideoAdEndedEvent()
+    {
+    }
+    //Invoked when the user completed the video and should be rewarded. 
+    //If using server-to-server callbacks you may ignore this events and wait for the callback from the  ironSource server.
+    //
+    //@param - placement - placement object which contains the reward data
+    //
+    void RewardedVideoAdRewardedEvent(IronSourcePlacement placement)
+    {
+        GameManager.instance.LoadLevelAndPlayer();
+    }
+    //Invoked when the Rewarded Video failed to show
+    //@param description - string - contains information about the failure.
+    void RewardedVideoAdShowFailedEvent(IronSourceError error)
+    {
+        GameManager.instance.LoadLevelAndPlayer();
+    }
+    #endregion
 }

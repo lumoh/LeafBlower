@@ -636,12 +636,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1527348180, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnToggleHaptics
-      objectReference: {fileID: 0}
+    - target: {fileID: 2674277415142453372, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: CanvasGroup
+      value: 
+      objectReference: {fileID: 2674277414526371966}
+    - target: {fileID: 9082875409068137512, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: CanvasGroup
+      value: 
+      objectReference: {fileID: 2674277414526371965}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
+--- !u!225 &2674277414526371965 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6697881143234520854, guid: 450e256549ec047f4b04f3d760ad73e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2674277414526371964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2674277414526371966 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 3526147783776675489, guid: 450e256549ec047f4b04f3d760ad73e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2674277414526371964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5724369343295107289
 PrefabInstance:
   m_ObjectHideFlags: 0

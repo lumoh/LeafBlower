@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2442766401119423404}
   - component: {fileID: 6719315795665907251}
-  - component: {fileID: 917248177918702731}
+  - component: {fileID: 6697881143234520854}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -366,36 +366,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109631665825009944}
   m_CullTransparentMesh: 0
---- !u!114 &917248177918702731
-MonoBehaviour:
+--- !u!225 &6697881143234520854
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109631665825009944}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1513747042430770640
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +887,7 @@ MonoBehaviour:
   JoyStickParent: {fileID: 2674277415611324531}
   OuterJoyStick: {fileID: 2674277414185622398}
   InnerJoyStick: {fileID: 2674277414390423604}
+  CanvasGroup: {fileID: 3526147783776675489}
 --- !u!114 &9082875409068137512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +904,7 @@ MonoBehaviour:
   NextLevelNum: {fileID: 8229305790574150359}
   ProgressBar: {fileID: 2629282202875475126}
   EndFillImage: {fileID: 5753751408789412549}
-  ToggleHaptics: {fileID: 0}
+  CanvasGroup: {fileID: 6697881143234520854}
 --- !u!114 &678765611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,6 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2674277415611324531}
   - component: {fileID: 2674277415611324525}
+  - component: {fileID: 3526147783776675489}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -986,6 +970,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2674277415611324530}
   m_CullTransparentMesh: 0
+--- !u!225 &3526147783776675489
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674277415611324530}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2733204451945313680
 GameObject:
   m_ObjectHideFlags: 0

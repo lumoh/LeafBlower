@@ -14,6 +14,7 @@ public class MobileControlsUI : MonoBehaviour
     public RectTransform JoyStickParent;
     public RectTransform OuterJoyStick;
     public RectTransform InnerJoyStick;
+    public CanvasGroup CanvasGroup;
 
     [NonSerialized] public Vector3 JoyVector;
 

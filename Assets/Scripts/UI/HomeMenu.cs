@@ -19,6 +19,8 @@ public class HomeMenu : MonoBehaviour
     public GameObject CheatMenu;
     public TMP_Text AdsText;
 
+    private bool showHudState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +86,14 @@ public class HomeMenu : MonoBehaviour
     {
         GameManager.instance.AdsEnabled = !GameManager.instance.AdsEnabled;
         setAdsText();
+    }
+
+    public void CHEAT_ToggleUI()
+    {
+        float alpha = showHudState ? 1f : 0f;
+        HUD.instance.CanvasGroup.alpha = alpha;
+        MobileControlsUI.instance.CanvasGroup.alpha = alpha;
+        showHudState = !showHudState;
     }
 
     private void setAdsText()

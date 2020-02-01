@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     public Text NextLevelNum;
 	public ProgressBar ProgressBar;
 	public Image EndFillImage;
+    public CanvasGroup CanvasGroup;
 
     private int _score;
     private int _maxScore;
