@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c39670b104e24dffab05a29b858017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Num: 9
   PlayerSpawn: {fileID: 2960644654175586456}
   PlatformsParent: {fileID: 5268020414253622316}
   LeavesParent: {fileID: 9120404174399989778}

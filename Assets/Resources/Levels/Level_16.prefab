@@ -16,7 +16,7 @@ MonoBehaviour:
   MoveDuration: 2
   PauseDuration: 2
   InitialDelay: 0
-  _velocity: {x: 0, y: 0, z: 0}
+  WaitForStart: 0
 --- !u!1 &4716301365116744162
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,12 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c39670b104e24dffab05a29b858017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Num: 16
   PlayerSpawn: {fileID: 2960644654175586456}
   PlatformsParent: {fileID: 5268020414253622316}
   LeavesParent: {fileID: 9120404174399989778}
   NumLeaves: 0
-  Seconds: 30
+  Seconds: 26
 --- !u!114 &8831063585765716917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +177,7 @@ MonoBehaviour:
   MoveDuration: 2
   PauseDuration: 2
   InitialDelay: 0
-  _velocity: {x: 0, y: 0, z: 0}
+  WaitForStart: 0
 --- !u!1 &6516492302786095664
 GameObject:
   m_ObjectHideFlags: 0
