@@ -18,6 +18,7 @@ public class Blower : MonoBehaviour
 
     private bool _isBlowing;
     private int _leafMask;
+    private int _groundMask;
     private bool _hittingLeaves;
     private float _hapticsTime;
     private bool _lowHaptics;
@@ -30,6 +31,7 @@ public class Blower : MonoBehaviour
         GlobalEvents.WinLevel.AddListener(stopBlower);
 
         _leafMask = 1 << Layers.LEAF;
+        _groundMask = 1 << Layers.GROUND;
     }
 
     private void startBlower()
@@ -67,7 +69,7 @@ public class Blower : MonoBehaviour
     {
         if (_isBlowing)
         {
-            RaycastHit[] hits = Physics.SphereCastAll(SpawnPoint.position, 1f, SpawnPoint.forward, 2f, _leafMask);
+            RaycastHit[] hits = Physics.SphereCastAll(SpawnPoint.position, 1f, SpawnPoint.forward, MaxDistance, _leafMask);
             if (hits.Length > 0)
             {
                 foreach (RaycastHit hit in hits)
@@ -75,11 +77,25 @@ public class Blower : MonoBehaviour
                     Leaf leaf = hit.collider.GetComponent<Leaf>();
                     if (leaf != null)
                     {
-                        leaf.Blow(SpawnPoint.forward, MaxForce);
+                        bool blocked = false;
+                        RaycastHit hitInfo;
+                        if (Physics.Raycast(leaf.transform.position, SpawnPoint.position - leaf.transform.position, out hitInfo, MaxDistance, _groundMask))
+                        {
+                            blocked = true;
+                        }
+
+                        if(hit.distance < 0.05f)
+                        {
+                            blocked = false;
+                        }
+
+                        if(!blocked)
+                        {
+                            leaf.Blow(SpawnPoint.forward, MaxForce);
+                            _hittingLeaves = true;
+                        }
                     }
                 }
-                
-                _hittingLeaves = true;
             }
             else
             {

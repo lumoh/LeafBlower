@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
                 _moveDirection = _moveDirection.normalized * speed;
             }
 
-            if (_isGrounded)
+            if (_isGrounded || characterController.isGrounded)
             {
                 _yVelocity = 0;
             }

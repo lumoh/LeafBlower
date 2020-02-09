@@ -48,7 +48,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.2
-  m_Radius: 0.3
+  m_Radius: 0.15
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.01
@@ -737,11 +737,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 575690711835212412}
     m_Modifications:
-    - target: {fileID: 4314646771459737052, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: m_Name
-      value: Blower
-      objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -795,6 +790,21 @@ PrefabInstance:
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314646771459737052, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_Name
+      value: Blower
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815563048297516456, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571440304053771241, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
