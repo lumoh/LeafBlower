@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  TargetOffset: {x: 1, y: 0, z: 1}
+  TargetOffset: {x: 0.5, y: 0, z: 0.5}
   Offset: {x: 10, y: 12, z: 10}
   DistanceDamp: 0.2
   Velocity: {x: 0, y: 0, z: 0}
@@ -393,7 +393,7 @@ Camera:
   far clip plane: 1000
   field of view: 80
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -645,11 +645,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: CheatMenuEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: IdleAnimEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: MaxLevel
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: SolverIterations
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721619, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: World
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1820427143}
     - target: {fileID: 5724369344483721621, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -704,36 +734,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: World
-      value: 
-      objectReference: {fileID: 963194227}
-    - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 1820427143}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: CheatMenuEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: IdleAnimEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: MaxLevel
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: SolverIterations
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8930a264a5f3844cbb5eadfee5c788ec, type: 3}
