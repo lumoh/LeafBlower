@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="appcenter_app_secret" translatable="false">fee14b81-55f4-4cca-96a1-de616e72f5f9</string>
+  <string name="appcenter_initial_log_level" translatable="false">4</string>
+  <string name="appcenter_use_analytics" translatable="false">True</string>
+  <string name="appcenter_use_crashes" translatable="false">True</string>
+  <string name="appcenter_startup_type" translatable="false">0</string>
+</resources>

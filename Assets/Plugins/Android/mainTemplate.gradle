@@ -6,9 +6,9 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.0'
-        implementation fileTree(dir: 'libs', include: ['*.jar'])
-        implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
-        implementation 'com.android.support:support-v4:27.1.1'
+        //implementation fileTree(dir: 'libs', include: ['*.jar'])
+        //implementation 'com.google.android.gms:play-services-ads-identifier:16.0.0'
+        //implementation 'com.android.support:support-v4:27.1.1'
 **BUILD_SCRIPT_DEPS**}
 }
 
@@ -43,6 +43,8 @@ apply plugin: 'com.android.application'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+    implementation 'com.google.android.gms:play-services-basement:17.1.1'
 // Android Resolver Dependencies Start
     implementation 'com.google.games:gpgs-plugin-support:0.10.06' // Assets/GooglePlayGames/Editor/GooglePlayGamesPluginDependencies.xml:11
 // Android Resolver Dependencies End
