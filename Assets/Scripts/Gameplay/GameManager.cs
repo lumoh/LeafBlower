@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool AdsEnabled;
     public int TargetFrameRate = 60;
     public int SolverIterations = 5;
+    public bool ParticlesEnabled;
 
     public int LevelNum
     {

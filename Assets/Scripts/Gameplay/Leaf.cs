@@ -30,7 +30,12 @@ public class Leaf : MonoBehaviour
     {
         _groundMask = 1 << Layers.GROUND;
         _isIdle = true;
-        StartCoroutine(gust());        
+        StartCoroutine(gust());
+
+        if (!GameManager.instance.ParticlesEnabled)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     public void SetRandomColor()
@@ -72,7 +77,8 @@ public class Leaf : MonoBehaviour
 
             if (_isCollected)
             {
-                transform.parent = GameManager.instance.Level.LeavesParent;
+                //transform.parent = GameManager.instance.Level.LeavesParent;
+                Destroy(gameObject);
                 GlobalEvents.LeafCollected.Invoke();
             }
             else
