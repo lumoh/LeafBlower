@@ -675,6 +675,11 @@ PrefabInstance:
       propertyPath: TargetFrameRate
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: DestroyWhenCollected
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: World

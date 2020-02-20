@@ -78,6 +78,8 @@ public class Blower : MonoBehaviour
                     if (leaf != null)
                     {
                         bool blocked = false;
+
+                        /*
                         RaycastHit hitInfo;
                         if (Physics.Raycast(leaf.transform.position, SpawnPoint.position - leaf.transform.position, out hitInfo, MaxDistance, _groundMask))
                         {
@@ -88,6 +90,7 @@ public class Blower : MonoBehaviour
                         {
                             blocked = false;
                         }
+                        */
 
                         if(!blocked)
                         {

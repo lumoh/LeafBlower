@@ -19,18 +19,14 @@ public class Leaf : MonoBehaviour
 
     private bool _isGrounded;
     private bool _isCollected;
-    private float _lastBlownTime;
-    private bool _isIdle;
-    private Tween _idleTween;
-    private Tween _scaleTween;
     private int _groundMask;
 
     // Start is called before the first frame update
     void Start()
     {
         _groundMask = 1 << Layers.GROUND;
-        _isIdle = true;
-        StartCoroutine(gust());
+
+        //StartCoroutine(gust());
 
         if (!GameManager.instance.ParticlesEnabled)
         {
@@ -62,7 +58,6 @@ public class Leaf : MonoBehaviour
             Vector3 variance = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 5f), Random.Range(-1, 1f));
             rb.AddForce(variance * force / 2f, ForceMode.Force);
             rb.AddTorque(variance);
-            stopIdle();
         }
     }
 
@@ -77,12 +72,19 @@ public class Leaf : MonoBehaviour
 
             if (_isCollected)
             {
-                //transform.parent = GameManager.instance.Level.LeavesParent;
-                Destroy(gameObject);
+                if(GameManager.instance.DestroyWhenCollected)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    transform.parent = GameManager.instance.Level.LeavesParent;
+                }
                 GlobalEvents.LeafCollected.Invoke();
             }
             else
             {
+                /*
                 int groundMask = 1 << Layers.GROUND;
                 int leafMask = 1 << Layers.LEAF;
                 int layerMask = groundMask | leafMask;
@@ -97,42 +99,9 @@ public class Leaf : MonoBehaviour
                 {
                     rb.drag = 3.5f;
                 }
-            }
-
-            if (GameManager.instance.IdleAnimEnabled)
-            {
-                if (!_isIdle && Time.time - _lastBlownTime > IDLE_TIME)
-                {
-                    _isIdle = true;
-                    doIdleAnim();
-                }
+                */
             }
         }
-    }
-
-    private void stopIdle()
-    {
-        rb.isKinematic = false;
-        _lastBlownTime = Time.time;
-        _isIdle = false;
-        if(_idleTween != null)
-        {
-            _idleTween.Kill();
-        }
-        if(_scaleTween != null)
-        {
-            _scaleTween.Kill();
-            _scaleTween = transform.DOScale(WIDTH, 0.2f);
-        }
-    }
-
-    private void doIdleAnim()
-    {
-        rb.isKinematic = true;
-        float yPos = transform.position.y;
-        float yJump = yPos + Random.Range(0.25f, 0.6f);
-        _idleTween = transform.DOMoveY(yJump, 0.5f).SetLoops(-1, LoopType.Yoyo);
-        _scaleTween = transform.DOScale(WIDTH * 2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
     }
 
     private IEnumerator gust()

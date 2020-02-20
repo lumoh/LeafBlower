@@ -11,12 +11,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Config Vars")]
     public int MaxLevel = 1;
-    public bool IdleAnimEnabled;
     public bool CheatMenuEnabled;
     public bool AdsEnabled;
     public int TargetFrameRate = 60;
     public int SolverIterations = 5;
     public bool ParticlesEnabled;
+    public bool DestroyWhenCollected;
 
     public int LevelNum
     {
