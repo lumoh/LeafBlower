@@ -93,4 +93,12 @@ public class Leaf : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == Layers.GROUND)
+        {
+            transform.parent = collision.transform.parent;
+        }
+    }
 }
