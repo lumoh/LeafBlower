@@ -1069,6 +1069,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformCat
       objectReference: {fileID: 0}
+    - target: {fileID: 7909878342054152184, guid: f05f72eb2697e42838c65b9fe32f3bcc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7909878342054152185, guid: f05f72eb2697e42838c65b9fe32f3bcc,
         type: 3}
       propertyPath: m_LocalPosition.x

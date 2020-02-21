@@ -27,6 +27,6 @@ public class BetterMovingPlatform : MovingPlatform
         transform.DOMove(pos, _currentMovement.Duration).SetEase(Ease.InOutQuad).OnComplete(() =>
         {
             StartCoroutine(waitToMove());
-        });
+        }).SetUpdate(UpdateType.Fixed);
     }
 }

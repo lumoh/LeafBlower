@@ -76,19 +76,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
             _moveDirection.y = _yVelocity;
-        }
-    }
 
-    private void LateUpdate()
-    {
-        if (_moveDirection.sqrMagnitude > characterController.minMoveDistance)
-        {
-            if (_movingPlatform != null)
+            if (_moveDirection.sqrMagnitude > characterController.minMoveDistance)
             {
-                _moveDirection += _movingPlatform.GetVelocity();
+                characterController.Move(_moveDirection * Time.deltaTime);
             }
-
-            characterController.Move(_moveDirection * Time.deltaTime);
         }
     }
 
@@ -145,6 +137,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.parent = hit.transform.parent;
                 _movingPlatform = transform.parent.GetComponent<MovingPlatform>();
+                if(_movingPlatform == null)
+                {
+                    _movingPlatform = transform.parent.parent.GetComponent<MovingPlatform>();
+                }
             }
         }
     }

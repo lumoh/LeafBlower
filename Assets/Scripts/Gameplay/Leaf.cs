@@ -17,7 +17,6 @@ public class Leaf : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider col;
 
-    private bool _isGrounded;
     private bool _isCollected;
     private int _groundMask;
 
@@ -25,8 +24,6 @@ public class Leaf : MonoBehaviour
     void Start()
     {
         _groundMask = 1 << Layers.GROUND;
-
-        //StartCoroutine(gust());
 
         if (!GameManager.instance.ParticlesEnabled)
         {
@@ -65,7 +62,7 @@ public class Leaf : MonoBehaviour
     {
         if(!_isCollected)
         {
-            setPlatform();
+            //setPlatform();
 
             int deadzoneMask = 1 << Layers.DEADZONE;
             _isCollected = Physics.Raycast(transform.position, Vector3.down, 1.5f, deadzoneMask);
@@ -82,42 +79,6 @@ public class Leaf : MonoBehaviour
                 }
                 GlobalEvents.LeafCollected.Invoke();
             }
-            else
-            {
-                /*
-                int groundMask = 1 << Layers.GROUND;
-                int leafMask = 1 << Layers.LEAF;
-                int layerMask = groundMask | leafMask;
-
-                _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.25f, layerMask);
-
-                if (_isGrounded)
-                {
-                    rb.drag = 0.1f;
-                }
-                else
-                {
-                    rb.drag = 3.5f;
-                }
-                */
-            }
-        }
-    }
-
-    private IEnumerator gust()
-    {
-        yield return new WaitForSeconds(GUST_INVTERVAL);
-
-        if(rb != null && !_isGrounded && !_isCollected)
-        {
-            Vector3 variance = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(0f, GUST_FORCE), Random.Range(-0.1f, 0.1f));
-            rb.AddForce(variance * GUST_FORCE / 2f, ForceMode.Impulse);
-            rb.AddTorque(variance);
-        }
-
-        if (_isCollected)
-        {
-            StartCoroutine(gust());
         }
     }
 

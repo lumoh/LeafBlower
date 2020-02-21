@@ -14,9 +14,6 @@ public class MovingPlatform : MonoBehaviour
     protected Vector3 _originalPos;
     private bool _moveFlip;
 
-    protected Vector3 _lastPos;
-    protected Vector3 _velocity;
-
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -61,19 +58,8 @@ public class MovingPlatform : MonoBehaviour
         transform.DOMove(pos, MoveDuration).SetEase(Ease.InOutQuad).OnComplete(() =>
         {
             StartCoroutine(waitToMove());
-        });
+        }).SetUpdate(UpdateType.Fixed);
 
         _moveFlip = !_moveFlip;
-    }
-
-    protected void Update()
-    {
-        _velocity = (transform.position - _lastPos) / Time.deltaTime;
-        _lastPos = transform.position;
-    }
-
-    public Vector3 GetVelocity()
-    {
-        return _velocity;
     }
 }
