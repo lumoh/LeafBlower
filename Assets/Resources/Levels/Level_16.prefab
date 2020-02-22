@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e084e470a1349658316097af92ec26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Offset: {x: 0, y: -2.1, z: 0}
+  Offset: {x: -4, y: 0, z: 0}
   MoveDuration: 2
   PauseDuration: 2
   InitialDelay: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e084e470a1349658316097af92ec26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Offset: {x: 0, y: -2.1, z: 0}
+  Offset: {x: 4, y: 0, z: 0}
   MoveDuration: 2
   PauseDuration: 2
   InitialDelay: 0
