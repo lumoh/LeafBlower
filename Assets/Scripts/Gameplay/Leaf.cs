@@ -93,18 +93,18 @@ public class Leaf : MonoBehaviour
         if (GameManager.instance.Level != null)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, 1, _groundMask))
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.15f, _groundMask))
             {
                 transform.parent = hit.transform.parent;
-            }
-        }
 
-        if(rb.velocity.sqrMagnitude < 0.05f && !rb.isKinematic)
-        {
-            rb.isKinematic = true;
-            if(_isCollected)
-            {
-                CancelInvoke("setPlatform");
+                if (rb.velocity.sqrMagnitude < 0.05f && !rb.isKinematic)
+                {
+                    rb.isKinematic = true;
+                    if (_isCollected)
+                    {
+                        CancelInvoke("setPlatform");
+                    }
+                }
             }
         }
     }
