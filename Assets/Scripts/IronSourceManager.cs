@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Facebook.Unity;
 
 public class IronSourceManager : MonoBehaviour
 {
@@ -34,7 +35,11 @@ public class IronSourceManager : MonoBehaviour
     void handleLevelLoaded()
     {
         _interstitialFailedLoad = false;
-        IronSource.Agent.loadInterstitial();
+
+        if (GameManager.instance.AdsEnabled)
+        {
+            IronSource.Agent.loadInterstitial();
+        }
     }
 
     void hideBanner()
@@ -164,6 +169,10 @@ public class IronSourceManager : MonoBehaviour
     //Invoked right before the Interstitial screen is about to open.
     void InterstitialAdShowSucceededEvent()
     {
+        if(FB.IsInitialized)
+        {
+            FB.LogAppEvent(FacebookManager.INTERSTITIAL_COMPLETE_EVENT);
+        }
         GameManager.instance.LoadLevelAndPlayer();
     }
     //Invoked when the ad fails to show.
@@ -231,6 +240,10 @@ public class IronSourceManager : MonoBehaviour
     //
     void RewardedVideoAdRewardedEvent(IronSourcePlacement placement)
     {
+        if (FB.IsInitialized)
+        {
+            FB.LogAppEvent(FacebookManager.REWARDED_VIDEO_COMPLETE_EVENT);
+        }
         GameManager.instance.LoadLevelAndPlayer();
     }
     //Invoked when the Rewarded Video failed to show

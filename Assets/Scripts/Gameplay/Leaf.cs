@@ -32,6 +32,7 @@ public class Leaf : MonoBehaviour
 
         InvokeRepeating("setPlatform", Random.Range(0f, 0.25f), 0.25f);
         rb.isKinematic = true;
+        rb.drag = 2f;
     }
 
     public void SetRandomColor()
