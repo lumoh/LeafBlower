@@ -29,6 +29,9 @@ public class Leaf : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
+
+        InvokeRepeating("setPlatform", Random.Range(0f, 0.25f), 0.25f);
+        rb.isKinematic = true;
     }
 
     public void SetRandomColor()
@@ -51,6 +54,7 @@ public class Leaf : MonoBehaviour
     {
         if(rb != null && !_isCollected)
         {
+            rb.isKinematic = false;
             rb.AddForce(dir * force, ForceMode.Force);
             Vector3 variance = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 5f), Random.Range(-1, 1f));
             rb.AddForce(variance * force / 2f, ForceMode.Force);
@@ -62,15 +66,16 @@ public class Leaf : MonoBehaviour
     {
         if(!_isCollected)
         {
-            //setPlatform();
+            //int deadzoneMask = 1 << Layers.DEADZONE;
+            //_isCollected = Physics.Raycast(transform.position, Vector3.down, 1.5f, deadzoneMask);
 
-            int deadzoneMask = 1 << Layers.DEADZONE;
-            _isCollected = Physics.Raycast(transform.position, Vector3.down, 1.5f, deadzoneMask);
+            // much more efficient than raycast
+            _isCollected = transform.position.y < -1f;
 
             if (_isCollected)
             {
                 if(GameManager.instance.DestroyWhenCollected)
-                {
+                {                    
                     Destroy(gameObject);
                 }
                 else
@@ -92,13 +97,14 @@ public class Leaf : MonoBehaviour
                 transform.parent = hit.transform.parent;
             }
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.layer == Layers.GROUND)
+        if(rb.velocity.sqrMagnitude < 0.05f && !rb.isKinematic)
         {
-            transform.parent = collision.transform.parent;
+            rb.isKinematic = true;
+            if(_isCollected)
+            {
+                CancelInvoke("setPlatform");
+            }
         }
     }
 }
