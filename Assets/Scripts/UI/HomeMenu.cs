@@ -75,9 +75,16 @@ public class HomeMenu : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void CHEAT_LastLevel()
+    public void CHEAT_PreviousLevel()
     {
         GameManager.instance.LevelNum = Mathf.Max(GameManager.instance.LevelNum - 1, 1);
+        GameManager.instance.LoadLevelAndPlayer();
+        Destroy(gameObject);
+    }
+
+    public void CHEAT_LastLevel()
+    {
+        GameManager.instance.LevelNum = GameManager.instance.MaxLevel;
         GameManager.instance.LoadLevelAndPlayer();
         Destroy(gameObject);
     }
