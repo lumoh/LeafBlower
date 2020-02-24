@@ -737,6 +737,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 575690711835212412}
     m_Modifications:
+    - target: {fileID: 4314646771459737052, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_Name
+      value: Blower
+      objectReference: {fileID: 0}
     - target: {fileID: 37855422956165502, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,20 +797,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4314646771459737052, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+    - target: {fileID: 7571440304053771241, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
-      propertyPath: m_Name
-      value: Blower
+      propertyPath: m_LocalPosition.z
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571440304053771241, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6815563048297516456, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}
       propertyPath: MaxDistance
       value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7571440304053771241, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e6c25ece14754d98aa9c1c598dad9b1, type: 3}
