@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
 
     public int NumLeaves;
     public int Seconds = 30;
+    public bool IsZen;
 
     private List<Transform> _platforms;
     private List<LeafPile> _leafPiles;
@@ -51,7 +52,10 @@ public class Level : MonoBehaviour
         _leavesLeft--;
         if(_leavesLeft == 0 && !GameManager.instance.IsLevelOver)
         {
-            GlobalEvents.WinLevel.Invoke();
+            if(!GameManager.IsZenLevel())
+            {
+                GlobalEvents.WinLevel.Invoke();
+            }            
         }
     }
 }

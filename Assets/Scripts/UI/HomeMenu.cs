@@ -14,6 +14,7 @@ public class HomeMenu : MonoBehaviour
     public Text StartText;    
     public float FadeDuration;
     public Toggle ToggleHaptics;
+    public GameObject ZenModeObj;
 
     [Header("Cheats")]
     public GameObject CheatMenu;
@@ -32,6 +33,15 @@ public class HomeMenu : MonoBehaviour
         CheatMenu.SetActive(GameManager.instance.CheatMenuEnabled);
         setAdsText();
         setHaptics();
+        setZenMode();
+    }
+
+    private void setZenMode()
+    {
+        if(ZenModeObj != null)
+        {
+            ZenModeObj.SetActive(GameManager.IsZenLevel());
+        }
     }
 
     private void handleStartButtonPressed()
@@ -70,7 +80,7 @@ public class HomeMenu : MonoBehaviour
 
     public void CHEAT_NextLevel()
     {
-        GameManager.instance.LevelNum = Mathf.Min(GameManager.instance.LevelNum + 1, GameManager.instance.MaxLevel);
+        GameManager.instance.LevelNum = Mathf.Min(GameManager.instance.LevelNum + 1, GameManager.instance.MaxLevel + 1);
         GameManager.instance.LoadLevelAndPlayer();
         Destroy(gameObject);
     }
@@ -85,6 +95,13 @@ public class HomeMenu : MonoBehaviour
     public void CHEAT_LastLevel()
     {
         GameManager.instance.LevelNum = GameManager.instance.MaxLevel;
+        GameManager.instance.LoadLevelAndPlayer();
+        Destroy(gameObject);
+    }
+
+    public void CHEAT_LoadZen()
+    {
+        GameManager.instance.LevelNum = GameManager.instance.MaxLevel + 1;
         GameManager.instance.LoadLevelAndPlayer();
         Destroy(gameObject);
     }

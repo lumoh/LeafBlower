@@ -97,6 +97,10 @@ public class GameManager : MonoBehaviour
 
         int levelNum = PlayerState.GetLevel();
         string levelName = "Level_" + levelNum;
+        if (levelNum > MaxLevel)
+        {
+            levelName = "Level_Zen";
+        }
         Level levelPrefab = Resources.Load<Level>("Levels/" + levelName);
         Level = Instantiate(levelPrefab);
         Level.Num = levelNum;
@@ -113,12 +117,18 @@ public class GameManager : MonoBehaviour
         GlobalEvents.LevelLoaded.Invoke();
     }
 
+    public static bool IsZenLevel()
+    {
+        bool isZen = GameManager.instance != null && GameManager.instance.Level != null && GameManager.instance.Level.IsZen;
+        return isZen;
+    }
+
     private void handleWinLevel()
     {
         if (!IsLevelOver)
         {
             IsLevelOver = true;
-            LevelNum = Mathf.Min(LevelNum + 1, MaxLevel);
+            LevelNum = Mathf.Min(LevelNum + 1, MaxLevel + 1);
             MenuManager.PushMenu(MenuManager.WIN);
 
             PlayerState.WinLevel(Level.Num);

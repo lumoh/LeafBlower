@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour
 	public ProgressBar ProgressBar;
 	public Image EndFillImage;
     public CanvasGroup CanvasGroup;
+    public GameObject MeterObj;
 
     private int _score;
     private int _maxScore;
@@ -31,6 +32,7 @@ public class HUD : MonoBehaviour
 
     void handleLevelLoaded()
     {
+        MeterObj.SetActive(!GameManager.IsZenLevel());
         _score = 0;
         _maxScore = GameManager.instance.Level.NumLeaves;
 
@@ -63,20 +65,6 @@ public class HUD : MonoBehaviour
         float fillAmount = (float)_score / _maxScore;
 
         ProgressBar.specifiedValue = fillAmount * 100;
-    }
-
-    void handleLeavesSpawned(int leavesSpawed)
-    {
-        _score = 0;
-        _maxScore = leavesSpawed;
-
-        int levelNum = GameManager.instance.LevelNum;
-        int nextLevelNum = levelNum + 1;
-
-        LevelNum.text = levelNum.ToString();
-        NextLevelNum.text = nextLevelNum.ToString();
-
-        ProgressBar.specifiedValue = 0;
     }
 
     public int GetScore()

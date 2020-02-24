@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GoalsLeft : MonoBehaviour
 {
     public Text GoalsText;
+    public GameObject Infinity;
 
     private int _numTotal;
     private int _numCollected;
@@ -18,9 +19,19 @@ public class GoalsLeft : MonoBehaviour
 
     private void handleLevelLoaded()
     {
-        _numTotal = GameManager.instance.Level.NumLeaves;
-        _numCollected = 0;
-        setText();        
+        if(GameManager.IsZenLevel())
+        {
+            Infinity.SetActive(true);
+            GoalsText.gameObject.SetActive(false);
+        }
+        else
+        {
+            _numTotal = GameManager.instance.Level.NumLeaves;
+            _numCollected = 0;
+            setText();
+            Infinity.SetActive(false);
+            GoalsText.gameObject.SetActive(true);
+        }
     }
 
     private void handleLeafCollected()

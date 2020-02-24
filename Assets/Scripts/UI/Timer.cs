@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     public Text TimeLeftText;
     public int TotalSeconds = 30;
+    public GameObject Infinity;
 
     private float _secondsLeft;
     private bool _isRunning;
@@ -28,7 +29,19 @@ public class Timer : MonoBehaviour
 
     private void setText()
     {
-        TimeLeftText.text = _secondsLeft.ToString("00.0");
+        if(GameManager.IsZenLevel())
+        {
+            gameObject.SetActive(false);
+            TimeLeftText.gameObject.SetActive(false);
+            Infinity.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            TimeLeftText.text = _secondsLeft.ToString("00.0");
+            TimeLeftText.gameObject.SetActive(true);
+            Infinity.SetActive(false);
+        }        
     }
 
     public void handleLevelLoaded()
@@ -40,7 +53,10 @@ public class Timer : MonoBehaviour
 
     public void handleStartLevel()
     {
-        _isRunning = true;
+        if (!GameManager.IsZenLevel())
+        {
+            _isRunning = true;
+        }
     }
 
     private void handleLoseLevel()
