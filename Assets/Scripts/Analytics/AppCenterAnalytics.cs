@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.AppCenter.Unity.Analytics;
+using GooglePlayGames;
 
 /// <summary>
 /// Analytics tracking provided by Microsoft App Center
@@ -25,6 +26,16 @@ public class AppCenterAnalytics : IAnalytics
         data.Add(EvtParam.RECORD, JsonUtility.ToJson(PlayerState.GetLevelRecord(level)));
 
         Analytics.TrackEvent(Evt.WIN_LEVEL, data);
+
+#if UNITY_ANDROID
+        if(level == 1)
+        {
+            Social.ReportProgress("CgkIm-bagYAIEAIQAA", 10, (bool success)=>
+            {
+
+            });
+        }
+#endif
     }
 
     public void LoseLevel(int level, string loseType)

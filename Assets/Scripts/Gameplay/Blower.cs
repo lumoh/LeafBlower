@@ -18,7 +18,7 @@ public class Blower : MonoBehaviour
 
     private bool _isBlowing;
     private int _leafMask;
-    private int _groundMask;
+    //private int _groundMask;
     private bool _hittingLeaves;
     private float _hapticsTime;
     private bool _lowHaptics;
@@ -31,7 +31,7 @@ public class Blower : MonoBehaviour
         GlobalEvents.WinLevel.AddListener(stopBlower);
 
         _leafMask = 1 << Layers.LEAF;
-        _groundMask = 1 << Layers.GROUND;
+        //_groundMask = 1 << Layers.GROUND;
     }
 
     private void startBlower()
