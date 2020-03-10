@@ -5,7 +5,11 @@ using Facebook.Unity;
 
 public class IronSourceManager : MonoBehaviour
 {
+#if UNITY_ANDROID
+    private const string YOUR_APP_KEY = "b765fea5";
+#elif UNITY_IOS
     private const string YOUR_APP_KEY = "aa3b78f5";
+#endif
 
     private bool _interstitialFailedLoad;
     private bool _rewardedVideoAvailability;
