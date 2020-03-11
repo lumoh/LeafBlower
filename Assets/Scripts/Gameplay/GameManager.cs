@@ -79,8 +79,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Analytics.AppStart();
-
-        LoadLevelAndPlayer();
+        LoadLevelAndPlayer();    
     }
 
     public void LoadLevelAndPlayer()
