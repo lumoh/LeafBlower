@@ -53,33 +53,39 @@ public class IronSourceManager : MonoBehaviour
 
     void showRewardedVideo()
     {
-        if (GameManager.instance.AdsEnabled)
+        MenuManager.ShowLoadingScreen(() =>
         {
-            if (_rewardedVideoAvailability)
+            if (GameManager.instance.AdsEnabled)
             {
-                IronSource.Agent.showRewardedVideo();
+                if (_rewardedVideoAvailability)
+                {
+                    IronSource.Agent.showRewardedVideo();
+                }
+                else
+                {
+                    showInterstitial();
+                }
             }
             else
             {
-                showInterstitial();
+                GameManager.instance.LoadLevelAndPlayer();
             }
-        }
-        else
-        {
-            GameManager.instance.LoadLevelAndPlayer();
-        }
+        });
     }
 
     void showInterstitial()
     {
-        if (GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
+        MenuManager.ShowLoadingScreen(() =>
         {
-            IronSource.Agent.showInterstitial();
-        }
-        else
-        {
-            GameManager.instance.LoadLevelAndPlayer();
-        }
+            if (GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
+            {
+                IronSource.Agent.showInterstitial();
+            }
+            else
+            {
+                GameManager.instance.LoadLevelAndPlayer();
+            }
+        });
     }
 
     // Start is called before the first frame update
