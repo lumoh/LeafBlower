@@ -19,6 +19,9 @@ public class MovingPlatform : MonoBehaviour
     {
         _originalPos = transform.position;
 
+        // TEST WAIT FOR START FOR ALL
+        WaitForStart = true;
+
         if (!WaitForStart)
         {
             StartCoroutine(initialDelay());

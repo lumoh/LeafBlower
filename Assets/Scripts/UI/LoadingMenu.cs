@@ -7,6 +7,7 @@ public class LoadingMenu : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
     public float FadeDuration = 0.5f;
+    public float FadeOutDelay = 2f;
 
     // Start is called before the first frame update
     void Awake()
@@ -31,6 +32,6 @@ public class LoadingMenu : MonoBehaviour
         canvasGroup.DOFade(0f, FadeDuration).OnComplete(() =>
         {
             Destroy(gameObject);
-        });
+        }).SetDelay(FadeOutDelay);
     }
 }
