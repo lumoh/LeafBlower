@@ -7,6 +7,7 @@ public class FollowCamera : MonoBehaviour
     public Transform Target;
     public Vector3 TargetOffset;
     public Vector3 Offset;
+    public float LeadOffset;
     public float DistanceDamp;    
 
     [HideInInspector]
@@ -31,7 +32,7 @@ public class FollowCamera : MonoBehaviour
     {
         if (Target != null)
         {
-            Vector3 toPos = Target.position + Offset;
+            Vector3 toPos = Target.position + Offset + (Target.forward * -1* LeadOffset);
             Vector3 curPos = Vector3.SmoothDamp(transform.position, toPos, ref Velocity, DistanceDamp);
             transform.position = curPos;
             transform.LookAt(Target.position + TargetOffset, Target.up);
