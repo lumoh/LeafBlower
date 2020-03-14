@@ -255,7 +255,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   TargetOffset: {x: 0.5, y: 0, z: 0.5}
   Offset: {x: 10, y: 12, z: 10}
-  LeadOffset: 0.5
+  LeadOffset: 0
   DistanceDamp: 0.2
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &416969242

@@ -13,80 +13,7 @@ public class IronSourceManager : MonoBehaviour
 
     private bool _interstitialFailedLoad;
     private bool _rewardedVideoAvailability;
-
-    void Awake()
-    {
-        GlobalEvents.StartLevel.AddListener(handleStartLevel);
-        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
-        GlobalEvents.WinLevel.AddListener(hideBanner);
-        GlobalEvents.LoseLevel.AddListener(hideBanner);
-        GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
-        GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
-    }
-
-    void handleStartLevel()
-    {
-        if (GameManager.instance.AdsEnabled)
-        {
-            IronSource.Agent.displayBanner();
-        }
-        else
-        {
-            IronSource.Agent.hideBanner();
-        }
-    }
-
-    void handleLevelLoaded()
-    {
-        _interstitialFailedLoad = false;
-
-        if (GameManager.instance.AdsEnabled)
-        {
-            IronSource.Agent.loadInterstitial();
-        }
-    }
-
-    void hideBanner()
-    {
-        IronSource.Agent.hideBanner();
-    }
-
-    void showRewardedVideo()
-    {
-        MenuManager.ShowLoadingScreen(() =>
-        {
-            if (GameManager.instance.AdsEnabled)
-            {
-                if (_rewardedVideoAvailability)
-                {
-                    IronSource.Agent.showRewardedVideo();
-                }
-                else
-                {
-                    showInterstitial();
-                }
-            }
-            else
-            {
-                GameManager.instance.LoadLevelAndPlayer();
-            }
-        });
-    }
-
-    void showInterstitial()
-    {
-        MenuManager.ShowLoadingScreen(() =>
-        {
-            if (GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
-            {
-                IronSource.Agent.showInterstitial();
-            }
-            else
-            {
-                GameManager.instance.LoadLevelAndPlayer();
-            }
-        });
-    }
+    private bool _ironSourceInit;
 
     // Start is called before the first frame update
     void Start()
@@ -111,8 +38,6 @@ public class IronSourceManager : MonoBehaviour
         IronSourceEvents.onBannerAdScreenDismissedEvent += BannerAdScreenDismissedEvent;
         IronSourceEvents.onBannerAdLeftApplicationEvent += BannerAdLeftApplicationEvent;
 
-        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
-
         IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
         IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
         IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
@@ -128,11 +53,102 @@ public class IronSourceManager : MonoBehaviour
         IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
         IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
         IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
+
+        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
+        IronSource.Agent.loadInterstitial();
+
+        _ironSourceInit = true;
+
+        GlobalEvents.StartLevel.AddListener(handleStartLevel);
+        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
+        GlobalEvents.WinLevel.AddListener(hideBanner);
+        GlobalEvents.LoseLevel.AddListener(hideBanner);
+        GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
+        GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
+    }
+
+    void handleStartLevel()
+    {
+        if (_ironSourceInit)
+        {
+            if (GameManager.instance.AdsEnabled)
+            {
+                IronSource.Agent.displayBanner();
+            }
+            else
+            {
+                IronSource.Agent.hideBanner();
+            }
+        }
+    }
+
+    void handleLevelLoaded()
+    {
+        _interstitialFailedLoad = false;
+
+        if (GameManager.instance.AdsEnabled && _ironSourceInit)
+        {
+            IronSource.Agent.loadInterstitial();
+        }
+    }
+
+    void hideBanner()
+    {
+        if (_ironSourceInit)
+        {
+            IronSource.Agent.hideBanner();
+        }
+    }
+
+    bool rollForRewardedAd()
+    {
+        bool getAd = Random.Range(0, 5) < 2;
+        return getAd;
+    }
+
+    void showRewardedVideo()
+    {
+        MenuManager.ShowLoadingScreen(() =>
+        {
+            if (GameManager.instance.AdsEnabled && _ironSourceInit)
+            {
+                if (_rewardedVideoAvailability && rollForRewardedAd())
+                {
+                    IronSource.Agent.showRewardedVideo();
+                }
+                else
+                {
+                    showInterstitial();
+                }
+            }
+            else
+            {
+                GameManager.instance.LoadLevelAndPlayer();
+            }
+        });
+    }
+
+    void showInterstitial()
+    {
+        MenuManager.ShowLoadingScreen(() =>
+        {
+            if (_ironSourceInit && GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
+            {
+                IronSource.Agent.showInterstitial();
+            }
+            else
+            {
+                GameManager.instance.LoadLevelAndPlayer();
+            }
+        });
     }
 
     private void OnApplicationPause(bool pause)
     {
-        IronSource.Agent.onApplicationPause(pause);
+        if (_ironSourceInit)
+        {
+            IronSource.Agent.onApplicationPause(pause);
+        }
     }
 
     #region Banner ads
