@@ -100,9 +100,9 @@ public class IronSourceManager : MonoBehaviour
         }
     }
 
-    bool rollForRewardedAd()
+    bool rollForAd()
     {
-        bool getAd = Random.Range(0, 5) < 2;
+        bool getAd = Random.Range(0, 5) < 3;
         return getAd;
     }
 
@@ -112,7 +112,7 @@ public class IronSourceManager : MonoBehaviour
         {
             if (GameManager.instance.AdsEnabled && _ironSourceInit)
             {
-                if (_rewardedVideoAvailability && rollForRewardedAd())
+                if (_rewardedVideoAvailability && rollForAd())
                 {
                     IronSource.Agent.showRewardedVideo();
                 }
@@ -132,7 +132,7 @@ public class IronSourceManager : MonoBehaviour
     {
         MenuManager.ShowLoadingScreen(() =>
         {
-            if (_ironSourceInit && GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
+            if (rollForAd() && _ironSourceInit && GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
             {
                 IronSource.Agent.showInterstitial();
             }
