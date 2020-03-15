@@ -18,17 +18,22 @@ public class IronSourceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IronSourceConfig.Instance.setClientSideCallbacks(true);
+
+        string id = IronSource.Agent.getAdvertiserId();
+        Debug.Log("unity-script: IronSource.Agent.getAdvertiserId : " + id);
+        IronSource.Agent.validateIntegration();
+
+        /*
         IronSource.Agent.init(
             YOUR_APP_KEY,
             IronSourceAdUnits.BANNER,
             IronSourceAdUnits.INTERSTITIAL,
             IronSourceAdUnits.REWARDED_VIDEO
         );
+        */
 
-        string id = IronSource.Agent.getAdvertiserId();
-        Debug.Log("unity-script: IronSource.Agent.getAdvertiserId : " + id);
-
-        IronSource.Agent.validateIntegration();
+        IronSource.Agent.init(YOUR_APP_KEY);
 
         // Add Banner Events
         IronSourceEvents.onBannerAdLoadedEvent += BannerAdLoadedEvent;
@@ -54,17 +59,23 @@ public class IronSourceManager : MonoBehaviour
         IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
         IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
 
-        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
-        IronSource.Agent.loadInterstitial();
-
-        _ironSourceInit = true;
-
         GlobalEvents.StartLevel.AddListener(handleStartLevel);
         GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
         GlobalEvents.WinLevel.AddListener(hideBanner);
         GlobalEvents.LoseLevel.AddListener(hideBanner);
         GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
         GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
+
+        StartCoroutine(loadBannerAndInterstitial());
+    }
+
+    IEnumerator loadBannerAndInterstitial()
+    {
+        yield return new WaitForSeconds(3f);
+
+        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
+
+        _ironSourceInit = true;
     }
 
     void handleStartLevel()

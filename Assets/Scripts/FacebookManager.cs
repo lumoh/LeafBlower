@@ -32,6 +32,7 @@ public class FacebookManager : MonoBehaviour
     // from the background
     void OnApplicationPause(bool pauseStatus)
     {
+        /*
         // Check the pauseStatus to see if we are in the foreground
         // or background
         if (!pauseStatus)
@@ -49,6 +50,7 @@ public class FacebookManager : MonoBehaviour
                 });
             }
         }
+        */
     }
 
     private void handleWinLevel()
