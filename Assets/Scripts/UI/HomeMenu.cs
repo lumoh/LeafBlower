@@ -15,6 +15,7 @@ public class HomeMenu : MonoBehaviour
     public float FadeDuration;
     public Toggle ToggleHaptics;
     public GameObject ZenModeObj;
+    public CanvasGroup NotifCanvasGroup;
 
     [Header("Cheats")]
     public GameObject CheatMenu;
@@ -28,6 +29,7 @@ public class HomeMenu : MonoBehaviour
         TapToStartButton.onClick.AddListener(handleStartButtonPressed);
 
         StartText.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+        NotifCanvasGroup.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
 
         // Show/Hide cheat menu
         CheatMenu.SetActive(GameManager.instance.CheatMenuEnabled);

@@ -19,6 +19,17 @@ public class Leaf : MonoBehaviour
 
     private bool _isCollected;
     private int _groundMask;
+    private GameObject _covidObj;
+
+    void Awake()
+    {
+        if(GameManager.instance.CovidPrefab != null)
+        {
+            _covidObj = Instantiate(GameManager.instance.CovidPrefab, transform);
+            _covidObj.transform.localRotation = Quaternion.Euler(Random.onUnitSphere * 360f);
+            Mesh.enabled = false;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

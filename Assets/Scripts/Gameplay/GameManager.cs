@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public bool ParticlesEnabled;
     public bool DestroyWhenCollected;
 
+    [Header("Special covid prefab")]
+    public GameObject CovidPrefab;
+
     public int LevelNum
     {
         get

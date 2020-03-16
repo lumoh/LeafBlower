@@ -51,11 +51,14 @@ MonoBehaviour:
   PlayerObj: {fileID: 0}
   IsLevelOver: 0
   MaxLevel: 16
-  IdleAnimEnabled: 0
   CheatMenuEnabled: 0
   AdsEnabled: 0
   TargetFrameRate: 60
   SolverIterations: 5
+  ParticlesEnabled: 0
+  DestroyWhenCollected: 0
+  CovidPrefab: {fileID: 3287986638730549179, guid: 644452d6b22c54654b0b6bda091c75cb,
+    type: 3}
 --- !u!114 &5724369344483721620
 MonoBehaviour:
   m_ObjectHideFlags: 0

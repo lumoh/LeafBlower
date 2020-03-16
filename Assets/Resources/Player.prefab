@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 575690711835212414}
-  speed: 3
+  speed: 3.5
   gravity: 20
   turnSpeed: 7
 --- !u!1 &590331067193550636
@@ -2457,6 +2457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxDistance
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815563048297516456, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
+        type: 3}
+      propertyPath: MaxForce
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 4740315200879385990, guid: 0e6c25ece14754d98aa9c1c598dad9b1,
         type: 3}

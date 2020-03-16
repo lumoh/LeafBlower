@@ -37,16 +37,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
-        type: 3}
-      propertyPath: AnimateIn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
-        type: 3}
-      propertyPath: CanvasGroup
-      value: 
-      objectReference: {fileID: 1188792079660898595}
     - target: {fileID: 8290326767924559281, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +92,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: AnimateIn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: CanvasGroup
+      value: 
+      objectReference: {fileID: 1188792079660898595}
     - target: {fileID: 1605267828043988806, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_RenderMode
@@ -137,6 +137,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 6447239783739098929, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_Text
+      value: You Win!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718792541340672346, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: m_Text
+      value: Well done :)
+      objectReference: {fileID: 0}
     - target: {fileID: 5667114489218076523, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
@@ -151,16 +161,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Game Over
-      objectReference: {fileID: 0}
-    - target: {fileID: 6447239783739098929, guid: b8abc4a44316a449cb7562fb1c448751,
-        type: 3}
-      propertyPath: m_Text
-      value: You Win!
-      objectReference: {fileID: 0}
-    - target: {fileID: 5718792541340672346, guid: b8abc4a44316a449cb7562fb1c448751,
-        type: 3}
-      propertyPath: m_Text
-      value: Well done :)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8abc4a44316a449cb7562fb1c448751, type: 3}
@@ -192,6 +192,21 @@ PrefabInstance:
     - target: {fileID: 1924595641718912, guid: a76e23e6dd72a8f4dbdefc46710338e0, type: 3}
       propertyPath: m_Name
       value: NextLevelButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.039215688
+      objectReference: {fileID: 0}
+    - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.827451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224002375370414168, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}
