@@ -56,4 +56,9 @@ public class MenuBase : MonoBehaviour
             CanvasGroup.DOFade(1f, 0.25f);
         }
     }
+
+    public void Close()
+    {
+        MenuManager.PopMenu(gameObject);
+    }
 }

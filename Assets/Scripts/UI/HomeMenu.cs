@@ -29,11 +29,11 @@ public class HomeMenu : MonoBehaviour
     {
         TapToStartButton.onClick.AddListener(handleStartButtonPressed);
 
-        StartText.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+        StartText.DOFade(0.25f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
 
         if (NotifCanvasGroup != null)
         {
-            NotifCanvasGroup.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+            NotifCanvasGroup.DOFade(0.25f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
         }
 
         // Show/Hide cheat menu
@@ -81,7 +81,18 @@ public class HomeMenu : MonoBehaviour
 
     public void OnSettings()
     {
+        gameObject.SetActive(false);
+        MenuManager.PushMenu(MenuManager.SETTINGS);
+        GlobalEvents.MenuPopped.AddListener(handleSettingsClosed);
+    }
 
+    private void handleSettingsClosed(string menuName)
+    {
+        if(menuName == MenuManager.SETTINGS)
+        {
+            gameObject.SetActive(true);
+            GlobalEvents.MenuPopped.RemoveListener(handleSettingsClosed);
+        }
     }
 
     private void setNoAds()

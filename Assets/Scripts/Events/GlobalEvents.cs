@@ -17,4 +17,5 @@ public class GlobalEvents
     // game specific
     public static UnityEvent LeafCollected = new UnityEvent();
     public static UnityEvent AdsStatusChanged = new UnityEvent();
+    public static MyStringEvent MenuPopped = new MyStringEvent();
 }
