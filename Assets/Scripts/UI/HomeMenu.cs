@@ -14,6 +14,7 @@ public class HomeMenu : MonoBehaviour
     public Text StartText;    
     public float FadeDuration;
     public Toggle ToggleHaptics;
+    public Button NoAdsButton;
     public GameObject ZenModeObj;
     public CanvasGroup NotifCanvasGroup;
 
@@ -29,13 +30,20 @@ public class HomeMenu : MonoBehaviour
         TapToStartButton.onClick.AddListener(handleStartButtonPressed);
 
         StartText.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
-        NotifCanvasGroup.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+
+        if (NotifCanvasGroup != null)
+        {
+            NotifCanvasGroup.DOFade(0f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+        }
 
         // Show/Hide cheat menu
         CheatMenu.SetActive(GameManager.instance.CheatMenuEnabled);
-        setAdsText();
+
         setHaptics();
         setZenMode();
+        setNoAds();
+
+        GlobalEvents.AdsStatusChanged.AddListener(setNoAds);
     }
 
     private void setZenMode()
@@ -69,6 +77,34 @@ public class HomeMenu : MonoBehaviour
             PlayerState.SetBool(PlayerState.HAPTICS, Taptic.tapticOn);
             Taptic.Default();
         }
+    }
+
+    public void OnSettings()
+    {
+
+    }
+
+    private void setNoAds()
+    {
+        NoAdsButton.gameObject.SetActive(GameManager.AdsEnabled());
+        setAdsText();
+    }
+
+    public void OnPurchaseNoAds()
+    {
+        if (GameManager.instance.CheatMenuEnabled)
+        {
+            GameManager.SetAds(false);
+        }
+        else
+        {
+            GameManager.instance.IAP.BuyNoAds();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GlobalEvents.AdsStatusChanged.RemoveListener(setNoAds);
     }
 
     // ===== CHEATS SECTION ===== //
@@ -110,8 +146,8 @@ public class HomeMenu : MonoBehaviour
 
     public void CHEAT_ToggleAds()
     {
-        GameManager.instance.AdsEnabled = !GameManager.instance.AdsEnabled;
-        setAdsText();
+        bool toggle = !GameManager.AdsEnabled();
+        GameManager.SetAds(toggle);
     }
 
     public void CHEAT_ToggleUI()
@@ -126,7 +162,7 @@ public class HomeMenu : MonoBehaviour
     {
         if(AdsText != null)
         {
-            AdsText.text = GameManager.instance.AdsEnabled ? "Turn Ads Off" : "Turn Ads On";
+            AdsText.text = GameManager.AdsEnabled() ? "Turn Ads Off" : "Turn Ads On";
         }
     }
 }

@@ -13,6 +13,7 @@ public class PlayerState
 {
     public const string LEVEL = "lvl";
     public const string HAPTICS = "haptics";
+    public const string AD_BLOCK = "ad_block";
 
     public static void StartLevel(int levelNum)
     {

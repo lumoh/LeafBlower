@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [Header("Config Vars")]
     public int MaxLevel = 1;
     public bool CheatMenuEnabled;
-    public bool AdsEnabled;
     public int TargetFrameRate = 60;
     public int SolverIterations = 5;
     public bool ParticlesEnabled;
@@ -20,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Special covid prefab")]
     public GameObject CovidPrefab;
+
+    [Header("IAP Manager")]
+    public IAPManager IAP;
 
     public int LevelNum
     {
@@ -124,6 +126,19 @@ public class GameManager : MonoBehaviour
     {
         bool isZen = GameManager.instance != null && GameManager.instance.Level != null && GameManager.instance.Level.IsZen;
         return isZen;
+    }
+
+    public static bool AdsEnabled()
+    {
+        bool enabled = !PlayerState.GetBool(PlayerState.AD_BLOCK);
+        return enabled;
+    }
+
+    public static void SetAds(bool enabled)
+    {
+        Debug.Log("Ads are now " + (enabled ? "ON" : "OFF"));
+        PlayerState.SetBool(PlayerState.AD_BLOCK, !enabled);
+        GlobalEvents.AdsStatusChanged.Invoke();
     }
 
     private void handleWinLevel()

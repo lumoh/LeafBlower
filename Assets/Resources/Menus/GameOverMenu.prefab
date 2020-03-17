@@ -293,7 +293,7 @@ PrefabInstance:
     - target: {fileID: 5718792541340672346, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
-      value: womp womp :'(
+      value: You have been infected!
       objectReference: {fileID: 0}
     - target: {fileID: 5667114489218076523, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}

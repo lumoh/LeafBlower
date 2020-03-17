@@ -853,10 +853,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 0ce292f1-e581-4eab-8ad1-28c1023ea694
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Block Blower
+  organizationId: kanekoa
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

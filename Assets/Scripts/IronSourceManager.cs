@@ -82,7 +82,7 @@ public class IronSourceManager : MonoBehaviour
     {
         if (_ironSourceInit)
         {
-            if (GameManager.instance.AdsEnabled)
+            if (GameManager.AdsEnabled())
             {
                 IronSource.Agent.displayBanner();
             }
@@ -97,7 +97,7 @@ public class IronSourceManager : MonoBehaviour
     {
         _interstitialFailedLoad = false;
 
-        if (GameManager.instance.AdsEnabled && _ironSourceInit)
+        if (GameManager.AdsEnabled() && _ironSourceInit)
         {
             IronSource.Agent.loadInterstitial();
         }
@@ -121,7 +121,7 @@ public class IronSourceManager : MonoBehaviour
     {
         MenuManager.ShowLoadingScreen(() =>
         {
-            if (GameManager.instance.AdsEnabled && _ironSourceInit)
+            if (GameManager.AdsEnabled() && _ironSourceInit)
             {
                 if (_rewardedVideoAvailability && rollForAd())
                 {
@@ -143,7 +143,7 @@ public class IronSourceManager : MonoBehaviour
     {
         MenuManager.ShowLoadingScreen(() =>
         {
-            if (rollForAd() && _ironSourceInit && GameManager.instance.AdsEnabled && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
+            if (rollForAd() && _ironSourceInit && GameManager.AdsEnabled() && IronSource.Agent.isInterstitialReady() && !_interstitialFailedLoad)
             {
                 IronSource.Agent.showInterstitial();
             }
