@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
     public const string LOADING_MENU = "LoadingMenu";
     public const string FAKE_AD = "FakeAd";
     public const string SETTINGS = "SettingsMenu";
+    public const string SUCCESS = "SuccessMenu";
+    public const string FAILED = "FailedMenu";
 
     private static LoadingMenu _loadingMenu;
 

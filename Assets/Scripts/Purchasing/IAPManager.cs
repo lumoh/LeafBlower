@@ -56,11 +56,13 @@ public class IAPManager : MonoBehaviour, IStoreListener
             else
             {
                 Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+                GlobalEvents.PurchaseFailed.Invoke();
             }
         }
         else
         {
             Debug.Log("BuyProductID FAIL. Not initialized.");
+            GlobalEvents.PurchaseFailed.Invoke();
         }
     }
 
@@ -115,10 +117,12 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             GameManager.SetAds(false);
+            GlobalEvents.PurchaseComplete.Invoke();
         }
         else
         {
             Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
+            GlobalEvents.PurchaseFailed.Invoke();
         }
 
         return PurchaseProcessingResult.Complete;
@@ -127,5 +131,6 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
     {
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
+        GlobalEvents.PurchaseFailed.Invoke();
     }
 }

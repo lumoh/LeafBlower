@@ -18,4 +18,6 @@ public class GlobalEvents
     public static UnityEvent LeafCollected = new UnityEvent();
     public static UnityEvent AdsStatusChanged = new UnityEvent();
     public static MyStringEvent MenuPopped = new MyStringEvent();
+    public static UnityEvent PurchaseComplete = new UnityEvent();
+    public static UnityEvent PurchaseFailed = new UnityEvent();
 }
