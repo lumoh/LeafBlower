@@ -4876,8 +4876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3d8ec1c4e3348a5a27bf6fc9367253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CovidPrefab: {fileID: 3287986638730549179, guid: 644452d6b22c54654b0b6bda091c75cb,
-    type: 3}
   Mesh: {fileID: 8621689079150012596}
   LeafMaterials:
   - {fileID: 2100000, guid: 6ed10d50081334e9d85f43d1397a7a10, type: 2}
