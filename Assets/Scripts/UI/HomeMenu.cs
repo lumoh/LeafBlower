@@ -23,6 +23,7 @@ public class HomeMenu : MonoBehaviour
     public TMP_Text AdsText;
 
     private bool showHudState;
+
     private const float PURCHASE_TIMEOUT = 60f;
 
     // Start is called before the first frame update
