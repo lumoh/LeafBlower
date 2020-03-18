@@ -28,31 +28,6 @@ public class FacebookManager : MonoBehaviour
         GlobalEvents.WinLevel.AddListener(handleWinLevel);
     }
 
-    // Unity will call OnApplicationPause(false) when an app is resumed
-    // from the background
-    void OnApplicationPause(bool pauseStatus)
-    {
-        /*
-        // Check the pauseStatus to see if we are in the foreground
-        // or background
-        if (!pauseStatus)
-        {
-            //app resume
-            if (FB.IsInitialized)
-            {
-                FB.ActivateApp();
-            }
-            else
-            {
-                //Handle FB.Init
-                FB.Init(() => {
-                    FB.ActivateApp();
-                });
-            }
-        }
-        */
-    }
-
     private void handleWinLevel()
     {
         if (GameManager.instance != null && GameManager.instance.Level != null)
