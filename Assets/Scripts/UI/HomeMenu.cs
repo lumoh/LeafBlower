@@ -23,7 +23,7 @@ public class HomeMenu : MonoBehaviour
     public TMP_Text AdsText;
 
     private bool showHudState;
-    private const float PURCHASE_TIMEOUT = 20f;
+    private const float PURCHASE_TIMEOUT = 60f;
 
     // Start is called before the first frame update
     void Start()
@@ -104,31 +104,19 @@ public class HomeMenu : MonoBehaviour
 
     public void OnPurchaseNoAds()
     {
-        MenuManager.ShowLoadingScreen();
         GlobalEvents.PurchaseComplete.AddListener(handlePurchaseSuccess);
         GlobalEvents.PurchaseFailed.AddListener(handlePurchaseFailed);
-        GameManager.instance.IAP.BuyNoAds();
-        StartCoroutine(purchaseTimeout());
+        GlobalEvents.StartPurchase.AddListener(handleStartPurchase);
 
-        /*
-        if (GameManager.instance.CheatMenuEnabled)
-        {
-            MenuManager.ShowLoadingScreen(() =>
-            {
-                GameManager.SetAds(false);
-                MenuManager.RemoveLoadingScreen();
-                MenuManager.PushMenu(MenuManager.SUCCESS);
-            });            
-        }
-        else
-        {
-            MenuManager.ShowLoadingScreen();
-            GlobalEvents.PurchaseComplete.AddListener(handlePurchaseSuccess);
-            GlobalEvents.PurchaseFailed.AddListener(handlePurchaseFailed);
-            GameManager.instance.IAP.BuyNoAds();
-            StartCoroutine(purchaseTimeout());
-        }
-        */
+        MenuManager.ShowLoadingScreen();
+
+        GameManager.instance.IAP.BuyNoAds();
+    }
+
+    private void handleStartPurchase()
+    {
+        GlobalEvents.StartPurchase.RemoveListener(handleStartPurchase);
+        StartCoroutine(purchaseTimeout());
     }
 
     private IEnumerator purchaseTimeout()
@@ -142,6 +130,8 @@ public class HomeMenu : MonoBehaviour
     {
         GlobalEvents.PurchaseComplete.RemoveListener(handlePurchaseSuccess);
         GlobalEvents.PurchaseFailed.RemoveListener(handlePurchaseFailed);
+        GlobalEvents.StartPurchase.RemoveListener(handleStartPurchase);
+        StopCoroutine(purchaseTimeout());
 
         MenuManager.RemoveLoadingScreen();
         MenuManager.PushMenu(MenuManager.SUCCESS);
@@ -151,6 +141,8 @@ public class HomeMenu : MonoBehaviour
     {
         GlobalEvents.PurchaseComplete.RemoveListener(handlePurchaseSuccess);
         GlobalEvents.PurchaseFailed.RemoveListener(handlePurchaseFailed);
+        GlobalEvents.StartPurchase.RemoveListener(handleStartPurchase);
+        StopCoroutine(purchaseTimeout());
 
         MenuManager.RemoveLoadingScreen();
         MenuManager.PushMenu(MenuManager.FAILED);
@@ -159,6 +151,10 @@ public class HomeMenu : MonoBehaviour
     private void OnDestroy()
     {
         GlobalEvents.AdsStatusChanged.RemoveListener(setNoAds);
+        GlobalEvents.PurchaseComplete.RemoveListener(handlePurchaseSuccess);
+        GlobalEvents.PurchaseFailed.RemoveListener(handlePurchaseFailed);
+        GlobalEvents.StartPurchase.RemoveListener(handleStartPurchase);
+        StopCoroutine(purchaseTimeout());
     }
 
     // ===== CHEATS SECTION ===== //

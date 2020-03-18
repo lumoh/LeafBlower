@@ -50,6 +50,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
             Product product = storeController.products.WithID(productId);
             if (product != null && product.availableToPurchase)
             {
+                GlobalEvents.StartPurchase.Invoke();
                 Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
                 storeController.InitiatePurchase(product);
             }
@@ -71,6 +72,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         if (!IsInitialized())
         {
             Debug.Log("RestorePurchases FAIL. Not initialized.");
+            GlobalEvents.PurchaseFailed.Invoke();
             return;
         }
 
@@ -85,12 +87,14 @@ public class IAPManager : MonoBehaviour, IStoreListener
                 // The first phase of restoration. If no more responses are received on ProcessPurchase then 
                 // no purchases are available to be restored.
                 Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+                GlobalEvents.PurchaseComplete.Invoke();
             });
         }
         else
         {
             // We are not running on an Apple device. No work is necessary to restore purchases.
             Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+            GlobalEvents.PurchaseFailed.Invoke();
         }
     }
 

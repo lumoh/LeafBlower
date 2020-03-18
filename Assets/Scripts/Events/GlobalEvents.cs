@@ -20,4 +20,5 @@ public class GlobalEvents
     public static MyStringEvent MenuPopped = new MyStringEvent();
     public static UnityEvent PurchaseComplete = new UnityEvent();
     public static UnityEvent PurchaseFailed = new UnityEvent();
+    public static UnityEvent StartPurchase = new UnityEvent();
 }

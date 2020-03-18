@@ -24,15 +24,6 @@ public class IronSourceManager : MonoBehaviour
         Debug.Log("unity-script: IronSource.Agent.getAdvertiserId : " + id);
         IronSource.Agent.validateIntegration();
 
-        /*
-        IronSource.Agent.init(
-            YOUR_APP_KEY,
-            IronSourceAdUnits.BANNER,
-            IronSourceAdUnits.INTERSTITIAL,
-            IronSourceAdUnits.REWARDED_VIDEO
-        );
-        */
-
         IronSource.Agent.init(YOUR_APP_KEY);
 
         // Add Banner Events
@@ -65,6 +56,7 @@ public class IronSourceManager : MonoBehaviour
         GlobalEvents.LoseLevel.AddListener(hideBanner);
         GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
         GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
+        GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
 
         StartCoroutine(loadBannerAndInterstitial());
     }
@@ -108,6 +100,14 @@ public class IronSourceManager : MonoBehaviour
         if (_ironSourceInit)
         {
             IronSource.Agent.hideBanner();
+        }
+    }
+
+    private void handleAdsChanged()
+    {
+        if(!GameManager.AdsEnabled())
+        {
+            hideBanner();
         }
     }
 

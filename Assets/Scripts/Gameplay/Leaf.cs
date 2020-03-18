@@ -36,7 +36,13 @@ public class Leaf : MonoBehaviour
     {
         _groundMask = 1 << Layers.GROUND;
 
-        if (!GameManager.instance.ParticlesEnabled)
+        if (GameManager.instance.ParticlesEnabled)
+        {            
+            var ps = transform.GetChild(0).GetComponent<ParticleSystem>();
+            var main = ps.main;
+            main.startColor = Color.green;
+        }
+        else
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -87,7 +93,7 @@ public class Leaf : MonoBehaviour
             {
                 if(GameManager.instance.DestroyWhenCollected)
                 {                    
-                    Destroy(gameObject);
+                    Destroy(gameObject, 2f);
                 }
                 else
                 {
