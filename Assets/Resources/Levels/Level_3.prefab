@@ -143,7 +143,7 @@ MonoBehaviour:
   PlatformsParent: {fileID: 5268020414253622316}
   LeavesParent: {fileID: 9120404174399989778}
   NumLeaves: 0
-  Seconds: 20
+  Seconds: 45
   IsZen: 0
 --- !u!1 &6516492302786095664
 GameObject:
@@ -283,17 +283,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7103886809236997735, guid: 0c498b05850954e80a5d1b4012fb65ff,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4641238268979625957, guid: 0c498b05850954e80a5d1b4012fb65ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4890237566397026251, guid: 0c498b05850954e80a5d1b4012fb65ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103886809236997735, guid: 0c498b05850954e80a5d1b4012fb65ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -373,17 +373,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7103886809236997735, guid: 0c498b05850954e80a5d1b4012fb65ff,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4641238268979625957, guid: 0c498b05850954e80a5d1b4012fb65ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4890237566397026251, guid: 0c498b05850954e80a5d1b4012fb65ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103886809236997735, guid: 0c498b05850954e80a5d1b4012fb65ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -848,12 +848,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7103886809236997735, guid: 0c498b05850954e80a5d1b4012fb65ff,
+    - target: {fileID: 4641238268979625957, guid: 0c498b05850954e80a5d1b4012fb65ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4641238268979625957, guid: 0c498b05850954e80a5d1b4012fb65ff,
+    - target: {fileID: 7103886809236997735, guid: 0c498b05850954e80a5d1b4012fb65ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
