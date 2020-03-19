@@ -32,24 +32,28 @@ public class SettingsMenu : MonoBehaviour
     {
         PlayerState.SetBool(PlayerState.MUSIC_MUTED, true);
         SoundManager.instance.MuteMusic(true);
+        SoundManager.Button();
     }
 
     public void MusicOn()
     {
         PlayerState.SetBool(PlayerState.MUSIC_MUTED, false);
         SoundManager.instance.MuteMusic(false);
+        SoundManager.Button();
     }
 
     public void SFXOn()
     {
         PlayerState.SetBool(PlayerState.SFX_MUTED, false);
         SoundManager.instance.MuteSFX(false);
+        SoundManager.Button();
     }
 
     public void SFXOff()
     {
         PlayerState.SetBool(PlayerState.SFX_MUTED, true);
         SoundManager.instance.MuteSFX(true);
+        SoundManager.Button();
     }
     
 

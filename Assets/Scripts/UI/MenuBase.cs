@@ -59,6 +59,7 @@ public class MenuBase : MonoBehaviour
 
     public void Close()
     {
+        SoundManager.Button();
         MenuManager.PopMenu(gameObject);
     }
 }
