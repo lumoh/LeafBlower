@@ -86,6 +86,9 @@ public class SoundManager : MonoBehaviour
         {
             _audioSources[i] = createAudioSource();
         }
+
+        MuteSFX(PlayerState.GetBool(PlayerState.SFX_MUTED));
+        MuteMusic(PlayerState.GetBool(PlayerState.MUSIC_MUTED));
     }
 
     private AudioSource createAudioSource(bool music = false)

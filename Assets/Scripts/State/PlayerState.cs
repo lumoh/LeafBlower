@@ -14,6 +14,8 @@ public class PlayerState
     public const string LEVEL = "lvl";
     public const string HAPTICS = "haptics";
     public const string AD_BLOCK = "ad_block";
+    public const string SFX_MUTED = "sfx";
+    public const string MUSIC_MUTED = "music";
 
     public static void StartLevel(int levelNum)
     {
