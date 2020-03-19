@@ -35,6 +35,12 @@ public class Level : MonoBehaviour
         }
 	}
 
+    public Leaf GetRandomLeaf()
+    {
+        Leaf leaf = _leafPiles[0].GetLeaves()[0];
+        return leaf;
+    }
+
     private void fetchLeaves()
 	{
         LeafPile[] piles = LeavesParent.GetComponentsInChildren<LeafPile>();

@@ -18,6 +18,11 @@ public class LeafPile : MonoBehaviour
         SetColors();
     }
 
+    public List<Leaf> GetLeaves()
+    {
+        return _leaves;
+    }
+
     /// <summary>
     /// Set random colors on the blocks
     /// </summary>
