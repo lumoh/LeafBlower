@@ -22,6 +22,7 @@ public class FacebookManager : MonoBehaviour
             //Handle FB.Init
             FB.Init(() => {
                 FB.ActivateApp();
+                FB.LogAppEvent(Evt.APP_START);
             });
         }
 

@@ -18,47 +18,50 @@ public class IronSourceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        IronSourceConfig.Instance.setClientSideCallbacks(true);
+        if (GameManager.AdsEnabled())
+        {
+            IronSourceConfig.Instance.setClientSideCallbacks(true);
 
-        string id = IronSource.Agent.getAdvertiserId();
-        Debug.Log("unity-script: IronSource.Agent.getAdvertiserId : " + id);
-        IronSource.Agent.validateIntegration();
+            string id = IronSource.Agent.getAdvertiserId();
+            Debug.Log("unity-script: IronSource.Agent.getAdvertiserId : " + id);
+            IronSource.Agent.validateIntegration();
 
-        IronSource.Agent.init(YOUR_APP_KEY);
+            IronSource.Agent.init(YOUR_APP_KEY);
 
-        // Add Banner Events
-        IronSourceEvents.onBannerAdLoadedEvent += BannerAdLoadedEvent;
-        IronSourceEvents.onBannerAdLoadFailedEvent += BannerAdLoadFailedEvent;
-        IronSourceEvents.onBannerAdClickedEvent += BannerAdClickedEvent;
-        IronSourceEvents.onBannerAdScreenPresentedEvent += BannerAdScreenPresentedEvent;
-        IronSourceEvents.onBannerAdScreenDismissedEvent += BannerAdScreenDismissedEvent;
-        IronSourceEvents.onBannerAdLeftApplicationEvent += BannerAdLeftApplicationEvent;
+            // Add Banner Events
+            IronSourceEvents.onBannerAdLoadedEvent += BannerAdLoadedEvent;
+            IronSourceEvents.onBannerAdLoadFailedEvent += BannerAdLoadFailedEvent;
+            IronSourceEvents.onBannerAdClickedEvent += BannerAdClickedEvent;
+            IronSourceEvents.onBannerAdScreenPresentedEvent += BannerAdScreenPresentedEvent;
+            IronSourceEvents.onBannerAdScreenDismissedEvent += BannerAdScreenDismissedEvent;
+            IronSourceEvents.onBannerAdLeftApplicationEvent += BannerAdLeftApplicationEvent;
 
-        IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
-        IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
-        IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
-        IronSourceEvents.onInterstitialAdShowFailedEvent += InterstitialAdShowFailedEvent;
-        IronSourceEvents.onInterstitialAdClickedEvent += InterstitialAdClickedEvent;
-        IronSourceEvents.onInterstitialAdOpenedEvent += InterstitialAdOpenedEvent;
-        IronSourceEvents.onInterstitialAdClosedEvent += InterstitialAdClosedEvent;
+            IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
+            IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
+            IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
+            IronSourceEvents.onInterstitialAdShowFailedEvent += InterstitialAdShowFailedEvent;
+            IronSourceEvents.onInterstitialAdClickedEvent += InterstitialAdClickedEvent;
+            IronSourceEvents.onInterstitialAdOpenedEvent += InterstitialAdOpenedEvent;
+            IronSourceEvents.onInterstitialAdClosedEvent += InterstitialAdClosedEvent;
 
-        IronSourceEvents.onRewardedVideoAdOpenedEvent += RewardedVideoAdOpenedEvent;
-        IronSourceEvents.onRewardedVideoAdClosedEvent += RewardedVideoAdClosedEvent;
-        IronSourceEvents.onRewardedVideoAvailabilityChangedEvent += RewardedVideoAvailabilityChangedEvent;
-        IronSourceEvents.onRewardedVideoAdStartedEvent += RewardedVideoAdStartedEvent;
-        IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
-        IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
-        IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
+            IronSourceEvents.onRewardedVideoAdOpenedEvent += RewardedVideoAdOpenedEvent;
+            IronSourceEvents.onRewardedVideoAdClosedEvent += RewardedVideoAdClosedEvent;
+            IronSourceEvents.onRewardedVideoAvailabilityChangedEvent += RewardedVideoAvailabilityChangedEvent;
+            IronSourceEvents.onRewardedVideoAdStartedEvent += RewardedVideoAdStartedEvent;
+            IronSourceEvents.onRewardedVideoAdEndedEvent += RewardedVideoAdEndedEvent;
+            IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
+            IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
 
-        GlobalEvents.StartLevel.AddListener(handleStartLevel);
-        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
-        GlobalEvents.WinLevel.AddListener(hideBanner);
-        GlobalEvents.LoseLevel.AddListener(hideBanner);
-        GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
-        GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
-        GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
+            GlobalEvents.StartLevel.AddListener(handleStartLevel);
+            GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
+            GlobalEvents.WinLevel.AddListener(hideBanner);
+            GlobalEvents.LoseLevel.AddListener(hideBanner);
+            GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
+            GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
+            GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
 
-        StartCoroutine(loadBannerAndInterstitial());
+            StartCoroutine(loadBannerAndInterstitial());
+        }
     }
 
     IEnumerator loadBannerAndInterstitial()
@@ -115,7 +118,8 @@ public class IronSourceManager : MonoBehaviour
     {
         MenuManager.ShowLoadingScreen(() =>
         {
-            if (GameManager.AdsEnabled() && _ironSourceInit)
+            int level = PlayerState.GetLevel();
+            if (GameManager.AdsEnabled() && _ironSourceInit && level >= 3)
             {
                 if (_rewardedVideoAvailability)
                 {

@@ -69,9 +69,7 @@ public class AppCenterAnalytics : IAnalytics
 
     public void AppStart()
     {
-        Analytics.TrackEvent(Evt.APP_START);
-
-        FB.LogAppEvent(Evt.APP_START);
+        Analytics.TrackEvent(Evt.APP_START);        
     }
 
     public void AppQuit()
