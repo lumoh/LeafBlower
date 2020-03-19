@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4511671457345868761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266179548942729047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e084e470a1349658316097af92ec26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 4, y: 0, z: 0}
+  MoveDuration: 5
+  PauseDuration: 0
+  InitialDelay: 0
+  WaitForStart: 0
+--- !u!114 &2225298580608849841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720501459490277644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e084e470a1349658316097af92ec26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 4, y: 0, z: 0}
+  MoveDuration: 5
+  PauseDuration: 0
+  InitialDelay: 0
+  WaitForStart: 0
 --- !u!1 &4716301365116744162
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +177,8 @@ MonoBehaviour:
   PlatformsParent: {fileID: 5268020414253622316}
   LeavesParent: {fileID: 9120404174399989778}
   NumLeaves: 0
-  Seconds: 30
+  Seconds: 35
+  IsZen: 0
 --- !u!1 &6516492302786095664
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,40 +216,6 @@ Transform:
   m_Father: {fileID: 4716301365518535812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2225298580608849841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3720501459490277644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e084e470a1349658316097af92ec26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Offset: {x: 4, y: 0, z: 0}
-  MoveDuration: 5
-  PauseDuration: 0
-  InitialDelay: 0
-  WaitForStart: 0
---- !u!114 &4511671457345868761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3266179548942729047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e084e470a1349658316097af92ec26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Offset: {x: 4, y: 0, z: 0}
-  MoveDuration: 5
-  PauseDuration: 0
-  InitialDelay: 0
-  WaitForStart: 0
 --- !u!114 &6324809210676403160
 MonoBehaviour:
   m_ObjectHideFlags: 0

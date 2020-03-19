@@ -52,16 +52,16 @@ public class IronSourceManager : MonoBehaviour
             IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
             IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
 
-            GlobalEvents.StartLevel.AddListener(handleStartLevel);
-            GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
-            GlobalEvents.WinLevel.AddListener(hideBanner);
-            GlobalEvents.LoseLevel.AddListener(hideBanner);
-            GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
-            GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
-            GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
-
             StartCoroutine(loadBannerAndInterstitial());
         }
+
+        GlobalEvents.StartLevel.AddListener(handleStartLevel);
+        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
+        GlobalEvents.WinLevel.AddListener(hideBanner);
+        GlobalEvents.LoseLevel.AddListener(hideBanner);
+        GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
+        GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
+        GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
     }
 
     IEnumerator loadBannerAndInterstitial()
