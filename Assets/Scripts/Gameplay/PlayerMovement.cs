@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private int _groundMask;
     private float _yVelocity;
     private MovingPlatform _movingPlatform;
+    private bool _isMoving;
 
     void Awake()
     {
@@ -80,7 +81,26 @@ public class PlayerMovement : MonoBehaviour
             if (_moveDirection.sqrMagnitude > characterController.minMoveDistance)
             {
                 characterController.Move(_moveDirection * Time.deltaTime);
+                SetMoving(true);
             }
+            else
+            {
+                SetMoving(false);
+            }
+        }
+    }
+
+    private void SetMoving(bool isMoving)
+    {
+        if (_isMoving && !isMoving)
+        {
+            _isMoving = false;
+            SoundManager.StopMove();
+        }
+        else if(!_isMoving && isMoving)
+        {
+            _isMoving = true;
+            SoundManager.Move();
         }
     }
 

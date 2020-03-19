@@ -53,7 +53,7 @@ public class AppCenterAnalytics : IAnalytics
         Dictionary<string, string> data = new Dictionary<string, string>();
         data.Add(EvtParam.LEVEL, level.ToString());
         data.Add(EvtParam.LOSE_TYPE, loseType);
-        data.Add(EvtParam.LEAVES_LEFT, HUD.instance.GetLeavesRemaining().ToString());
+        data.Add(EvtParam.GOALS_LEFT, HUD.instance.GetLeavesRemaining().ToString());
         data.Add(EvtParam.TIME_LEFT, Timer.instance.GetSecondsLeft().ToString("F"));
         data.Add(EvtParam.RECORD, JsonUtility.ToJson(PlayerState.GetLevelRecord(level)));
         Analytics.TrackEvent(Evt.LOSE_LEVEL, data);
@@ -61,7 +61,7 @@ public class AppCenterAnalytics : IAnalytics
         Dictionary<string, object> fbData = new Dictionary<string, object>();
         fbData.Add(EvtParam.LEVEL, level.ToString());
         fbData.Add(EvtParam.LOSE_TYPE, loseType);
-        fbData.Add(EvtParam.LEAVES_LEFT, HUD.instance.GetLeavesRemaining().ToString());
+        fbData.Add(EvtParam.GOALS_LEFT, HUD.instance.GetLeavesRemaining().ToString());
         fbData.Add(EvtParam.TIME_LEFT, Timer.instance.GetSecondsLeft().ToString("F"));
         fbData.Add(EvtParam.RECORD, JsonUtility.ToJson(PlayerState.GetLevelRecord(level)));
         FB.LogAppEvent(Evt.LOSE_LEVEL, null, fbData);

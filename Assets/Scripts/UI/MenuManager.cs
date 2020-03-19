@@ -45,11 +45,11 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public static void RemoveLoadingScreen()
+    public static void RemoveLoadingScreen(System.Action cb = null)
     {
         if(_loadingMenu != null)
         {
-            _loadingMenu.FadeOut();
+            _loadingMenu.FadeOut(cb);
         }
     }
 }

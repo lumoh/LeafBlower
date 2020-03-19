@@ -119,7 +119,11 @@ public class GameManager : MonoBehaviour
 
         MenuManager.PushMenu(MenuManager.HOME);
         GlobalEvents.LevelLoaded.Invoke();
-        MenuManager.RemoveLoadingScreen();
+        MenuManager.RemoveLoadingScreen(()=>
+        {
+            SoundManager.instance.PlayMusic("music", 1f, false, true);
+        });
+
     }
 
     public static bool IsZenLevel()

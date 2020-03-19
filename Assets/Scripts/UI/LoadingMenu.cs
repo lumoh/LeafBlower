@@ -27,10 +27,11 @@ public class LoadingMenu : MonoBehaviour
         }
     }
 
-    public void FadeOut()
+    public void FadeOut(System.Action cb)
     {
         canvasGroup.DOFade(0f, FadeDuration).OnComplete(() =>
         {
+            cb?.Invoke();
             Destroy(gameObject);
         }).SetDelay(FadeOutDelay);
     }

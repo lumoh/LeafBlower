@@ -86,6 +86,7 @@ public class HomeMenu : MonoBehaviour
         gameObject.SetActive(false);
         MenuManager.PushMenu(MenuManager.SETTINGS);
         GlobalEvents.MenuPopped.AddListener(handleSettingsClosed);
+        SoundManager.Button();
     }
 
     private void handleSettingsClosed(string menuName)
@@ -116,6 +117,7 @@ public class HomeMenu : MonoBehaviour
 
     private void handleStartPurchase()
     {
+        SoundManager.Button();
         GlobalEvents.StartPurchase.RemoveListener(handleStartPurchase);
         StartCoroutine(purchaseTimeout());
     }
