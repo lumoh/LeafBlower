@@ -19,11 +19,13 @@ public class GoalPointerManager : MonoBehaviour
 
     void handleStart()
     {
-        Leaf leaf = GameManager.instance.Level.GetRandomLeaf();
-        _targets.Add(leaf);
-        var arrow = Instantiate(ArrowClone, ArrowClone.transform.parent);
-        arrow.gameObject.SetActive(true);
-        _arrows.Add(arrow);
+        var leafTargets = GameManager.instance.Level.GetPointers();
+        foreach (var leaf in leafTargets)
+        {
+            _targets.Add(leaf);
+            var arrow = Instantiate(ArrowClone, ArrowClone.transform.parent);
+            _arrows.Add(arrow);
+        }
     }
 
     // Update is called once per frame

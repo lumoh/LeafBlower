@@ -17,6 +17,8 @@ public class Leaf : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider col;
 
+    public UnityEvent DestroyedEvent = new UnityEvent();
+
     private bool _isCollected;
     private int _groundMask;
     private GameObject _covidObj;
@@ -83,9 +85,6 @@ public class Leaf : MonoBehaviour
     {
         if(!_isCollected)
         {
-            //int deadzoneMask = 1 << Layers.DEADZONE;
-            //_isCollected = Physics.Raycast(transform.position, Vector3.down, 1.5f, deadzoneMask);
-
             // much more efficient than raycast
             _isCollected = transform.position.y < -1f;
 
@@ -99,8 +98,10 @@ public class Leaf : MonoBehaviour
                 {
                     transform.parent = GameManager.instance.Level.LeavesParent;
                 }
+
                 SoundManager.instance.PlaySFX("tick2");
                 GlobalEvents.LeafCollected.Invoke();
+                DestroyedEvent.Invoke();
             }
         }
     }

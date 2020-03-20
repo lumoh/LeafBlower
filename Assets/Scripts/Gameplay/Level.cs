@@ -35,6 +35,22 @@ public class Level : MonoBehaviour
         }
 	}
 
+    public List<Leaf> GetPointers()
+    {
+        List<Leaf> pointers = new List<Leaf>();
+        if (_leafPiles != null)
+        {
+            foreach (var pile in _leafPiles)
+            {
+                Leaf pointer = pile.GetPointer();
+                pointers.Add(pointer);
+            }
+        }
+
+        return pointers;
+    }
+
+
     public Leaf GetRandomLeaf()
     {
         Leaf leaf = _leafPiles[0].GetLeaves()[0];

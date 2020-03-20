@@ -8,7 +8,7 @@ public class FollowCamera : MonoBehaviour
     public Vector3 TargetOffset;
     public Vector3 Offset;
     public float LeadOffset;
-    public float DistanceDamp;    
+    public float DistanceDamp;
 
     [HideInInspector]
     public Vector3 Velocity;
@@ -21,6 +21,12 @@ public class FollowCamera : MonoBehaviour
     private void handleLevelLoaded()
     {
         Target = GameManager.instance.PlayerObj.transform;
+        if (Target != null)
+        {
+            Vector3 toPos = Target.position + Offset + (Target.forward * -1 * LeadOffset);
+            transform.position = toPos;
+            transform.LookAt(Target.position, Target.up);
+        }
     }
 
     void LateUpdate()
@@ -35,7 +41,6 @@ public class FollowCamera : MonoBehaviour
             Vector3 toPos = Target.position + Offset + (Target.forward * -1* LeadOffset);
             Vector3 curPos = Vector3.SmoothDamp(transform.position, toPos, ref Velocity, DistanceDamp);
             transform.position = curPos;
-            transform.LookAt(Target.position + TargetOffset, Target.up);
         }
     }
 }
