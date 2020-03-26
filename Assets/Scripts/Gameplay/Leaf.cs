@@ -9,19 +9,21 @@ public class Leaf : MonoBehaviour
     public MeshRenderer Mesh;
     public List<Material> LeafMaterials;
 
-    public const float GUST_INVTERVAL = 1f;
-    public const float GUST_FORCE = 2f;
     public const float WIDTH = 0.1f;
-    public const float IDLE_TIME = 5f;
+    public const float IDLE_TIME = 1f;
 
     public Rigidbody rb;
     public BoxCollider col;
 
     public UnityEvent DestroyedEvent = new UnityEvent();
+    public UnityEvent BlownEvent = new UnityEvent();
 
     private bool _isCollected;
     private int _groundMask;
     private GameObject _covidObj;
+    private float _idleTime;
+    private bool _addedAsPointer;
+    private bool _blownOnce;
 
     void Awake()
     {
@@ -78,6 +80,12 @@ public class Leaf : MonoBehaviour
             Vector3 variance = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 5f), Random.Range(-1, 1f));
             rb.AddForce(variance * force / 2f, ForceMode.Force);
             rb.AddTorque(variance);
+
+            _idleTime = 0f;
+            if(!_blownOnce)
+            {
+                _blownOnce = true;
+            }
         }
     }
 
@@ -96,12 +104,26 @@ public class Leaf : MonoBehaviour
                 }
                 else
                 {
-                    transform.parent = GameManager.instance.Level.LeavesParent;
+                    transform.parent = null; // GameManager.instance.Level.LeavesParent;
                 }
 
                 SoundManager.instance.PlaySFX("tick2");
                 GlobalEvents.LeafCollected.Invoke();
                 DestroyedEvent.Invoke();
+            }
+
+            if(rb.isKinematic)
+            {
+                _idleTime += Time.deltaTime;
+                if(_idleTime > IDLE_TIME && !_addedAsPointer && _blownOnce)
+                {
+                    _addedAsPointer = true;
+
+                    if (GoalPointerManager.instance != null)
+                    {
+                        GoalPointerManager.instance.AddTarget(this);
+                    }
+                }
             }
         }
     }
@@ -118,6 +140,7 @@ public class Leaf : MonoBehaviour
                 if (rb.velocity.sqrMagnitude < 0.05f && !rb.isKinematic)
                 {
                     rb.isKinematic = true;
+
                     if (_isCollected)
                     {
                         CancelInvoke("setPlatform");
@@ -125,6 +148,16 @@ public class Leaf : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemovePointer()
+    {
+        _addedAsPointer = false;
+    }
+
+    public bool IsResting()
+    {
+        return rb.isKinematic;
     }
 
     public bool IsCollected()

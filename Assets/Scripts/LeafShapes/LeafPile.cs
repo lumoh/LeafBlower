@@ -18,32 +18,6 @@ public class LeafPile : MonoBehaviour
     public virtual void Start()
     {
         SetColors();
-
-        selectPointer();
-    }
-
-    private void selectPointer()
-    {
-        if (_pointer == null && _leaves != null && _leaves.Count > 0)
-        { 
-            _pointer = _leaves[Random.Range(0, _leaves.Count)];
-            _pointer.DestroyedEvent.AddListener(handlePointerDestroyed);
-        }
-    }
-
-    private void handlePointerDestroyed()
-    {
-        if(_pointer != null)
-        {
-            _pointer.DestroyedEvent.RemoveListener(handlePointerDestroyed);
-            _pointer = null;
-            selectPointer();
-        }
-    }
-
-    public Leaf GetPointer()
-    {
-        return _pointer;
     }
 
     public List<Leaf> GetLeaves()
