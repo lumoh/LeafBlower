@@ -26,7 +26,7 @@ public class GoalPointerManager : MonoBehaviour
     public ArrowAndTarget LD_arrow;
     public ArrowAndTarget LU_arrow;
 
-    public Image ArrowClone;
+    public GoalPointer ArrowClone;
 
     private Camera _worldCam;
     private Camera _uiCam;
@@ -176,7 +176,7 @@ public class GoalPointerManager : MonoBehaviour
         {
             if (_targets[i] != null)
             {
-                var arrow = _targets[i].Arrow;
+                var pointer = _targets[i].Pointer;
                 var target = _targets[i].Target;
 
                 if (target != null && target.IsResting() && getZoneIndex(target.transform.position) == i)
@@ -195,23 +195,23 @@ public class GoalPointerManager : MonoBehaviour
                         if (cappedScreenPoint.y > Screen.height - SCREEN_OFFSET) cappedScreenPoint.y = Screen.height - SCREEN_OFFSET;
                         var worldPoint = _uiCam.ScreenToWorldPoint(cappedScreenPoint);
                         worldPoint.z = 0;
-                        arrow.rectTransform.position = worldPoint;
+                        pointer.rectTransform.position = worldPoint;
 
                         if(i == UP_LEFT || i == UP_RIGHT)
                         {
-                            arrow.rectTransform.localEulerAngles = new Vector3(0, 0, -90);
+                            pointer.rectTransform.localEulerAngles = new Vector3(0, 0, -90);
                         }
                         else if (i == LEFT_UP || i == LEFT_DOWN)
                         {
-                            arrow.rectTransform.localEulerAngles = new Vector3(0, 0, 0);
+                            pointer.rectTransform.localEulerAngles = new Vector3(0, 0, 0);
                         }
                         else if (i == RIGHT_UP || i == RIGHT_DOWN)
                         {
-                            arrow.rectTransform.localEulerAngles = new Vector3(0, 0, 180);
+                            pointer.rectTransform.localEulerAngles = new Vector3(0, 0, 180);
                         }
                         else if (i == DOWN_LEFT || i == DOWN_RIGHT)
                         {
-                            arrow.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
+                            pointer.rectTransform.localEulerAngles = new Vector3(0, 0, 90);
                         }
                     }
                     else
@@ -238,20 +238,20 @@ public class GoalPointerManager : MonoBehaviour
 
 public class ArrowAndTarget
 {
-    public Image Arrow;
+    public GoalPointer Pointer;
     public Leaf Target;
 
-    public ArrowAndTarget(Image arrow, Leaf target)
+    public ArrowAndTarget(GoalPointer pointer, Leaf target)
     {
-        Arrow = arrow;
+        Pointer = pointer;
         Target = target;
     }
 
     public void ShowArrow(bool show)
     {
-        if (Arrow != null)
+        if (Pointer != null)
         {
-            Arrow.gameObject.SetActive(show);
+            Pointer.gameObject.SetActive(show);
         }
     }
 }
