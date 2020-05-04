@@ -101,7 +101,8 @@ public class Leaf : MonoBehaviour
             if (_isCollected)
             {
                 if(GameManager.instance.DestroyWhenCollected)
-                {                    
+                {
+                    transform.parent = null;
                     Destroy(gameObject, 2f);
                 }
                 else

@@ -57,8 +57,7 @@ MonoBehaviour:
   ParticlesEnabled: 1
   DestroyWhenCollected: 1
   GoalPointers: 1
-  CovidPrefab: {fileID: 3287986638730549179, guid: 644452d6b22c54654b0b6bda091c75cb,
-    type: 3}
+  CovidPrefab: {fileID: 0}
   IAP: {fileID: 0}
 --- !u!114 &5724369344483721620
 MonoBehaviour:
