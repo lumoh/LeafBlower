@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 5718792541340672346, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_Text
-      value: You cleansed the area!
+      value: You cleared all the blocks!
       objectReference: {fileID: 0}
     - target: {fileID: 5667114489218076523, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
@@ -196,12 +196,12 @@ PrefabInstance:
     - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.039215688
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.827451
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}

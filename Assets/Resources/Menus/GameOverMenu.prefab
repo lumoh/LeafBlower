@@ -24,6 +24,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RetryButton
       objectReference: {fileID: 0}
+    - target: {fileID: 114864989526014820, guid: 64325a7db649f3a42be36398b9d061bd,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864989526014820, guid: 64325a7db649f3a42be36398b9d061bd,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224158144656824916, guid: 64325a7db649f3a42be36398b9d061bd,
         type: 3}
       propertyPath: m_LocalPosition.x

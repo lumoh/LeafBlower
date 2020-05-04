@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.00
+  bundleVersion: 1.01
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -166,8 +166,8 @@ PlayerSettings:
     Standalone: com.covid19.coronaviruscleaner
     iPhone: com.covid19.coronaviruscleaner
   buildNumber:
-    iPhone: 100
-  AndroidBundleVersionCode: 100
+    iPhone: 101
+  AndroidBundleVersionCode: 101
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
