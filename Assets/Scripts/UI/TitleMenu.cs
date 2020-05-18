@@ -16,7 +16,7 @@ public class TitleMenu : MonoBehaviour
         canvasGroup.DOFade(0f, FadeDuration).OnComplete(() =>
         {
             Destroy(gameObject);
-            SoundManager.instance.PlayMusic("music");
+            SoundManager.instance.PlayMusic("game");
         }).SetDelay(Delay);
 
         if (VersionText != null)

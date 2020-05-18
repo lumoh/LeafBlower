@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
 
     public static void Move()
     {
-        SoundManager.instance.PlaySFX("move", 0, true);
+        
     }
 
     public static void StopMove()

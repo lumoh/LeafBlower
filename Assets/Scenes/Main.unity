@@ -267,55 +267,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumAudioSources: 10
   Music:
-  - Name: music
+  - Name: game
     Description: 
-    AudioClip: {fileID: 8300000, guid: ce7a5a9e4e20a4cd49574a0d88a316cd, type: 3}
+    AudioClip: {fileID: 8300000, guid: d43ab4a2ae1294451a2e98a28d4185d7, type: 3}
     Volume: 0.5
     Intro: {fileID: 0}
   SFX:
-  - Name: tick2
+  - Name: bop
     Description: 
-    AudioClip: {fileID: 8300000, guid: 610a0d7a7c22e5e4ab5cb620b19941f4, type: 3}
-    Volume: 0.4
-    Variations: []
-  - Name: loaded
-    Description: 
-    AudioClip: {fileID: 8300000, guid: 16cc89a7b6d07da4fade5ad72a626b07, type: 3}
-    Volume: 0.5
+    AudioClip: {fileID: 8300000, guid: 45fcd9b2bab7ed249b009ed4aa98ac0f, type: 3}
+    Volume: 0.1
     Variations: []
   - Name: win
     Description: 
-    AudioClip: {fileID: 8300000, guid: 0edc2915aedddcd4283e2e76f72039a3, type: 3}
+    AudioClip: {fileID: 8300000, guid: 90ea130a6ba3d40f1b5b182d6a38305a, type: 3}
     Volume: 0.5
     Variations: []
   - Name: spray
     Description: 
     AudioClip: {fileID: 8300000, guid: a0106e3f58e808e47a1f343b3d719755, type: 3}
-    Volume: 1
-    Variations: []
-  - Name: tick
-    Description: 
-    AudioClip: {fileID: 8300000, guid: 45fcd9b2bab7ed249b009ed4aa98ac0f, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Variations: []
   - Name: lose
     Description: 
-    AudioClip: {fileID: 8300000, guid: 06c9627e4ce10fa4997cc10e19039978, type: 3}
+    AudioClip: {fileID: 8300000, guid: e6b0e4745837844f4a2e1dd664cde975, type: 3}
     Volume: 0.5
     Variations: []
   - Name: button
     Description: 
-    AudioClip: {fileID: 8300000, guid: 4d8463854df47194b8197916ee9d3a2a, type: 3}
-    Volume: 1
-    Variations: []
-  - Name: lose2
-    Description: 
-    AudioClip: {fileID: 8300000, guid: 31e53c64c3dacb24a9c64c60cb936592, type: 3}
-    Volume: 1
-    Variations: []
-  - Name: move
-    Description: 
-    AudioClip: {fileID: 8300000, guid: 1493d8d125421944c9c03ba81f48d30c, type: 3}
+    AudioClip: {fileID: 8300000, guid: c96dfddd9b841448a83bb59b901cf15f, type: 3}
     Volume: 1
     Variations: []
 --- !u!4 &629574431
@@ -326,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629574429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.331585, y: 113.55604, z: -9.161718}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -881,6 +861,16 @@ PrefabInstance:
       propertyPath: IAP
       value: 
       objectReference: {fileID: 869246082}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: CheatMenuEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: MaxLevel
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: World

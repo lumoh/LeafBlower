@@ -25,7 +25,7 @@ public class Level : MonoBehaviour
         fetchPlatforms();
         fetchLeaves();
 
-        Seconds = 60;
+        Seconds = Mathf.Max(60, Seconds);
     }
 
     private void fetchPlatforms()

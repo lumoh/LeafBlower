@@ -110,7 +110,7 @@ public class Leaf : MonoBehaviour
                     transform.parent = null; // GameManager.instance.Level.LeavesParent;
                 }
 
-                SoundManager.instance.PlaySFX("tick2");
+                SoundManager.instance.PlaySFX("bop");
                 GlobalEvents.LeafCollected.Invoke();
                 DestroyedEvent.Invoke();
             }

@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
         GlobalEvents.LevelLoaded.Invoke();
         MenuManager.RemoveLoadingScreen(()=>
         {
-            SoundManager.instance.PlayMusic("music", 1f, false, true);
+            SoundManager.instance.PlayMusic("game", 1f, false, true);
         });
 
     }
