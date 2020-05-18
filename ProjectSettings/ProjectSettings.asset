@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 0
-  companyName: Covid Cleaner Studios
-  productName: Coronavirus Cleaner
+  companyName: Blow Leaves Studio
+  productName: Block Blower
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.01
+  bundleVersion: 1.02
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -162,12 +162,12 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.covid19.coronaviruscleaner
-    Standalone: com.covid19.coronaviruscleaner
-    iPhone: com.covid19.coronaviruscleaner
+    Android: com.lum.leafblower
+    Standalone: com.lum.leafblower
+    iPhone: com.lum.leafblower
   buildNumber:
-    iPhone: 101
-  AndroidBundleVersionCode: 101
+    iPhone: 102
+  AndroidBundleVersionCode: 102
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
