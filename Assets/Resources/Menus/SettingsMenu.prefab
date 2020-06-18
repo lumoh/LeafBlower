@@ -1334,6 +1334,7 @@ MonoBehaviour:
   version: {fileID: 1688505656802712375}
   MusicSwitch: {fileID: 5086105579075898242}
   SFXSwitch: {fileID: 6145145921406032342}
+  RestorePurchasesButton: {fileID: 122013316658060266}
 --- !u!1 &4520451879744036036
 GameObject:
   m_ObjectHideFlags: 0

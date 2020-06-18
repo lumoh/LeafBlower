@@ -100,7 +100,7 @@ public class HomeMenu : MonoBehaviour
 
     private void setNoAds()
     {
-        NoAdsButton.gameObject.SetActive(GameManager.AdsEnabled());
+        NoAdsButton.gameObject.SetActive(GameManager.instance.IAPEnabled && GameManager.AdsEnabled());
         setAdsText();
     }
 

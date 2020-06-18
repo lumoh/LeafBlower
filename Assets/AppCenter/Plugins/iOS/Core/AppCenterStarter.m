@@ -41,7 +41,7 @@ enum StartupMode {
 
 @implementation AppCenterStarter
 
-static NSString *const kMSAppSecret = @"1fce9593-253b-40d1-92e0-c9e2db1cf27d";
+static NSString *const kMSAppSecret = @"dae4dcfb-8cfa-4015-b968-edc470847bbe";
 static NSString *const kMSTargetToken = @"appcenter-transmission-target-token";
 static NSString *const kMSCustomLogUrl = @"custom-log-url";
 static NSString *const kMSCustomAuthConfigUrl = @"custom-auth-config-url";

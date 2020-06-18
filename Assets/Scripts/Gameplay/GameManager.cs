@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject CovidPrefab;
 
     [Header("IAP Manager")]
+    public bool IAPEnabled;
     public IAPManager IAP;
 
     public int LevelNum

@@ -9,6 +9,7 @@ public class SettingsMenu : MonoBehaviour
     public Text version;
     public SwitchManager MusicSwitch;
     public SwitchManager SFXSwitch;
+    public GameObject RestorePurchasesButton;
 
     private void Start()
     {
@@ -16,6 +17,12 @@ public class SettingsMenu : MonoBehaviour
 
         setMusic();
         setSFX();
+        setRestorePurchases();
+    }
+
+    void setRestorePurchases()
+    {
+        RestorePurchasesButton.SetActive(GameManager.instance.IAPEnabled && GameManager.AdsEnabled());
     }
 
     void setMusic()

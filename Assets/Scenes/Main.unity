@@ -151,9 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  TargetOffset: {x: 0.5, y: 0, z: 0.5}
   Offset: {x: 10, y: 12, z: 10}
-  LeadOffset: -1.25
+  LeadOffset: 1.5
   DistanceDamp: 0.25
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &416969242
@@ -270,7 +269,7 @@ MonoBehaviour:
   - Name: game
     Description: 
     AudioClip: {fileID: 8300000, guid: d43ab4a2ae1294451a2e98a28d4185d7, type: 3}
-    Volume: 0.5
+    Volume: 1
     Intro: {fileID: 0}
   SFX:
   - Name: bop
@@ -280,8 +279,8 @@ MonoBehaviour:
     Variations: []
   - Name: win
     Description: 
-    AudioClip: {fileID: 8300000, guid: 90ea130a6ba3d40f1b5b182d6a38305a, type: 3}
-    Volume: 0.5
+    AudioClip: {fileID: 8300000, guid: bedbcfd51632846efa4d1a9ed60c2cd8, type: 3}
+    Volume: 1
     Variations: []
   - Name: spray
     Description: 
@@ -291,7 +290,7 @@ MonoBehaviour:
   - Name: lose
     Description: 
     AudioClip: {fileID: 8300000, guid: e6b0e4745837844f4a2e1dd664cde975, type: 3}
-    Volume: 0.5
+    Volume: 1
     Variations: []
   - Name: button
     Description: 
@@ -864,12 +863,17 @@ PrefabInstance:
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: CheatMenuEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: MaxLevel
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: ParticlesEnabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
