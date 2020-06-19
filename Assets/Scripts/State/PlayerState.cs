@@ -75,6 +75,7 @@ public class PlayerState
     public static void ClearData()
     {
         PlayerPrefs.DeleteKey(LEVEL);
+        PlayerPrefs.DeleteKey(AD_BLOCK);
     }
 
     public static bool GetBool(string key)
