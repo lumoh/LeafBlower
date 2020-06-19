@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.02
+  bundleVersion: 2.00
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -166,8 +166,8 @@ PlayerSettings:
     Standalone: com.lum.leafblower
     iPhone: com.lum.leafblower
   buildNumber:
-    iPhone: 102
-  AndroidBundleVersionCode: 102
+    iPhone: 200
+  AndroidBundleVersionCode: 200
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
