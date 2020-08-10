@@ -152,8 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   Offset: {x: 10, y: 12, z: 10}
-  LeadOffset: 1.5
-  DistanceDamp: 0.25
+  LeadOffset: 0
+  DistanceDamp: 0
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!4 &416969242
 Transform:
@@ -162,13 +162,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416969240}
-  m_LocalRotation: {x: -0.1159169, y: 0.8804763, z: -0.27984816, w: -0.3647052}
+  m_LocalRotation: {x: 0.09904577, y: -0.8923991, z: 0.23911765, w: 0.36964378}
   m_LocalPosition: {x: 9.999999, y: 12.829999, z: 9.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 41.2, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: -135, z: 0}
 --- !u!1 &432219547
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +841,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2674277415142453372, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: AnchorJoy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674277414185622397, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
 --- !u!1001 &5724369343295107289
@@ -863,7 +883,7 @@ PrefabInstance:
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: CheatMenuEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}

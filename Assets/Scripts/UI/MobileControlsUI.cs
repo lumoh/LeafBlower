@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class MobileControlsUI : MonoBehaviour
 {
     public bool TESTMODE;
+    public bool AnchorJoy;
 
     public Canvas ControlsCanvas;
     public RectTransform ControlsCanvasRT;
@@ -64,7 +65,11 @@ public class MobileControlsUI : MonoBehaviour
             {
                 OuterJoyStick.gameObject.SetActive(true);
                 Vector3 mousePos = GetTouchPos();
-                JoyStickParent.anchoredPosition = mouseToAnchorPosition(mousePos);
+
+                if (!AnchorJoy)
+                {
+                    JoyStickParent.anchoredPosition = mouseToAnchorPosition(mousePos);
+                }
             }
 
             if (GetTouch())

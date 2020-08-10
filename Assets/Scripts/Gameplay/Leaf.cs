@@ -15,44 +15,21 @@ public class Leaf : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider col;
 
-    public UnityEvent DestroyedEvent = new UnityEvent();
-    public UnityEvent BlownEvent = new UnityEvent();
-
     private bool _isCollected;
     private int _groundMask;
-    private GameObject _covidObj;
     private float _idleTime;
     private bool _addedAsPointer;
     private bool _blownOnce;
 
     void Awake()
     {
-        /*
-        if(GameManager.instance.CovidPrefab != null)
-        {
-            _covidObj = Instantiate(GameManager.instance.CovidPrefab, transform);
-            _covidObj.transform.localRotation = Quaternion.Euler(Random.onUnitSphere * 360f);
-            Mesh.enabled = false;
-        }
-        */
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         _groundMask = 1 << Layers.GROUND;
-
-        if (GameManager.instance.ParticlesEnabled)
-        {            
-            var ps = transform.GetChild(0).GetComponent<ParticleSystem>();
-            var main = ps.main;
-            main.startColor = Color.yellow;
-        }
-        else
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
-
         InvokeRepeating("setPlatform", Random.Range(0f, 0.25f), 0.25f);
         rb.drag = 2f;
     }
@@ -103,16 +80,15 @@ public class Leaf : MonoBehaviour
                 if(GameManager.instance.DestroyWhenCollected)
                 {
                     transform.parent = null;
-                    Destroy(gameObject, 2f);
+                    Destroy(gameObject);
                 }
                 else
                 {
-                    transform.parent = null; // GameManager.instance.Level.LeavesParent;
+                    transform.parent = null;
                 }
 
                 SoundManager.instance.PlaySFX("bop");
                 GlobalEvents.LeafCollected.Invoke();
-                DestroyedEvent.Invoke();
             }
 
             if(rb.isKinematic)

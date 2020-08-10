@@ -22,7 +22,7 @@ public class LeafPileCreator : EditorWindow
 
     private Vector3 prevPosition;
     private bool doSnap = true;
-    private float snapValue = 1;
+    private float snapValue = 0.5f;
 
     // Add menu named "My Window" to the Window menu
     [MenuItem("Blower/Leaf Pile Creator")]
@@ -90,7 +90,7 @@ public class LeafPileCreator : EditorWindow
             leafBitmap.LeafPrefab = leafPrefab;
             leafBitmap.Dimensions = _dimensions;
             leafBitmap.CreateFromDimensions();
-            PrefabUtility.SaveAsPrefabAsset(leafPileObj, "Assets/Prefabs/Leaves/LeafPile_" + _dimensions.x + "x" + _dimensions.y + "x" + _dimensions.z + ".prefab");
+            PrefabUtility.SaveAsPrefabAsset(leafPileObj, "Assets/Prefabs/Leaves/Rectangles/LeafPile_" + _dimensions.x + "x" + _dimensions.y + "x" + _dimensions.z + ".prefab");
             DestroyImmediate(leafPileObj);
         }
     }
@@ -191,7 +191,7 @@ public class LeafPileCreator : EditorWindow
              && !EditorApplication.isPlaying
              && Selection.transforms.Length > 0
              && Selection.transforms[0].position != prevPosition &&
-             Selection.transforms[0].name.Contains("Platform"))
+             (Selection.transforms[0].name.Contains("Platform") || Selection.transforms[0].name.Contains("LeafPile")))
         {
             Snap();
             prevPosition = Selection.transforms[0].position;

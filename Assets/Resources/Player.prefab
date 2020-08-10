@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 575690711835212414}
-  speed: 1.75
+  speed: 2.5
   gravity: 20
   turnSpeed: 6
 --- !u!1 &590725690621996668

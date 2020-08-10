@@ -9,4 +9,5 @@ public class Layers : MonoBehaviour
     public const int PLAYER = 10;
     public const int DEADZONE = 11;
     public const int FENCE = 12;
+    public const int EDITOR = 13;
 }
