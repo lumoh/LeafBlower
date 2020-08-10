@@ -9,6 +9,7 @@ public class MobileControlsUI : MonoBehaviour
 {
     public bool TESTMODE;
     public bool AnchorJoy;
+    public GameObject HandTutorial;
 
     public Canvas ControlsCanvas;
     public RectTransform ControlsCanvasRT;
@@ -39,10 +40,32 @@ public class MobileControlsUI : MonoBehaviour
     {
         active = true;
         OuterJoyStick.gameObject.SetActive(true);
+
+        showHandTutorial();
+    }
+
+    void showHandTutorial()
+    {
+        if (GameManager.instance.Level.Num < 3)
+        {
+            if (HandTutorial != null)
+            {
+                HandTutorial.SetActive(true);
+            }
+        }
+    }
+
+    void hideHandTutorial()
+    {
+        if (HandTutorial != null)
+        {
+            HandTutorial.SetActive(false);
+        }
     }
 
     private void setInactive()
     {
+        hideHandTutorial();
         active = false;
         OuterJoyStick.gameObject.SetActive(false);
 
@@ -90,12 +113,16 @@ public class MobileControlsUI : MonoBehaviour
                 Vector3 joyPos = (JoyVector * maxJoyMagnitude);
                 joyPos.z = 0;
                 InnerJoyStick.anchoredPosition = joyPos;
+
+                hideHandTutorial();
             }
             else
             {
                 JoyStickParent.anchoredPosition = new Vector2(400, 350);
                 InnerJoyStick.anchoredPosition = Vector3.zero;
                 JoyVector = Vector3.zero;
+
+                showHandTutorial();
             }
         }
     }

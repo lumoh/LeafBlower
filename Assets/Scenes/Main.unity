@@ -841,23 +841,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2674277415142453372, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: AnchorJoy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2674277414185622398, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 2674277414185622397, guid: 450e256549ec047f4b04f3d760ad73e1,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077790409, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

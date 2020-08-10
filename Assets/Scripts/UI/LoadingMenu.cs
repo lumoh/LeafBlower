@@ -32,7 +32,7 @@ public class LoadingMenu : MonoBehaviour
         canvasGroup.DOFade(0f, FadeDuration).OnComplete(() =>
         {
             cb?.Invoke();
-            Destroy(gameObject);
+            MenuManager.PopMenu(gameObject);
         }).SetDelay(FadeOutDelay);
     }
 }

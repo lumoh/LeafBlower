@@ -16,7 +16,7 @@ public class FakeAd : MonoBehaviour
     IEnumerator close()
     {
         yield return new WaitForSeconds(Delay);
-        Destroy(gameObject);
+        MenuManager.PopMenu(gameObject);
         GameManager.instance.LoadLevelAndPlayer();
     }
 }

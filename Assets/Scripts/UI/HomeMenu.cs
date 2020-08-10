@@ -17,6 +17,7 @@ public class HomeMenu : MonoBehaviour
     public Button NoAdsButton;
     public GameObject ZenModeObj;
     public CanvasGroup NotifCanvasGroup;
+    public Text TutorialText;
 
     [Header("Cheats")]
     public GameObject CheatMenu;
@@ -31,11 +32,11 @@ public class HomeMenu : MonoBehaviour
     {
         TapToStartButton.onClick.AddListener(handleStartButtonPressed);
 
-        StartText.DOFade(0.25f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+        StartText.DOFade(0.5f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
 
         if (NotifCanvasGroup != null)
         {
-            NotifCanvasGroup.DOFade(0.25f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+            NotifCanvasGroup.DOFade(0.5f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
         }
 
         // Show/Hide cheat menu
@@ -44,8 +45,35 @@ public class HomeMenu : MonoBehaviour
         setHaptics();
         setZenMode();
         setNoAds();
+        setTutorialText();
 
         GlobalEvents.AdsStatusChanged.AddListener(setNoAds);
+    }
+
+    private void setTutorialText()
+    {
+        if(TutorialText != null)
+        {
+            if(GameManager.instance.Level.Num == 1)
+            {
+                TutorialText.transform.parent.gameObject.SetActive(true);
+                TutorialText.text = "Blow all the blocks off the platforms!";
+            }
+            else if (GameManager.instance.Level.Num == 8)
+            {
+                TutorialText.transform.parent.gameObject.SetActive(true);
+                TutorialText.text = "Careful, you can fall off the platforms!";
+            }
+            else if (GameManager.instance.Level.Num == 11)
+            {
+                TutorialText.transform.parent.gameObject.SetActive(true);
+                TutorialText.text = "Heads up! Blue platforms will move!";
+            }
+            else
+            {
+                TutorialText.transform.parent.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void setZenMode()
@@ -58,9 +86,10 @@ public class HomeMenu : MonoBehaviour
 
     private void handleStartButtonPressed()
     {
+        MenuManager.PopMenu(gameObject);
+
         Taptic.Heavy();
         GlobalEvents.StartLevel.Invoke();
-        Destroy(gameObject);
     }
 
     private void setHaptics()
@@ -164,37 +193,42 @@ public class HomeMenu : MonoBehaviour
 
     public void CHEAT_ResetData()
     {
+        MenuManager.PopMenu(gameObject);
+
         GameManager.instance.LevelNum = 1;
-        GameManager.instance.LoadLevelAndPlayer();
-        Destroy(gameObject);
+        GameManager.instance.LoadLevelAndPlayer();       
     }
 
     public void CHEAT_NextLevel()
     {
+        MenuManager.PopMenu(gameObject);
+
         GameManager.instance.LevelNum = Mathf.Min(GameManager.instance.LevelNum + 1, GameManager.instance.MaxLevel + 1);
-        GameManager.instance.LoadLevelAndPlayer();
-        Destroy(gameObject);
+        GameManager.instance.LoadLevelAndPlayer();        
     }
 
     public void CHEAT_PreviousLevel()
     {
+        MenuManager.PopMenu(gameObject);
+
         GameManager.instance.LevelNum = Mathf.Max(GameManager.instance.LevelNum - 1, 1);
-        GameManager.instance.LoadLevelAndPlayer();
-        Destroy(gameObject);
+        GameManager.instance.LoadLevelAndPlayer();        
     }
 
     public void CHEAT_LastLevel()
     {
+        MenuManager.PopMenu(gameObject);
+
         GameManager.instance.LevelNum = GameManager.instance.MaxLevel;
         GameManager.instance.LoadLevelAndPlayer();
-        Destroy(gameObject);
     }
 
     public void CHEAT_LoadZen()
     {
+        MenuManager.PopMenu(gameObject);
+
         GameManager.instance.LevelNum = GameManager.instance.MaxLevel + 1;
         GameManager.instance.LoadLevelAndPlayer();
-        Destroy(gameObject);
     }
 
     public void CHEAT_ToggleAds()

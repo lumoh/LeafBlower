@@ -16,7 +16,7 @@ public class GameOverMenu : MonoBehaviour
     private void handleRetryPressed()
     {
         Taptic.Heavy();
-        Destroy(gameObject);
+        MenuManager.PopMenu(gameObject);
         GlobalEvents.RetryLevelEvent.Invoke();
     }
 }

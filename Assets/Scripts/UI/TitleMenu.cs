@@ -15,7 +15,7 @@ public class TitleMenu : MonoBehaviour
     {
         canvasGroup.DOFade(0f, FadeDuration).OnComplete(() =>
         {
-            Destroy(gameObject);
+            MenuManager.PopMenu(gameObject);
             SoundManager.instance.PlayMusic("game");
         }).SetDelay(Delay);
 

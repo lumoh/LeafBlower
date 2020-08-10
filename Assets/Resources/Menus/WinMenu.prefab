@@ -37,6 +37,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: AnimateIn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
+        type: 3}
+      propertyPath: CanvasGroup
+      value: 
+      objectReference: {fileID: 1188792079660898595}
     - target: {fileID: 8290326767924559281, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -92,16 +102,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
-        type: 3}
-      propertyPath: AnimateIn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4628497918233308346, guid: b8abc4a44316a449cb7562fb1c448751,
-        type: 3}
-      propertyPath: CanvasGroup
-      value: 
-      objectReference: {fileID: 1188792079660898595}
     - target: {fileID: 1605267828043988806, guid: b8abc4a44316a449cb7562fb1c448751,
         type: 3}
       propertyPath: m_RenderMode
@@ -196,17 +196,17 @@ PrefabInstance:
     - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.98039216
       objectReference: {fileID: 0}
     - target: {fileID: 114722397314560740, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.03529412
       objectReference: {fileID: 0}
     - target: {fileID: 224002375370414168, guid: a76e23e6dd72a8f4dbdefc46710338e0,
         type: 3}

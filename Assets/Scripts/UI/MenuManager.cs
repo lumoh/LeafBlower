@@ -14,20 +14,37 @@ public class MenuManager : MonoBehaviour
     public const string SUCCESS = "SuccessMenu";
     public const string FAILED = "FailedMenu";
 
+    private static Dictionary<string, GameObject> _activeMenus = new Dictionary<string, GameObject>();
     private static LoadingMenu _loadingMenu;
 
     public static GameObject PushMenu(string menuId)
     {
-        GameObject menuPrefab = Resources.Load("Menus/" + menuId) as GameObject;
-        GameObject menu = Instantiate(menuPrefab);
-        menu.name = menuId;
-        menu.SetActive(true);
+        GameObject menu;
+        if (_activeMenus.ContainsKey(menuId))
+        {
+            menu = _activeMenus[menuId];
+        }
+        else
+        {
+            GameObject menuPrefab = Resources.Load("Menus/" + menuId) as GameObject;
+            menu = Instantiate(menuPrefab);
+            menu.name = menuId;
+            menu.SetActive(true);
+            _activeMenus.Add(menuId, menu);
+        }
+
         return menu;
     }
 
     public static void PopMenu(GameObject gameObj)
     {
         string name = gameObj.name;
+
+        if(_activeMenus.ContainsKey(name))
+        {
+            _activeMenus.Remove(name);
+        }
+
         Destroy(gameObj);
         GlobalEvents.MenuPopped.Invoke(name);
     }

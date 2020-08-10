@@ -124,6 +124,11 @@ public class GameManager : MonoBehaviour
 
         Level.DoLevelPan();
 
+        if(GameManager.instance.CheatMenuEnabled)
+        {
+            MenuManager.PushMenu(MenuManager.HOME);
+        }
+
         MenuManager.RemoveLoadingScreen(()=>
         {
             SoundManager.instance.PlayMusic("game", 1f, false, true);
