@@ -118,15 +118,16 @@ public class GameManager : MonoBehaviour
         PlayerObj.transform.position = Level.PlayerSpawn.position;
         PlayerObj.transform.rotation = Level.PlayerSpawn.rotation;
 
-        IsLevelOver = false;
-
-        MenuManager.PushMenu(MenuManager.HOME);
+        IsLevelOver = false;        
+        
         GlobalEvents.LevelLoaded.Invoke();
+
+        Level.DoLevelPan();
+
         MenuManager.RemoveLoadingScreen(()=>
         {
             SoundManager.instance.PlayMusic("game", 1f, false, true);
         });
-
     }
 
     public static bool IsZenLevel()

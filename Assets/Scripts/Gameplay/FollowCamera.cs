@@ -14,12 +14,12 @@ public class FollowCamera : MonoBehaviour
 
     private void Awake()
     {
-        GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
+
     }
 
-    private void handleLevelLoaded()
+    public void SetTarget(Transform t)
     {
-        Target = GameManager.instance.PlayerObj.transform;
+        Target = t;
         if (Target != null)
         {
             Vector3 toPos = Target.position + Offset;
