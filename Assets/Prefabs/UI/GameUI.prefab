@@ -7256,8 +7256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c247ab1dad6914136880648f31f92437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoalProgressBar: {fileID: 2629282202875475126}
   CollectEffect: {fileID: 968400595844209396}
-  Target: {fileID: 15116831}
+  Target: {fileID: 2806986002949668228}
+  ZenTarget: {fileID: 15116831}
 --- !u!1 &4170608298403203356
 GameObject:
   m_ObjectHideFlags: 0

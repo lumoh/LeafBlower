@@ -45,6 +45,9 @@ public class FollowCamera : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(Target.position, Target.position + Target.forward * 2);
+        if (Target != null)
+        {
+            Gizmos.DrawLine(Target.position, Target.position + Target.forward * 2);
+        }
     }
 }

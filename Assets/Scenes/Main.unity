@@ -571,24 +571,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &924417062 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2806986002949668228, guid: 450e256549ec047f4b04f3d760ad73e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 2674277414526371964}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &924417064 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2629282202875475126, guid: 450e256549ec047f4b04f3d760ad73e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 2674277414526371964}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20c6dbf0102c7bc468113ccdd97dad83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -733,7 +715,7 @@ PrefabInstance:
     - target: {fileID: 1908616270651606298, guid: 2de845fc93b684d7e905b6d28ecd400c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1135466986213780481, guid: 2de845fc93b684d7e905b6d28ecd400c,
         type: 3}
@@ -869,31 +851,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1820427143}
-    - target: {fileID: 2629120943360970474, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.09411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 2629120943360970474, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2629120943360970474, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652164737749352842, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: Target
-      value: 
-      objectReference: {fileID: 924417062}
-    - target: {fileID: 4652164737749352842, guid: 450e256549ec047f4b04f3d760ad73e1,
-        type: 3}
-      propertyPath: GoalProgressBar
-      value: 
-      objectReference: {fileID: 924417064}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
 --- !u!1001 &5724369343295107289
@@ -916,12 +873,12 @@ PrefabInstance:
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: CheatMenuEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: MaxLevel
-      value: 30
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}

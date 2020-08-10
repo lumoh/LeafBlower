@@ -9,6 +9,7 @@ public class CollectGoalEffects : MonoBehaviour
     public ProgressBar GoalProgressBar;
     public CollectGoalEffect CollectEffect;
     public Transform Target;
+    public Transform ZenTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +31,30 @@ public class CollectGoalEffects : MonoBehaviour
         effect.gameObject.SetActive(true);
         effect.transform.position = uiPos;
 
-        float x = Target.position.x - 1.2f + (GoalProgressBar.specifiedValue * 2.5f / 100f);
-        float y = Target.position.y;
-
-        effect.transform.DOMoveX(x, 0.5f).SetEase(Ease.OutQuad);
-        effect.transform.DOMoveY(y, 0.5f).SetEase(Ease.InQuad).OnComplete(() =>
+        
+        if(GameManager.IsZenLevel())
         {
-            Destroy(effect.gameObject);
-        });
+            float x = ZenTarget.position.x;
+            float y = ZenTarget.position.y;
+
+            effect.transform.DOMoveX(x, 0.5f).SetEase(Ease.OutQuad);
+            effect.transform.DOMoveY(y, 0.5f).SetEase(Ease.InQuad).OnComplete(() =>
+            {
+                Destroy(effect.gameObject);
+            });
+        }
+        else
+        {
+            float progress = GoalProgressBar.specifiedValue;
+            float x = Target.position.x - 1.2f + (progress * 2.5f / 100f);
+            float y = Target.position.y;
+
+            effect.transform.DOMoveX(x, 0.5f).SetEase(Ease.OutQuad);
+            effect.transform.DOMoveY(y, 0.5f).SetEase(Ease.InQuad).OnComplete(() =>
+            {
+                Destroy(effect.gameObject);
+            });
+        }
     }
 
     private Color colorFromInt(int colorInt)

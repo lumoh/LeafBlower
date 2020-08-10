@@ -62,7 +62,10 @@ public class ZenLeafSpawner : MonoBehaviour
         {
             foreach(var leaf in _leaves)
             {
-                Destroy(leaf.gameObject);
+                if (leaf != null)
+                {
+                    Destroy(leaf.gameObject);
+                }
             }
 
             _leaves.Clear();
