@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Michsky.UI.ModernUIPack;
 
 public class CollectGoalEffects : MonoBehaviour
 {
+    public ProgressBar GoalProgressBar;
     public CollectGoalEffect CollectEffect;
     public Transform Target;
 
@@ -27,7 +29,12 @@ public class CollectGoalEffects : MonoBehaviour
         effect.Init(colorFromInt(leaf.ColorInt));
         effect.gameObject.SetActive(true);
         effect.transform.position = uiPos;
-        effect.transform.DOMove(Target.position, 0.5f).OnComplete(() =>
+
+        float x = Target.position.x - 1.2f + (GoalProgressBar.specifiedValue * 2.5f / 100f);
+        float y = Target.position.y;
+
+        effect.transform.DOMoveX(x, 0.5f).SetEase(Ease.OutQuad);
+        effect.transform.DOMoveY(y, 0.5f).SetEase(Ease.InQuad).OnComplete(() =>
         {
             Destroy(effect.gameObject);
         });
