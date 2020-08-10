@@ -235,6 +235,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &432651927 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 968400595844209396, guid: 450e256549ec047f4b04f3d760ad73e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2674277414526371964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9b3b9be7ffd48fea80859c1768c215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &629574429
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +724,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1908616270651606298, guid: 2de845fc93b684d7e905b6d28ecd400c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1135466986213780481, guid: 2de845fc93b684d7e905b6d28ecd400c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -841,15 +858,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2674277414185622397, guid: 450e256549ec047f4b04f3d760ad73e1,
+    - target: {fileID: 2674277415005373349, guid: 450e256549ec047f4b04f3d760ad73e1,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1077790409, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1820427143}
+    - target: {fileID: 4652164737749352842, guid: 450e256549ec047f4b04f3d760ad73e1,
+        type: 3}
+      propertyPath: CollectEffect
+      value: 
+      objectReference: {fileID: 432651927}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 450e256549ec047f4b04f3d760ad73e1, type: 3}
 --- !u!1001 &5724369343295107289

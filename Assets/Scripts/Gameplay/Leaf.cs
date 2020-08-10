@@ -15,6 +15,8 @@ public class Leaf : MonoBehaviour
     public Rigidbody rb;
     public BoxCollider col;
 
+    [System.NonSerialized] public int ColorInt;
+
     private bool _isCollected;
     private int _groundMask;
     private float _idleTime;
@@ -38,7 +40,8 @@ public class Leaf : MonoBehaviour
     {
         if (Mesh != null && LeafMaterials != null)
         {
-            Mesh.material = LeafMaterials[Random.Range(0, LeafMaterials.Count)];
+            ColorInt = Random.Range(0, LeafMaterials.Count);
+            Mesh.material = LeafMaterials[ColorInt];
         }
     }
 
@@ -89,6 +92,7 @@ public class Leaf : MonoBehaviour
 
                 SoundManager.instance.PlaySFX("bop");
                 GlobalEvents.LeafCollected.Invoke();
+                GlobalEvents.LeafCollectedInfo.Invoke(this);
             }
 
             if(rb.isKinematic)

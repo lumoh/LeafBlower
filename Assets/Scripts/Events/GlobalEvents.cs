@@ -21,4 +21,5 @@ public class GlobalEvents
     public static UnityEvent PurchaseComplete = new UnityEvent();
     public static UnityEvent PurchaseFailed = new UnityEvent();
     public static UnityEvent StartPurchase = new UnityEvent();
+    public static LeafCollectedEvent LeafCollectedInfo = new LeafCollectedEvent();
 }
