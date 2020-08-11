@@ -63,6 +63,7 @@ public class IronSourceManager : MonoBehaviour
         GlobalEvents.WinLevel.AddListener(hideBanner);
         GlobalEvents.LoseLevel.AddListener(hideBanner);
         GlobalEvents.RetryLevelEvent.AddListener(handleRetry);
+        GlobalEvents.RetryWithUnlimitedEvent.AddListener(handleRetryWithUnlimited);
         GlobalEvents.NextLevelEvent.AddListener(handleNextLevel);
         GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
     }
@@ -122,8 +123,10 @@ public class IronSourceManager : MonoBehaviour
         MenuManager.ShowLoadingScreen(() =>
         {
             int level = PlayerState.GetLevel();
-            if (GameManager.AdsEnabled() && _ironSourceInit && level >= 2)
+            if (GameManager.AdsEnabled() && _ironSourceInit)
             {
+                Timer.UnlimitedNextTimeTry = true;
+
                 if (_rewardedVideoAvailability)
                 {
                     IronSource.Agent.showRewardedVideo();
@@ -161,6 +164,11 @@ public class IronSourceManager : MonoBehaviour
         {
             GameManager.instance.LoadLevelAndPlayer();
         });
+    }
+
+    void handleRetryWithUnlimited()
+    {
+        showRewardedVideo();
     }
 
     void handleNextLevel()

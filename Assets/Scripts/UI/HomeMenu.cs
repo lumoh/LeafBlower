@@ -17,22 +17,24 @@ public class HomeMenu : MonoBehaviour
     public Button NoAdsButton;
     public GameObject ZenModeObj;
     public CanvasGroup NotifCanvasGroup;
+
+    [Header("Tutorial")]
     public Text TutorialText;
+    public RectTransform TutorialTextParent;
 
     [Header("Cheats")]
     public GameObject CheatMenu;
     public TMP_Text AdsText;
 
     private bool showHudState;
+    private bool _playedTutorial;
 
     private const float PURCHASE_TIMEOUT = 60f;
 
     // Start is called before the first frame update
     void Start()
     {
-        TapToStartButton.onClick.AddListener(handleStartButtonPressed);
-
-        StartText.DOFade(0.5f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+        StartText.transform.parent.gameObject.SetActive(false);
 
         if (NotifCanvasGroup != null)
         {
@@ -50,30 +52,57 @@ public class HomeMenu : MonoBehaviour
         GlobalEvents.AdsStatusChanged.AddListener(setNoAds);
     }
 
+    private void showTapToStart()
+    {
+        StartText.transform.parent.gameObject.SetActive(true);
+        TapToStartButton.onClick.AddListener(handleStartButtonPressed);
+        StartText.DOFade(0.5f, FadeDuration).SetLoops(-1, LoopType.Yoyo);
+    }
+
     private void setTutorialText()
     {
         if(TutorialText != null)
         {
             if(GameManager.instance.Level.Num == 1)
-            {
-                TutorialText.transform.parent.gameObject.SetActive(true);
+            {                
                 TutorialText.text = "Blow all the blocks off the platform before time runs out!";
+                _playedTutorial = true;
             }
             else if (GameManager.instance.Level.Num == 8)
             {
-                TutorialText.transform.parent.gameObject.SetActive(true);
                 TutorialText.text = "Careful, you can fall off the platforms!";
+                _playedTutorial = true;
             }
             else if (GameManager.instance.Level.Num == 11)
             {
-                TutorialText.transform.parent.gameObject.SetActive(true);
                 TutorialText.text = "Heads up! Blue platforms will move!";
+                _playedTutorial = true;
             }
             else
             {
-                TutorialText.transform.parent.gameObject.SetActive(false);
+                _playedTutorial = false;
             }
         }
+
+        if (!_playedTutorial)
+        {
+            TutorialTextParent.gameObject.SetActive(false);
+            showTapToStart();
+        }
+        else
+        {
+            TutorialTextParent.anchoredPosition = new Vector2(0, 150);
+            TutorialTextParent.gameObject.SetActive(true);
+            TutorialTextParent.DOAnchorPos(new Vector2(0, -575), 0.5f).SetEase(Ease.OutBack);
+            TutorialTextParent.DOAnchorPos(new Vector2(0, 150), 0.5f).SetEase(Ease.InBack).SetDelay(2f);
+            StartCoroutine(showTapCoroutine());
+        }
+    }
+
+    IEnumerator showTapCoroutine()
+    {
+        yield return new WaitForSeconds(2.5f);
+        showTapToStart();
     }
 
     private void setZenMode()

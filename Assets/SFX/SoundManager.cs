@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
         GlobalEvents.LoseLevel.AddListener(handleLoseLevel);
         GlobalEvents.NextLevelEvent.AddListener(handleNextLevel);
         GlobalEvents.RetryLevelEvent.AddListener(handleNextLevel);
+        GlobalEvents.RetryWithUnlimitedEvent.AddListener(handleNextLevel);
     }
 
     private void handleWinLevel()

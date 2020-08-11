@@ -9,10 +9,12 @@ public class Timer : MonoBehaviour
     public int TotalSeconds = 30;
     public GameObject Infinity;
 
+
     private float _secondsLeft;
     private bool _isRunning;
 
     public static Timer instance;
+    public static bool UnlimitedNextTimeTry;
 
     void Awake()
     {
@@ -37,10 +39,19 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(true);
-            TimeLeftText.text = _secondsLeft.ToString("00.0");
-            TimeLeftText.gameObject.SetActive(true);
-            Infinity.SetActive(false);
+            if (UnlimitedNextTimeTry)
+            {
+                gameObject.SetActive(true);
+                TimeLeftText.gameObject.SetActive(false);
+                Infinity.SetActive(true);
+            }
+            else
+            {
+                gameObject.SetActive(true);
+                TimeLeftText.text = _secondsLeft.ToString("00.0");
+                TimeLeftText.gameObject.SetActive(true);
+                Infinity.SetActive(false);
+            }
         }        
     }
 
@@ -53,9 +64,14 @@ public class Timer : MonoBehaviour
 
     public void handleStartLevel()
     {
-        if (!GameManager.IsZenLevel())
+        if (!GameManager.IsZenLevel() && !UnlimitedNextTimeTry)
         {
             _isRunning = true;
+        }
+
+        if(UnlimitedNextTimeTry)
+        {
+            UnlimitedNextTimeTry = false;
         }
     }
 
