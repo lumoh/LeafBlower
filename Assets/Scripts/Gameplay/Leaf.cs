@@ -80,15 +80,8 @@ public class Leaf : MonoBehaviour
 
             if (_isCollected)
             {
-                if(GameManager.instance.DestroyWhenCollected)
-                {
-                    transform.parent = null;
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    transform.parent = null;
-                }
+                transform.parent = null;
+                Destroy(gameObject);                
 
                 SoundManager.instance.PlaySFX("bop");
                 GlobalEvents.LeafCollected.Invoke();

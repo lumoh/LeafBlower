@@ -57,7 +57,7 @@ public class HomeMenu : MonoBehaviour
             if(GameManager.instance.Level.Num == 1)
             {
                 TutorialText.transform.parent.gameObject.SetActive(true);
-                TutorialText.text = "Blow all the blocks off the platforms!";
+                TutorialText.text = "Blow all the blocks off the platform before time runs out!";
             }
             else if (GameManager.instance.Level.Num == 8)
             {

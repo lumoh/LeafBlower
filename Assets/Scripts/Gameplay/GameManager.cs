@@ -15,11 +15,7 @@ public class GameManager : MonoBehaviour
     public int TargetFrameRate = 60;
     public int SolverIterations = 5;
     public bool ParticlesEnabled;
-    public bool DestroyWhenCollected;
     public bool GoalPointers;
-
-    [Header("Special covid prefab")]
-    public GameObject CovidPrefab;
 
     [Header("IAP Manager")]
     public bool IAPEnabled;

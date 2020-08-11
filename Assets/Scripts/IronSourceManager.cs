@@ -5,6 +5,9 @@ using Facebook.Unity;
 
 public class IronSourceManager : MonoBehaviour
 {
+    public int LevelsBeforeAd = 2;
+    public int AdModForLevel = 3;
+
 #if UNITY_ANDROID
     private const string YOUR_APP_KEY = "b765fea5";
 #elif UNITY_IOS
@@ -59,8 +62,8 @@ public class IronSourceManager : MonoBehaviour
         GlobalEvents.LevelLoaded.AddListener(handleLevelLoaded);
         GlobalEvents.WinLevel.AddListener(hideBanner);
         GlobalEvents.LoseLevel.AddListener(hideBanner);
-        GlobalEvents.RetryLevelEvent.AddListener(showRewardedVideo);
-        GlobalEvents.NextLevelEvent.AddListener(showInterstitial);
+        GlobalEvents.RetryLevelEvent.AddListener(handleRetry);
+        GlobalEvents.NextLevelEvent.AddListener(handleNextLevel);
         GlobalEvents.AdsStatusChanged.AddListener(handleAdsChanged);
     }
 
@@ -119,7 +122,7 @@ public class IronSourceManager : MonoBehaviour
         MenuManager.ShowLoadingScreen(() =>
         {
             int level = PlayerState.GetLevel();
-            if (GameManager.AdsEnabled() && _ironSourceInit && level >= 3)
+            if (GameManager.AdsEnabled() && _ironSourceInit && level >= 2)
             {
                 if (_rewardedVideoAvailability)
                 {
@@ -150,6 +153,30 @@ public class IronSourceManager : MonoBehaviour
                 GameManager.instance.LoadLevelAndPlayer();
             }
         });
+    }
+
+    void handleRetry()
+    {
+        MenuManager.ShowLoadingScreen(() =>
+        {
+            GameManager.instance.LoadLevelAndPlayer();
+        });
+    }
+
+    void handleNextLevel()
+    {
+        int level = PlayerState.GetLevel();
+        if(level > LevelsBeforeAd && level % AdModForLevel == 0)
+        {
+            showInterstitial();
+        }
+        else
+        {
+            MenuManager.ShowLoadingScreen(() =>
+            {
+                GameManager.instance.LoadLevelAndPlayer();
+            });
+        }
     }
 
     private void OnApplicationPause(bool pause)

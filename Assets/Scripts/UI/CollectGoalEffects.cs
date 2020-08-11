@@ -14,7 +14,10 @@ public class CollectGoalEffects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GlobalEvents.LeafCollectedInfo.AddListener(handleLeafCollected);
+        if (GameManager.instance.ParticlesEnabled)
+        {
+            GlobalEvents.LeafCollectedInfo.AddListener(handleLeafCollected);
+        }
     }
 
     // Update is called once per frame

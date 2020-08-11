@@ -50,14 +50,13 @@ MonoBehaviour:
   Level: {fileID: 0}
   PlayerObj: {fileID: 0}
   IsLevelOver: 0
-  MaxLevel: 58
-  CheatMenuEnabled: 1
+  MaxLevel: 11
+  CheatMenuEnabled: 0
   TargetFrameRate: 60
   SolverIterations: 1
   ParticlesEnabled: 1
-  DestroyWhenCollected: 1
   GoalPointers: 1
-  CovidPrefab: {fileID: 0}
+  IAPEnabled: 0
   IAP: {fileID: 0}
 --- !u!114 &5724369344483721620
 MonoBehaviour:

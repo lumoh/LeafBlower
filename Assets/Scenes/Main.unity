@@ -643,6 +643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7793cea7c98e4cc9b60ac0fac1759a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelsBeforeAd: 2
+  AdModForLevel: 3
 --- !u!4 &1339618865
 Transform:
   m_ObjectHideFlags: 0
@@ -870,21 +872,6 @@ PrefabInstance:
       propertyPath: IAP
       value: 
       objectReference: {fileID: 869246082}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: CheatMenuEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: MaxLevel
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
-        type: 3}
-      propertyPath: ParticlesEnabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: World

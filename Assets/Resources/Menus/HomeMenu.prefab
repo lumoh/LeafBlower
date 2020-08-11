@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 8181319651935563533}
   - component: {fileID: 1418860028633209307}
   - component: {fileID: 472511600907421655}
+  - component: {fileID: 7495058450536254476}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -466,6 +467,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Blow all the blocks off the platforms!
+--- !u!114 &7495058450536254476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508180439973280675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &748520397367031390
 GameObject:
   m_ObjectHideFlags: 0
