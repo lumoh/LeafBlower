@@ -881,6 +881,11 @@ PrefabInstance:
       propertyPath: IAPEnabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5724369344483721618, guid: 8930a264a5f3844cbb5eadfee5c788ec,
+        type: 3}
+      propertyPath: MaxLevel
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5724369344483721620, guid: 8930a264a5f3844cbb5eadfee5c788ec,
         type: 3}
       propertyPath: World
