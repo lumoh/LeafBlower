@@ -17,6 +17,7 @@ public class TitleMenu : MonoBehaviour
         {
             MenuManager.PopMenu(gameObject);
             SoundManager.instance.PlayMusic("game");
+            GlobalEvents.LevelShown.Invoke();
         }).SetDelay(Delay);
 
         if (VersionText != null)

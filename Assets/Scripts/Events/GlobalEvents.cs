@@ -10,6 +10,7 @@ public class GlobalEvents
     public static UnityEvent StartLevel = new UnityEvent();
     public static UnityEvent WinLevel = new UnityEvent();
     public static UnityEvent LevelLoaded = new UnityEvent();
+    public static UnityEvent LevelShown = new UnityEvent();
 
     public static UnityEvent RetryWithUnlimitedEvent = new UnityEvent();
     public static UnityEvent RetryLevelEvent = new UnityEvent();

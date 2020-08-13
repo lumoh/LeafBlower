@@ -11,7 +11,6 @@ public class Level : MonoBehaviour
 	public Transform LeavesParent;
     public Transform IntroCameraParent;
     [System.NonSerialized] List<Transform> IntroCamPositions;
-    private int _introIndex;
 
     public int NumLeaves;
     public int Seconds = 30;
@@ -26,54 +25,61 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         GlobalEvents.LeafCollected.AddListener(handleLeafCollected);
+        GlobalEvents.LevelShown.AddListener(doLevelPan);
 
         fetchPlatforms();
         fetchLeaves();
         fetchIntroCamPositions();
 
+        initCamera();
+
         Seconds = Mathf.Max(60, Seconds);
     }
 
-    public void DoLevelPan()
+    private void initCamera()
     {
-        if(IntroCamPositions != null && IntroCamPositions.Count > 0)
+        Camera worldCam = CameraManager.instance.World;
+        _followCamera = worldCam.GetComponent<FollowCamera>();
+
+        if (IntroCamPositions != null && IntroCamPositions.Count > 0)
         {
-            _introIndex = 0;
-            Camera worldCam = CameraManager.instance.World;
-            _followCamera = worldCam.GetComponent<FollowCamera>();
+            _followCamera.FollowTargetOn = false;
             _followCamera.SetTarget(IntroCamPositions[0]);
-            _followCamera.DistanceDamp = 0.75f;
-            StartCoroutine(panCoroutine());
+            _followCamera.MoveToTarget(0);
         }
         else
         {
-            Camera worldCam = CameraManager.instance.World;
-            _followCamera = worldCam.GetComponent<FollowCamera>();
             _followCamera.SetTarget(GameManager.instance.PlayerObj.transform);
             _followCamera.DistanceDamp = 0;
-            MenuManager.PushMenu(MenuManager.HOME);
+
+            if (!GameManager.instance.CheatMenuEnabled)
+            {
+                MenuManager.PushMenu(MenuManager.HOME);
+            }
         }
     }
 
-    IEnumerator panCoroutine()
+    private void doLevelPan()
     {
-        if(_introIndex == 0)
+        List<Transform> transforms = new List<Transform>();
+        if (IntroCamPositions != null && IntroCamPositions.Count > 1)
         {
-            yield return new WaitForSeconds(2.85f);
+            transforms.AddRange(IntroCamPositions.GetRange(1, IntroCamPositions.Count - 1));
         }
+        transforms.Add(GameManager.instance.PlayerObj.transform);
 
-        _introIndex++;
-        if(_introIndex < IntroCamPositions.Count)
+        float duration = 1f + transforms.Count;
+        _followCamera.PanOverTransforms(duration, transforms, panCallback);
+    }
+
+    private void panCallback()
+    {
+        _followCamera.Target = GameManager.instance.PlayerObj.transform;
+        _followCamera.DistanceDamp = 0;
+        _followCamera.FollowTargetOn = true;
+
+        if (!GameManager.instance.CheatMenuEnabled)
         {
-            _followCamera.Target = IntroCamPositions[_introIndex];
-            yield return new WaitForSeconds(1.5f);
-            StartCoroutine(panCoroutine());
-        }
-        else
-        {
-            _followCamera.Target = GameManager.instance.PlayerObj.transform;
-            yield return new WaitForSeconds(3f);
-            _followCamera.DistanceDamp = 0;
             MenuManager.PushMenu(MenuManager.HOME);
         }
     }

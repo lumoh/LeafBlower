@@ -225,7 +225,8 @@ public class HomeMenu : MonoBehaviour
         MenuManager.PopMenu(gameObject);
 
         GameManager.instance.LevelNum = 1;
-        GameManager.instance.LoadLevelAndPlayer();       
+        GameManager.instance.LoadLevelAndPlayer();
+        GlobalEvents.LevelShown.Invoke();
     }
 
     public void CHEAT_NextLevel()
@@ -233,7 +234,8 @@ public class HomeMenu : MonoBehaviour
         MenuManager.PopMenu(gameObject);
 
         GameManager.instance.LevelNum = Mathf.Min(GameManager.instance.LevelNum + 1, GameManager.instance.MaxLevel + 1);
-        GameManager.instance.LoadLevelAndPlayer();        
+        GameManager.instance.LoadLevelAndPlayer();
+        GlobalEvents.LevelShown.Invoke();
     }
 
     public void CHEAT_PreviousLevel()
@@ -241,7 +243,8 @@ public class HomeMenu : MonoBehaviour
         MenuManager.PopMenu(gameObject);
 
         GameManager.instance.LevelNum = Mathf.Max(GameManager.instance.LevelNum - 1, 1);
-        GameManager.instance.LoadLevelAndPlayer();        
+        GameManager.instance.LoadLevelAndPlayer();
+        GlobalEvents.LevelShown.Invoke();
     }
 
     public void CHEAT_LastLevel()
@@ -250,6 +253,7 @@ public class HomeMenu : MonoBehaviour
 
         GameManager.instance.LevelNum = GameManager.instance.MaxLevel;
         GameManager.instance.LoadLevelAndPlayer();
+        GlobalEvents.LevelShown.Invoke();
     }
 
     public void CHEAT_LoadZen()
@@ -258,6 +262,7 @@ public class HomeMenu : MonoBehaviour
 
         GameManager.instance.LevelNum = GameManager.instance.MaxLevel + 1;
         GameManager.instance.LoadLevelAndPlayer();
+        GlobalEvents.LevelShown.Invoke();
     }
 
     public void CHEAT_ToggleAds()

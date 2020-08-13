@@ -118,8 +118,6 @@ public class GameManager : MonoBehaviour
         
         GlobalEvents.LevelLoaded.Invoke();
 
-        Level.DoLevelPan();
-
         if(GameManager.instance.CheatMenuEnabled)
         {
             MenuManager.PushMenu(MenuManager.HOME);
@@ -128,6 +126,7 @@ public class GameManager : MonoBehaviour
         MenuManager.RemoveLoadingScreen(()=>
         {
             SoundManager.instance.PlayMusic("game", 1f, false, true);
+            GlobalEvents.LevelShown.Invoke();
         });
     }
 
