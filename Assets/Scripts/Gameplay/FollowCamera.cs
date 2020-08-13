@@ -16,7 +16,7 @@ public class FollowCamera : MonoBehaviour
 
     private void Awake()
     {
-        FollowTargetOn = true;
+        FollowTargetOn = false;
     }
 
     public void SetTarget(Transform t)

@@ -31,12 +31,10 @@ public class Level : MonoBehaviour
         fetchLeaves();
         fetchIntroCamPositions();
 
-        initCamera();
-
         Seconds = Mathf.Max(60, Seconds);
     }
 
-    private void initCamera()
+    public void InitCamera()
     {
         Camera worldCam = CameraManager.instance.World;
         _followCamera = worldCam.GetComponent<FollowCamera>();
@@ -49,8 +47,9 @@ public class Level : MonoBehaviour
         }
         else
         {
+            _followCamera.FollowTargetOn = false;
             _followCamera.SetTarget(GameManager.instance.PlayerObj.transform);
-            _followCamera.DistanceDamp = 0;
+            _followCamera.MoveToTarget(0);
 
             if (!GameManager.instance.CheatMenuEnabled)
             {

@@ -76,7 +76,7 @@ public class Leaf : MonoBehaviour
         if(!_isCollected)
         {
             // much more efficient than raycast
-            _isCollected = transform.position.y < -1f;
+            _isCollected = transform.position.y < -0.2f;
 
             if (_isCollected)
             {

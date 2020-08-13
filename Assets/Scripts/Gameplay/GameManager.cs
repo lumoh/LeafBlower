@@ -114,6 +114,8 @@ public class GameManager : MonoBehaviour
         PlayerObj.transform.position = Level.PlayerSpawn.position;
         PlayerObj.transform.rotation = Level.PlayerSpawn.rotation;
 
+        Level.InitCamera();
+
         IsLevelOver = false;        
         
         GlobalEvents.LevelLoaded.Invoke();
